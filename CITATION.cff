@@ -8,6 +8,8 @@ authors:
     email: maksimelisov2003@mail.ru
     orcid: "https://orcid.org/0009-0001-3097-2703"
 repository-code: "https://github.com/Hardos220/hidden-attractor-search"
+doi: 10.5281/zenodo.23348471
+version: 1.0.0
 license: MIT
 date-released: "2026-10-13"
 preferred-citation:
