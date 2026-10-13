@@ -4,7 +4,7 @@ Code, experiments, results, and manuscript sources for the article
 
 > M. Elisov, *Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee*, submitted to *Chaos: An Interdisciplinary Journal of Nonlinear Science* (2026).
 
-Archived snapshot (v1.0.0): [doi:10.5281/zenodo.23348471](https://doi.org/10.5281/zenodo.23348471).
+Archived in Zenodo: [doi:10.5281/zenodo.23348470](https://doi.org/10.5281/zenodo.23348470) (all versions; v1.0.1 is the current one).
 
 The search for a hidden attractor with a small basin is treated as the detection of a rare event in the space of initial conditions. The repository contains the benchmark of systems with hidden attractors, the identification and verification protocol, the search strategies (uniform sampling, subset simulation driven by transient duration, active learning of basin boundaries, their portfolio, bisection toward basin boundaries, and Zelinka's differential evolution), every numerical result reported in the article, and the scripts that produce its tables and figures.
 

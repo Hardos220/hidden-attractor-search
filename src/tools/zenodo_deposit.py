@@ -95,6 +95,33 @@ def cmd_upload(args):
     print(f"uploaded: {info.get('key')} ({info.get('size', 0) / 1e6:.1f} MB)")
 
 
+def cmd_newversion(args):
+    """Open a new version of a published record, replace its archive, set the version string; publish separately."""
+    base = "https://sandbox.zenodo.org/api" if args.sandbox else "https://zenodo.org/api"
+    token = token_of(args)
+    r = api(base, token, "POST", f"/deposit/depositions/{args.id}/actions/newversion")
+    draft_url = r["links"]["latest_draft"]
+    new_id = int(draft_url.rstrip("/").split("/")[-1])
+    dep = api(base, token, "GET", f"/deposit/depositions/{new_id}")
+    for f in dep.get("files", []):
+        api(base, token, "DELETE", f"/deposit/depositions/{new_id}/files/{f['id']}")
+    zpath = Path(args.zip)
+    url = dep["links"]["bucket"] + "/" + urllib.parse.quote(zpath.name) + "?access_token=" + urllib.parse.quote(token)
+    req = urllib.request.Request(url, data=zpath.read_bytes(), method="PUT")
+    req.add_header("Content-Type", "application/octet-stream")
+    with urllib.request.urlopen(req, timeout=1800) as rr:
+        info = json.loads(rr.read().decode())
+    meta = dep["metadata"]
+    meta["version"] = args.version
+    meta.pop("doi", None)
+    meta.pop("prereserve_doi", None)
+    dep = api(base, token, "PUT", f"/deposit/depositions/{new_id}", data={"metadata": meta})
+    doi = dep["metadata"].get("prereserve_doi", {}).get("doi") or dep.get("doi")
+    print(f"new version draft id: {new_id}  version: {args.version}  DOI: {doi}")
+    print(f"uploaded: {info.get('key')} ({info.get('size', 0) / 1e6:.1f} MB)")
+    print(f"publish with: python src/tools/zenodo_deposit.py publish --id {new_id}" + (" --sandbox" if args.sandbox else ""))
+
+
 def cmd_publish(args):
     base = "https://sandbox.zenodo.org/api" if args.sandbox else "https://zenodo.org/api"
     token = token_of(args)
@@ -111,13 +138,17 @@ def main():
     u = sub.add_parser("upload")
     u.add_argument("--id", required=True)
     u.add_argument("--zip", required=True)
+    n = sub.add_parser("newversion")
+    n.add_argument("--id", required=True, help="id of the published record")
+    n.add_argument("--zip", required=True)
+    n.add_argument("--version", required=True)
     p = sub.add_parser("publish")
     p.add_argument("--id", required=True)
-    for s in (r, u, p):
+    for s in (r, u, n, p):
         s.add_argument("--sandbox", action="store_true")
         s.add_argument("--token-file")
     args = ap.parse_args()
-    {"reserve": cmd_reserve, "upload": cmd_upload, "publish": cmd_publish}[args.cmd](args)
+    {"reserve": cmd_reserve, "upload": cmd_upload, "newversion": cmd_newversion, "publish": cmd_publish}[args.cmd](args)
 
 
 if __name__ == "__main__":

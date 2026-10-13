@@ -153,7 +153,7 @@ def entry(key, r):
         f["eprint"] = r["arxiv"]
         f["archiveprefix"] = "arXiv"
     if pages:
-        f["pages"] = pages.replace(" ", "").replace("-", "--")
+        f["pages"] = pages.replace(" ", "").replace("–", "-").replace("—", "-").replace("-", "--")
     if doi:
         f["doi"] = str(doi).lower().replace("https://doi.org/", "")
     body = ",\n".join(f"  {k} = {{{v}}}" for k, v in f.items() if v)     # title is double-braced: case kept

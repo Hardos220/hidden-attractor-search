@@ -8,6 +8,18 @@
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
 
+% float placement: let LaTeX fill pages with figures instead of deferring them past the references
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\dblfloatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\setcounter{dbltopnumber}{3}
+
 \newtheorem{proposition}{Proposition}
 % text the author must supply before submission (printed in red)
 \newcommand{\placeholder}[1]{\textcolor{red}{[#1]}}
@@ -27,6 +39,7 @@
 \input{sections/85_backmatter}
 \input{sections/90_appendix}
 
+\clearpage   % place all remaining figures before the reference list
 \bibliography{refs}
 
 \end{document}
