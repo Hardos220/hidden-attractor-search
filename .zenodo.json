@@ -1,0 +1,18 @@
+{
+  "title": "hidden-attractor-search: code, experiments, and results for \"Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee\"",
+  "upload_type": "software",
+  "description": "Code, numerical experiments, results, and manuscript sources for the article \"Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee\" (submitted to Chaos: An Interdisciplinary Journal of Nonlinear Science, 2026). The repository contains the benchmark of systems with hidden attractors, the identification and verification protocol, the search strategies (uniform sampling, subset simulation driven by transient duration, active learning of basin boundaries, their portfolio, bisection toward basin boundaries, and differential evolution), every numerical result reported in the article in JSON form, the comparison with Attractors.jl, and the scripts that produce the tables and figures.",
+  "creators": [
+    {
+      "name": "Elisov, Maksim",
+      "affiliation": "Samara National Research University, Samara, Russia",
+      "orcid": "0009-0001-3097-2703"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": ["hidden attractors", "basins of attraction", "multistability", "rare events", "subset simulation", "active learning", "transient chaos", "Chua circuit"],
+  "related_identifiers": [
+    {"identifier": "https://github.com/Hardos220/hidden-attractor-search", "relation": "isSupplementTo", "resource_type": "software", "scheme": "url"}
+  ]
+}
