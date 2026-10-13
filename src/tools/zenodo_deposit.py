@@ -78,6 +78,23 @@ def cmd_reserve(args):
           + (" --sandbox" if args.sandbox else ""))
 
 
+def cmd_upload(args):
+    """Replace the files of an unpublished deposition by the given archive (after the DOI was written into it)."""
+    base = "https://sandbox.zenodo.org/api" if args.sandbox else "https://zenodo.org/api"
+    token = token_of(args)
+    dep = api(base, token, "GET", f"/deposit/depositions/{args.id}")
+    for f in dep.get("files", []):
+        api(base, token, "DELETE", f"/deposit/depositions/{args.id}/files/{f['id']}")
+        print(f"deleted: {f['filename']}")
+    zpath = Path(args.zip)
+    url = dep["links"]["bucket"] + "/" + urllib.parse.quote(zpath.name) + "?access_token=" + urllib.parse.quote(token)
+    req = urllib.request.Request(url, data=zpath.read_bytes(), method="PUT")
+    req.add_header("Content-Type", "application/octet-stream")
+    with urllib.request.urlopen(req, timeout=1800) as r:
+        info = json.loads(r.read().decode())
+    print(f"uploaded: {info.get('key')} ({info.get('size', 0) / 1e6:.1f} MB)")
+
+
 def cmd_publish(args):
     base = "https://sandbox.zenodo.org/api" if args.sandbox else "https://zenodo.org/api"
     token = token_of(args)
@@ -91,13 +108,16 @@ def main():
     r = sub.add_parser("reserve")
     r.add_argument("--zip", required=True)
     r.add_argument("--version", default="1.0.0")
+    u = sub.add_parser("upload")
+    u.add_argument("--id", required=True)
+    u.add_argument("--zip", required=True)
     p = sub.add_parser("publish")
     p.add_argument("--id", required=True)
-    for s in (r, p):
+    for s in (r, u, p):
         s.add_argument("--sandbox", action="store_true")
         s.add_argument("--token-file")
     args = ap.parse_args()
-    {"reserve": cmd_reserve, "publish": cmd_publish}[args.cmd](args)
+    {"reserve": cmd_reserve, "upload": cmd_upload, "publish": cmd_publish}[args.cmd](args)
 
 
 if __name__ == "__main__":
