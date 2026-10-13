@@ -1,0 +1,301 @@
+{
+ "system": "le1",
+ "n": 20000,
+ "n_unknown": 161,
+ "cases": [
+  {
+   "cluster": -1,
+   "size": 2,
+   "medoid_ic": [
+    0.07983561151309004,
+    -1.65464136832653,
+    -8.778856379730488
+   ],
+   "lam0": 0.0851,
+   "rmax0": 85.143,
+   "mean0": [
+    -0.0,
+    0.0,
+    -84.48
+   ],
+   "track": [
+    {
+     "w": 0,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": false,
+     "rmax": 85.654,
+     "label": -2
+    },
+    {
+     "w": 1,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": false,
+     "rmax": 85.813,
+     "label": -2
+    },
+    {
+     "w": 2,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": false,
+     "rmax": 85.863,
+     "label": -2
+    },
+    {
+     "w": 3,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": false,
+     "rmax": 85.879,
+     "label": -2
+    },
+    {
+     "w": 4,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": false,
+     "rmax": 85.884,
+     "label": -2
+    },
+    {
+     "w": 5,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": false,
+     "rmax": 85.885,
+     "label": -2
+    },
+    {
+     "w": 6,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": false,
+     "rmax": 85.886,
+     "label": -2
+    },
+    {
+     "w": 7,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": true,
+     "rmax": 85.886,
+     "label": -2
+    },
+    {
+     "w": 8,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": true,
+     "rmax": 85.886,
+     "label": -2
+    },
+    {
+     "w": 9,
+     "lam": 0.0852,
+     "esc": false,
+     "fp": true,
+     "rmax": 85.886,
+     "label": -2
+    }
+   ]
+  },
+  {
+   "cluster": 0,
+   "size": 156,
+   "medoid_ic": [
+    -0.19909399721516152,
+    3.703526495171264,
+    -5.882216469752278
+   ],
+   "lam0": 0.004,
+   "rmax0": 1.818,
+   "mean0": [
+    -0.0,
+    0.0,
+    -1.818
+   ],
+   "track": [
+    {
+     "w": 0,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 1,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 2,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 3,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 4,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 5,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 6,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 7,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 8,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    },
+    {
+     "w": 9,
+     "lam": 0.004,
+     "esc": false,
+     "fp": true,
+     "rmax": 1.818,
+     "label": -2
+    }
+   ]
+  },
+  {
+   "cluster": 1,
+   "size": 3,
+   "medoid_ic": [
+    0.0014261098067542832,
+    -0.9138891994038918,
+    -6.4291053379771945
+   ],
+   "lam0": 0.0709,
+   "rmax0": 36.34,
+   "mean0": [
+    -0.0,
+    0.0,
+    -36.338
+   ],
+   "track": [
+    {
+     "w": 0,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": false,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 1,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 2,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 3,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 4,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 5,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 6,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 7,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 8,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    },
+    {
+     "w": 9,
+     "lam": 0.0709,
+     "esc": false,
+     "fp": true,
+     "rmax": 36.341,
+     "label": -2
+    }
+   ]
+  }
+ ]
+}

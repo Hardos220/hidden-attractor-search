@@ -1,0 +1,2 @@
+{"job": "coupled_chua_II_k2_eps0_c0__uniform", "seed": 0, "found_at": null, "n_eval": 2000, "n_disc": 8, "time_s": 58.037, "steps": 960000000, "t_int": 58.0162, "t_match": 0.0161, "commit": "477e14d+dirty"}
+{"job": "coupled_chua_II_k2_eps0_c0__uniform", "seed": 1, "found_at": null, "n_eval": 2000, "n_disc": 5, "time_s": 55.889, "steps": 960000000, "t_int": 55.866, "t_match": 0.0179, "commit": "477e14d+dirty"}

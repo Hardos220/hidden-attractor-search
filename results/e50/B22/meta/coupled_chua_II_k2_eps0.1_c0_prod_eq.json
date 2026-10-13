@@ -1,0 +1,130 @@
+{
+ "system": "coupled_chua_II_k2_eps0.1_c0_prod_eq",
+ "variant": {
+  "coupled": "chua_II",
+  "k": 2,
+  "eps": 0.1,
+  "coord": 0,
+  "ha": [
+   "HA_a",
+   "HA_b"
+  ],
+  "products": true,
+  "alleq": true
+ },
+ "targets": [
+  "P_LC-HA_a",
+  "P_HA_a-LC"
+ ],
+ "refs": [
+  [
+   "E0",
+   "fp"
+  ],
+  [
+   "E1",
+   "fp"
+  ],
+  [
+   "E2",
+   "fp"
+  ],
+  [
+   "E3",
+   "fp"
+  ],
+  [
+   "E4",
+   "fp"
+  ],
+  [
+   "E5",
+   "fp"
+  ],
+  [
+   "E6",
+   "fp"
+  ],
+  [
+   "E7",
+   "fp"
+  ],
+  [
+   "E8",
+   "fp"
+  ],
+  [
+   "HA_aa",
+   "chaotic"
+  ],
+  [
+   "HA_ab",
+   "chaotic"
+  ],
+  [
+   "HA_ba",
+   "chaotic"
+  ],
+  [
+   "HA_bb",
+   "chaotic"
+  ],
+  [
+   "LC",
+   "periodic"
+  ],
+  [
+   "P_LC-HA_a",
+   "chaotic"
+  ],
+  [
+   "P_HA_a-LC",
+   "chaotic"
+  ],
+  [
+   "P_HA_a-E2",
+   "chaotic"
+  ],
+  [
+   "P_E1-HA_a",
+   "chaotic"
+  ],
+  [
+   "P_E2-HA_b",
+   "chaotic"
+  ]
+ ],
+ "dim": 6,
+ "system_meta": {
+  "base": "chua_II",
+  "k": 2,
+  "eps": 0.1,
+  "coord": 0,
+  "family": "coupled",
+  "products": true,
+  "ha_names": [
+   "HA_a",
+   "HA_b"
+  ]
+ },
+ "box_lo": [
+  -10.0,
+  -10.0,
+  -15.0,
+  -10.0,
+  -10.0,
+  -15.0
+ ],
+ "box_hi": [
+  10.0,
+  10.0,
+  15.0,
+  10.0,
+  10.0,
+  15.0
+ ],
+ "esc_r": 141.4213562373095,
+ "n_tr": 400000,
+ "n_obs": 40000,
+ "dt": 0.0025
+}

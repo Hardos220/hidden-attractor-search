@@ -1,0 +1,55 @@
+{
+ "system": "chua_II_h0.5",
+ "variant": {
+  "system": "chua_II",
+  "horizon": 0.5
+ },
+ "targets": [
+  "HA_a",
+  "HA_b"
+ ],
+ "refs": [
+  [
+   "E0",
+   "fp"
+  ],
+  [
+   "E1",
+   "fp"
+  ],
+  [
+   "E2",
+   "fp"
+  ],
+  [
+   "LC",
+   "periodic"
+  ],
+  [
+   "HA_a",
+   "chaotic"
+  ],
+  [
+   "HA_b",
+   "chaotic"
+  ]
+ ],
+ "dim": 3,
+ "system_meta": {
+  "horizon_scale": 0.5
+ },
+ "box_lo": [
+  -10.0,
+  -10.0,
+  -15.0
+ ],
+ "box_hi": [
+  10.0,
+  10.0,
+  15.0
+ ],
+ "esc_r": 100.0,
+ "n_tr": 200000,
+ "n_obs": 20000,
+ "dt": 0.0025
+}

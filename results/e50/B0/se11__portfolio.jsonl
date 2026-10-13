@@ -1,0 +1,3 @@
+{"job": "se11__portfolio", "seed": 0, "found_at": 60, "n_eval": 88, "n_disc": 0, "time_s": 0.685, "commit": "71004c3"}
+{"job": "se11__portfolio", "seed": 2, "found_at": 62, "n_eval": 88, "n_disc": 0, "time_s": 0.013, "commit": "71004c3"}
+{"job": "se11__portfolio", "seed": 1, "found_at": 34, "n_eval": 50, "n_disc": 0, "time_s": 0.002, "commit": "71004c3"}

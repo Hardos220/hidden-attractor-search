@@ -1,0 +1,167 @@
+{
+ "system": "coupled_chua_II_k2_eps0_c0_prod",
+ "variant": {
+  "coupled": "chua_II",
+  "k": 2,
+  "eps": 0.0,
+  "coord": 0,
+  "ha": [
+   "HA_a",
+   "HA_b"
+  ],
+  "products": true
+ },
+ "targets": [
+  "HA_aa",
+  "HA_ab",
+  "HA_ba",
+  "HA_bb"
+ ],
+ "refs": [
+  [
+   "E0",
+   "fp"
+  ],
+  [
+   "E1",
+   "fp"
+  ],
+  [
+   "E2",
+   "fp"
+  ],
+  [
+   "HA_aa",
+   "chaotic"
+  ],
+  [
+   "HA_ab",
+   "chaotic"
+  ],
+  [
+   "HA_ba",
+   "chaotic"
+  ],
+  [
+   "HA_bb",
+   "chaotic"
+  ],
+  [
+   "LC",
+   "periodic"
+  ],
+  [
+   "P_LC-HA_a",
+   "periodic"
+  ],
+  [
+   "P_LC-HA_b",
+   "periodic"
+  ],
+  [
+   "P_LC-E1",
+   "periodic"
+  ],
+  [
+   "P_LC-E2",
+   "periodic"
+  ],
+  [
+   "P_HA_a-LC",
+   "chaotic"
+  ],
+  [
+   "P_HA_a-E1",
+   "chaotic"
+  ],
+  [
+   "P_HA_a-E2",
+   "chaotic"
+  ],
+  [
+   "P_HA_b-LC",
+   "chaotic"
+  ],
+  [
+   "P_HA_b-E1",
+   "chaotic"
+  ],
+  [
+   "P_HA_b-E2",
+   "chaotic"
+  ],
+  [
+   "P_E1-LC",
+   "periodic"
+  ],
+  [
+   "P_E1-HA_a",
+   "periodic"
+  ],
+  [
+   "P_E1-HA_b",
+   "periodic"
+  ],
+  [
+   "P_E1-E2",
+   "fp"
+  ],
+  [
+   "P_E2-LC",
+   "periodic"
+  ],
+  [
+   "P_E2-HA_a",
+   "periodic"
+  ],
+  [
+   "P_E2-HA_b",
+   "periodic"
+  ],
+  [
+   "P_E2-E1",
+   "fp"
+  ],
+  [
+   "other0",
+   "periodic"
+  ],
+  [
+   "other1",
+   "periodic"
+  ]
+ ],
+ "dim": 6,
+ "system_meta": {
+  "base": "chua_II",
+  "k": 2,
+  "eps": 0.0,
+  "coord": 0,
+  "family": "coupled",
+  "products": true,
+  "ha_names": [
+   "HA_a",
+   "HA_b"
+  ]
+ },
+ "box_lo": [
+  -10.0,
+  -10.0,
+  -15.0,
+  -10.0,
+  -10.0,
+  -15.0
+ ],
+ "box_hi": [
+  10.0,
+  10.0,
+  15.0,
+  10.0,
+  10.0,
+  15.0
+ ],
+ "esc_r": 141.4213562373095,
+ "n_tr": 400000,
+ "n_obs": 40000,
+ "dt": 0.0025
+}

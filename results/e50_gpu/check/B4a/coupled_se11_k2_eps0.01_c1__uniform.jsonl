@@ -1,0 +1,1 @@
+{"job": "coupled_se11_k2_eps0.01_c1__uniform", "seed": 0, "found_at": 29382, "n_eval": 29500, "n_disc": 20, "time_s": 1.754, "dev": "gpu", "commit": "e3ea305+dirty"}

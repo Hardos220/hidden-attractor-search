@@ -1,0 +1,78 @@
+{
+ "system": "coupled_se11_k3_eps0.01_c1_prod",
+ "variant": {
+  "coupled": "se11",
+  "k": 3,
+  "eps": 0.01,
+  "coord": 1,
+  "products": true
+ },
+ "targets": [
+  "HA"
+ ],
+ "refs": [
+  [
+   "E0",
+   "fp"
+  ],
+  [
+   "HA",
+   "chaotic"
+  ],
+  [
+   "P_FP-FP-HA",
+   "periodic"
+  ],
+  [
+   "P_FP-HA-FP",
+   "periodic"
+  ],
+  [
+   "P_HA-FP-FP",
+   "periodic"
+  ],
+  [
+   "P_HA-FP-HA",
+   "chaotic"
+  ],
+  [
+   "P_HA-HA-FP",
+   "periodic"
+  ]
+ ],
+ "dim": 9,
+ "system_meta": {
+  "base": "se11",
+  "k": 3,
+  "eps": 0.01,
+  "coord": 1,
+  "family": "coupled",
+  "products": true
+ },
+ "box_lo": [
+  -10.0,
+  -10.0,
+  -10.0,
+  -10.0,
+  -10.0,
+  -10.0,
+  -10.0,
+  -10.0,
+  -10.0
+ ],
+ "box_hi": [
+  10.0,
+  10.0,
+  10.0,
+  10.0,
+  10.0,
+  10.0,
+  10.0,
+  10.0,
+  10.0
+ ],
+ "esc_r": 173.20508075688772,
+ "n_tr": 30000,
+ "n_obs": 10000,
+ "dt": 0.01
+}

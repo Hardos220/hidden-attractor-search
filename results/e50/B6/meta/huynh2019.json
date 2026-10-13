@@ -1,0 +1,29 @@
+{
+ "system": "huynh2019",
+ "variant": {
+  "system": "huynh2019"
+ },
+ "targets": [
+  "HA"
+ ],
+ "refs": [
+  [
+   "HA",
+   "chaotic"
+  ]
+ ],
+ "dim": 2,
+ "system_meta": {},
+ "box_lo": [
+  -3.0,
+  -3.0
+ ],
+ "box_hi": [
+  3.0,
+  3.0
+ ],
+ "esc_r": 100.0,
+ "n_tr": 20000,
+ "n_obs": 5000,
+ "dt": 1.0
+}

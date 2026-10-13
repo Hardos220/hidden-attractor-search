@@ -1,0 +1,49 @@
+{
+ "system": "edge_se3_m3_p0.0001_h0.5",
+ "variant": {
+  "system": "edge_se3_m3_p0.0001",
+  "horizon": 0.5
+ },
+ "targets": [
+  "HA"
+ ],
+ "refs": [
+  [
+   "E0",
+   "fp"
+  ],
+  [
+   "HA",
+   "chaotic"
+  ]
+ ],
+ "dim": 6,
+ "system_meta": {
+  "base": "se3",
+  "m": 3,
+  "rho": 0.10778025626805177,
+  "kappa": 1.0,
+  "family": "edge",
+  "horizon_scale": 0.5
+ },
+ "box_lo": [
+  -10.0,
+  -10.0,
+  -10.0,
+  -1.0,
+  -1.0,
+  -1.0
+ ],
+ "box_hi": [
+  10.0,
+  10.0,
+  10.0,
+  1.0,
+  1.0,
+  1.0
+ ],
+ "esc_r": 100.0,
+ "n_tr": 15000,
+ "n_obs": 5000,
+ "dt": 0.01
+}

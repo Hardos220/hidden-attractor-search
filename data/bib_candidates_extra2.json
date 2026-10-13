@@ -1,0 +1,17 @@
+[
+ {"key":"Godara2018CVS","group":"C_localization","doi":"10.1063/1.5062598","title":"New topological tool for multistable dynamical systems"},
+ {"key":"Dudkowski2018RegularPP","group":"C_localization","doi":"10.1063/1.4991801","title":"Describing chaotic attractors: Regular and perpetual points"},
+ {"key":"LetellierMalasoma2016","group":"C_localization","doi":"10.1063/1.4954212","title":"Architecture of chaotic attractors for flows in the absence of any singular point"},
+ {"key":"Brzeski2017","group":"D_global","doi":"10.1038/s41598-017-05015-7","title":"Sample-based approach can outperform the classical dynamical analysis - experimental confirmation of the basin stability method"},
+ {"key":"Yan2022BoundaryCrisis","group":"A_theory","doi":"10.1142/S0218127422300051","title":"The birth of a hidden attractor through boundary crisis"},
+ {"key":"Kumarasamy2023","group":"A_theory","doi":"10.1103/PhysRevE.107.L052201","title":"Saddle-node bifurcation of periodic orbit route to hidden attractors"},
+ {"key":"Bhindwar2024UPO","group":"A_theory","doi":"10.1142/S0218127424300167","title":"Role of UPOs in characterizing the hidden attractors: a comparison with self-excited attractors"},
+ {"key":"Danca2016Transient","group":"G_chaos","doi":"10.1007/s11071-016-2962-3","title":"Hidden transient chaotic attractors of Rabinovich-Fabrikant system"},
+ {"key":"YorkeYorke1979","group":"G_chaos","doi":"10.1007/BF01011469","title":"Metastable chaos: The transition to sustained chaotic behavior in the Lorenz model"},
+ {"key":"Xiong2017Lorenz3D","group":"B_systems","doi":"10.1142/S0218127417501280","title":"3D printing - the basins of tristability in the Lorenz system"},
+ {"key":"Grebogi1987Crisis","group":"G_chaos","doi":"10.1103/PhysRevA.36.5365","title":"Critical exponents for crisis-induced intermittency"},
+ {"key":"WangDing2018Map","group":"B_systems","doi":"10.3390/e20050322","title":"A new two-dimensional map with hidden attractors"},
+ {"key":"Jafari2016Surfaces","group":"B_systems","doi":"10.1007/s11071-016-2968-x","title":"Simple chaotic 3D flows with surfaces of equilibria"},
+ {"key":"Amoh2021Henon","group":"B_systems","doi":"10.1002/tee.23480","title":"Bifurcation analysis of a class of generalized Henon maps with hidden dynamics"},
+ {"key":"Zhang2022RationalMaps","group":"B_systems","doi":"10.1140/epjs/s11734-022-00483-z","title":"Hidden attractors in a class of two-dimensional rational memristive maps with no fixed points"}
+]

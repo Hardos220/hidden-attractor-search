@@ -1,0 +1,62 @@
+{
+ "chua_II": {
+  "probe_names": [
+   "HA_a",
+   "HA_b"
+  ],
+  "hits_in_first_500": [],
+  "labels_first_500": {
+   "E1": 2,
+   "E2": 1,
+   "LC": 497
+  }
+ },
+ "coupled_chua_II_eps0.1": {
+  "probe_names": [
+   "HA_aa",
+   "HA_ab",
+   "HA_ba",
+   "HA_bb",
+   "P_HA_a-E2",
+   "P_E1-HA_a",
+   "P_E2-HA_b"
+  ],
+  "hits_in_first_500": [],
+  "labels_first_500": {
+   "LC": 494,
+   "P_LC-HA_a": 4,
+   "P_HA_a-LC": 2
+  }
+ },
+ "se11": {
+  "probe_names": [
+   "HA"
+  ],
+  "hits_in_first_500": [
+   65,
+   79,
+   88,
+   339,
+   383,
+   395,
+   401,
+   409,
+   472
+  ],
+  "labels_first_500": {
+   "-1": 474,
+   "E0": 17,
+   "HA": 9
+  }
+ },
+ "le1": {
+  "probe_names": [
+   "HA"
+  ],
+  "hits_in_first_500": [],
+  "labels_first_500": {
+   "-1": 495,
+   "Eset": 5
+  }
+ }
+}

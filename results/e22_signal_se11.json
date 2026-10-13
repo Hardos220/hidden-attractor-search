@@ -1,0 +1,68 @@
+{
+ "system": "se11",
+ "n": 20000,
+ "targets": [
+  "HA"
+ ],
+ "p_target": 0.0081,
+ "target_neighbourhood": {
+  "unknown": 0.004320987654320987,
+  "escape": 0.2895061728395062,
+  "E0": 0.4617283950617284,
+  "HA": 0.24444444444444444
+ },
+ "thickness": 0.24444444444444444,
+ "label_spatial_correlation": 0.973495,
+ "edge_fraction": 0.07185,
+ "target_share_on_edge": 0.1127348643006263,
+ "edge_enrichment": 13.917884481558804,
+ "level_curve": [
+  {
+   "q": 1.0,
+   "n": 20000,
+   "target_share": 0.0081,
+   "enrichment": 1.0,
+   "median_dist_rel": 1.0
+  },
+  {
+   "q": 0.2,
+   "n": 4019,
+   "target_share": 0.04030853446130878,
+   "enrichment": 4.976362279173924,
+   "median_dist_rel": 0.46667888206645886
+  },
+  {
+   "q": 0.04,
+   "n": 800,
+   "target_share": 0.025,
+   "enrichment": 3.08641975308642,
+   "median_dist_rel": 0.1873894862463588
+  },
+  {
+   "q": 0.008,
+   "n": 160,
+   "target_share": 0.0,
+   "enrichment": 0.0,
+   "median_dist_rel": 0.14936260491135667
+  },
+  {
+   "q": 0.0016,
+   "n": 32,
+   "target_share": 0.0,
+   "enrichment": 0.0,
+   "median_dist_rel": 0.2033462327644737
+  }
+ ],
+ "known_edge_fraction": 0.052979130960782335,
+ "known_edge_near_target_enrichment": 11.227402473834442,
+ "proximity_radius": 0.06257996511014298,
+ "auc_single": {
+  "trans": 0.9228108001013307,
+  "t_esc": 0.9212467916953371,
+  "emean": 0.8761833498509138,
+  "estd": 0.7904675908809262,
+  "lam": 0.7324377948345333,
+  "rmax": 0.7366423963072509
+ },
+ "auc_logistic_all": 0.9526064720673164
+}

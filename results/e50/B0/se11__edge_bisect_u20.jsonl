@@ -1,0 +1,2 @@
+{"job": "se11__edge_bisect_u20", "seed": 0, "found_at": 54, "n_eval": 63, "n_disc": 0, "time_s": 0.016, "commit": "71004c3"}
+{"job": "se11__edge_bisect_u20", "seed": 1, "found_at": 34, "n_eval": 50, "n_disc": 0, "time_s": 0.003, "commit": "71004c3"}

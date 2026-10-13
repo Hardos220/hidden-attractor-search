@@ -1,0 +1,38 @@
+{
+ "system": "se11_box2",
+ "variant": {
+  "system": "se11",
+  "box": 2
+ },
+ "targets": [
+  "HA"
+ ],
+ "refs": [
+  [
+   "E0",
+   "fp"
+  ],
+  [
+   "HA",
+   "chaotic"
+  ]
+ ],
+ "dim": 3,
+ "system_meta": {
+  "box_scale": 2.0
+ },
+ "box_lo": [
+  -20.0,
+  -20.0,
+  -20.0
+ ],
+ "box_hi": [
+  20.0,
+  20.0,
+  20.0
+ ],
+ "esc_r": 100.0,
+ "n_tr": 30000,
+ "n_obs": 10000,
+ "dt": 0.01
+}

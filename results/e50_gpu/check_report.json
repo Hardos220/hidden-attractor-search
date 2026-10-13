@@ -1,0 +1,365 @@
+{
+ "commit": "e3ea305+dirty",
+ "features": {
+  "se11_box2": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 0.98828125,
+   "t_cpu_s": 3.4,
+   "t_gpu_s": 0.25
+  },
+  "se11_box4": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 0.994140625,
+   "t_cpu_s": 2.34,
+   "t_gpu_s": 0.13
+  },
+  "se11_box8": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 0.9921875,
+   "t_cpu_s": 2.39,
+   "t_gpu_s": 0.13
+  },
+  "le1_box2": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 0.994140625,
+   "t_cpu_s": 2.48,
+   "t_gpu_s": 0.13
+  },
+  "le1_box4": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 0.994140625,
+   "t_cpu_s": 2.34,
+   "t_gpu_s": 0.13
+  },
+  "chua_I_box2": {
+   "n": 128,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 1.0,
+   "t_cpu_s": 2.4,
+   "t_gpu_s": 0.01
+  },
+  "chua_I_box4": {
+   "n": 128,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 1.0,
+   "t_cpu_s": 2.28,
+   "t_gpu_s": 0.01
+  },
+  "jafari2026_lc_box2": {
+   "n": 128,
+   "rows_diff": 0,
+   "max_dlam": 2.6020852139652106e-18,
+   "esc_frac": 0.9921875,
+   "t_cpu_s": 2.41,
+   "t_gpu_s": 0.81
+  },
+  "coupled_se11_k2_eps0.01_c1": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 0.99609375,
+   "t_cpu_s": 2.61,
+   "t_gpu_s": 0.29
+  },
+  "coupled_se11_k3_eps0.01_c1": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 1.0,
+   "t_cpu_s": 2.5,
+   "t_gpu_s": 0.01
+  },
+  "se11_box16": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 0.994140625,
+   "t_cpu_s": 2.36,
+   "t_gpu_s": 0.14
+  },
+  "le1_box8": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 1.0,
+   "t_cpu_s": 2.34,
+   "t_gpu_s": 0.0
+  },
+  "chua_I_box8": {
+   "n": 128,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 1.0,
+   "t_cpu_s": 2.31,
+   "t_gpu_s": 0.0
+  },
+  "chua_II_box2": {
+   "n": 128,
+   "rows_diff": 0,
+   "max_dlam": 1.9081958235744878e-17,
+   "esc_frac": 0.0,
+   "t_cpu_s": 4.2,
+   "t_gpu_s": 1.53
+  },
+  "chua_II_box4": {
+   "n": 128,
+   "rows_diff": 0,
+   "max_dlam": 2.0816681711721685e-17,
+   "esc_frac": 0.0,
+   "t_cpu_s": 4.02,
+   "t_gpu_s": 1.53
+  },
+  "jafari2026_lc_box4": {
+   "n": 128,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 0.9609375,
+   "t_cpu_s": 2.84,
+   "t_gpu_s": 0.81
+  },
+  "coupled_se11_k3_eps0_c1": {
+   "n": 512,
+   "rows_diff": 0,
+   "max_dlam": 0.0,
+   "esc_frac": 1.0,
+   "t_cpu_s": 3.09,
+   "t_gpu_s": 0.01
+  }
+ },
+ "runs": {
+  "se11_box2__uniform": [
+   {
+    "seed": 0,
+    "cpu": [
+     14,
+     500,
+     0
+    ],
+    "gpu": [
+     14,
+     500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 1,
+    "cpu": [
+     489,
+     500,
+     0
+    ],
+    "gpu": [
+     489,
+     500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 2,
+    "cpu": [
+     247,
+     500,
+     0
+    ],
+    "gpu": [
+     247,
+     500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 3,
+    "cpu": [
+     1010,
+     1500,
+     0
+    ],
+    "gpu": [
+     1010,
+     1500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 4,
+    "cpu": [
+     375,
+     500,
+     0
+    ],
+    "gpu": [
+     375,
+     500,
+     0
+    ],
+    "same": true
+   }
+  ],
+  "le1_box2__uniform": [
+   {
+    "seed": 0,
+    "cpu": [
+     451,
+     500,
+     0
+    ],
+    "gpu": [
+     451,
+     500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 1,
+    "cpu": [
+     3594,
+     4000,
+     1
+    ],
+    "gpu": [
+     3594,
+     4000,
+     1
+    ],
+    "same": true
+   },
+   {
+    "seed": 2,
+    "cpu": [
+     334,
+     500,
+     0
+    ],
+    "gpu": [
+     334,
+     500,
+     0
+    ],
+    "same": true
+   }
+  ],
+  "chua_I_box2__uniform": [
+   {
+    "seed": 0,
+    "cpu": [
+     91,
+     500,
+     0
+    ],
+    "gpu": [
+     91,
+     500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 1,
+    "cpu": [
+     225,
+     500,
+     0
+    ],
+    "gpu": [
+     225,
+     500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 2,
+    "cpu": [
+     44,
+     500,
+     0
+    ],
+    "gpu": [
+     44,
+     500,
+     0
+    ],
+    "same": true
+   }
+  ],
+  "jafari2026_lc_box2__uniform": [
+   {
+    "seed": 0,
+    "cpu": [
+     82,
+     500,
+     0
+    ],
+    "gpu": [
+     82,
+     500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 1,
+    "cpu": [
+     1124,
+     1500,
+     0
+    ],
+    "gpu": [
+     1124,
+     1500,
+     0
+    ],
+    "same": true
+   },
+   {
+    "seed": 2,
+    "cpu": [
+     620,
+     1000,
+     0
+    ],
+    "gpu": [
+     620,
+     1000,
+     0
+    ],
+    "same": true
+   }
+  ],
+  "coupled_se11_k2_eps0.01_c1__uniform": [
+   {
+    "seed": 0,
+    "cpu": [
+     29382,
+     29500,
+     20
+    ],
+    "gpu": [
+     29382,
+     29500,
+     20
+    ],
+    "same": true
+   }
+  ]
+ },
+ "time": "2026-10-10 21:36:08",
+ "ok": true
+}

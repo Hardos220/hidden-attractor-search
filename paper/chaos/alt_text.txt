@@ -1,0 +1,77 @@
+Alternative text for the figures and tables of the manuscript
+"Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee"
+(Maksim Elisov). Items are numbered as in the compiled manuscript.
+
+FIGURES
+
+Figure 1. Grid of three-dimensional phase portraits showing the hidden chaotic attractors of the level-A benchmark systems, one panel per system, with equilibria drawn as crosses and, for the LE1 system, the line of equilibria drawn in red through the attractor.
+
+Figure 2. Chua circuit with parameter set II in three panels: the large limit cycle with two small chaotic attractors and three equilibria, an enlarged view of the chaotic attractors around the stable foci, and a colored basin map in the plane z equals zero with narrow strips for the chaotic basins.
+
+Figure 3. Two panels for the synthetic family D2: a scatter plot of escape time against the relative distance to the basin boundary with a logarithmic asymptote and discrete steps, and the radial coordinate of splitting-chain seeds contracting toward the target ball over successive levels.
+
+Figure 4. Basin map of the Jiang NF I e map with gray escaping and blue chaotic-basin regions, overlaid with the seeds of the splitting chains at levels zero and one, which concentrate on the thin tongues of the basin.
+
+Figure 5. Panels of detection probability against the number of integrations for the rare targets of levels A and B, with curves for uniform sampling, differential evolution, splitting, active learning, and the portfolio, and a dotted line at the 0.9 level.
+
+Figure 6. Two log-log panels of detection cost against basin measure for the synthetic families D2 and D1, with fitted scaling exponents in the legends and a dashed reference line for the cost of uniform sampling.
+
+Figure 7. Three panels for the coupling-born hidden attractor of two coupled Chua circuits: circuit 1 on the large cycle, circuit 2 hopping between the regions of the two hidden attractors shown in gray, and the largest Lyapunov exponent against the coupling strength from birth near 0.045 to disappearance near 0.5.
+
+Figure 8. Chart of the gain of the portfolio over uniform sampling for each problem, measured in integrations, integrator steps, and wall time, with problems grouped into escaping and bounded systems and a dashed line at gain one.
+
+Figure 9. Chua circuit with parameter set I: the two symmetric hidden chaotic attractors with the stable equilibrium, the saddle-foci, and their unstable manifolds on the left, and a colored basin map in the plane z equals zero on the right.
+
+Figure 10. Jafari 2026 system in three panels: a stable limit cycle, a fragile chaotic attractor, and the Lyapunov exponent against the parameter a3 in the narrow chaotic window next to the boundary of bounded motion.
+
+Figure 11. Four phase-and-basin portraits of two-dimensional maps (Huynh 2019 and three Jiang cases) with gray escaping regions, blue chaotic basins, yellow cycle basins, orange fixed-point basins, and black attractors.
+
+Figure 12. Four-dimensional Li and Sprott system: projections of a torus and two symmetric strange attractors, and a basin section in which the torus occupies the background and the strange attractors form spiral tongues.
+
+Figure 13. Line plot of the fraction of trajectory copies that remain on the hidden chaotic set of Chua circuit I against time, for two integration steps; the coarse step decays to a spurious periodic orbit, the fine step persists.
+
+Figure 14. Line plot of the basin fractions of Chua circuit I against the integration step, showing underestimated hidden-attractor fractions and an unmatched share at the coarse step and stable fractions at fine steps.
+
+Figure 15. Bar chart comparing basin fractions of Chua circuit I in balls of radius 3 and 5 from a published table and from two independent implementations, which agree with each other but not with the table.
+
+Figure 16. Two panels: the largest Lyapunov exponent over consecutive observation windows for all benchmark targets, and a long lifetime check of eight trajectory copies for the Lorenz transient, the Rabinovich set, and the fragile Jafari chaos.
+
+Figure 17. Line plot of the hiddenness measure against the neighborhood radius for several systems, with zero values for SE3 and SE11 at all radii and growing values for Chua I and the Rabinovich system.
+
+Figure 18. Horizontal bar chart on a logarithmic axis of the number of uniform integrations needed to find each benchmark target with probability 0.9, annotated with the basin measures.
+
+Figure 19. Bar chart comparing the detection cost of nullcline sampling and connecting-curve sampling with uniform sampling for the benchmark targets, with the number of perpetual points that lead to the target noted on the right.
+
+Figure 20. Heat map of gain factors relative to uniform sampling, with benchmark systems in rows and method variants in columns, colored by the logarithm of the gain and with empty cells where a variant was not run.
+
+Figure 21. Two panels for real systems in enlarged regions: basin measure of the hidden target against the enlargement factor compared with the inverse-cube expectation, and the gains of the portfolio and of splitting against basin measure.
+
+Figure 22. Gain of the portfolio and of splitting on the synthetic family D2 down to basin measure 1e-7, with diagnostic variants and with reduced integration steps that restore the gain at the smallest basin measures.
+
+Figure 23. Log-log plot of detection cost against the dimension of the state space for the synthetic family D2 at fixed basin measure, with uniform sampling near the theoretical line and the portfolio well below it for dimension six and above.
+
+Figure 24. Two panels: the median distance from long-transient nontarget points to the target against the upper-set fraction for several systems, and the corresponding observed splitting gain; decreasing distance curves go with gains.
+
+TABLES
+
+Table I. Benchmark summary listing level, system, equilibria, target attractor, basin measure, and the cost of uniform sampling for three-dimensional flows, maps, four-dimensional systems, and synthetic families.
+
+Table II. Gain factors with bootstrap confidence intervals for differential evolution, splitting, active learning, the portfolio, and the portfolio with nullclines on the rare targets of levels A and B; bold marks intervals above one.
+
+Table III. Detection cost and gain of splitting and of the portfolio on the synthetic family D2 for basin measures from 1e-2 to 1e-7, with success fractions where the budget is below the uniform cost.
+
+Table IV. Coupled copies of SE11: dimension, coupling, basin measure of the all-copies-hidden regime, uniform cost, and gains of splitting and of the portfolio with confidence intervals.
+
+Table V. Methods for finding the coupling-born attractor of the coupled Chua circuits with their integrations to detection, median, and wall time, from the never-succeeding equilibrium procedure to the one-integration product initial condition.
+
+Table VI. Cost of the final portfolio against uniform sampling with two-stage evaluation: integrator steps per evaluation and gains in integrations, steps, and wall time for escaping and bounded problems.
+
+Table VII. Uniform sampling with full integration, two-stage evaluation, and recurrence-based stopping against the portfolio on one thread: cost per evaluation, time to detection, and time gains.
+
+Table VIII. Integration settings and regions of initial conditions for all benchmark systems: dimension, integrator and step, transient and observation lengths, region, and escape radius.
+
+Table IX. Gain factors of bisection toward basin boundaries and of the portfolio on the benchmark problems, with bootstrap confidence intervals.
+
+Table X. Robustness of the portfolio gain to one-at-a-time changes of the hyperparameters on three problems, with bootstrap confidence intervals.
+
+Table XI. Real systems in enlarged regions of initial conditions: enlargement factor, basin measure, uniform cost, and gains of splitting and of the portfolio with confidence intervals.

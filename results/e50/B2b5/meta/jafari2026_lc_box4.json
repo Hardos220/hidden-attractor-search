@@ -1,0 +1,34 @@
+{
+ "system": "jafari2026_lc_box4",
+ "variant": {
+  "system": "jafari2026_lc",
+  "box": 4
+ },
+ "targets": [
+  "LC"
+ ],
+ "refs": [
+  [
+   "LC",
+   "periodic"
+  ]
+ ],
+ "dim": 3,
+ "system_meta": {
+  "box_scale": 4.0
+ },
+ "box_lo": [
+  -40.0,
+  -40.0,
+  -40.0
+ ],
+ "box_hi": [
+  40.0,
+  40.0,
+  40.0
+ ],
+ "esc_r": 138.5640646055102,
+ "n_tr": 300000,
+ "n_obs": 20000,
+ "dt": 0.01
+}

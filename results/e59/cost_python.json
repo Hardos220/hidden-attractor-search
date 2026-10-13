@@ -1,0 +1,111 @@
+{
+ "chua_II": {
+  "n": 2000,
+  "threads": 1,
+  "full": {
+   "ms_per_ic": 26.718892600008985,
+   "steps_per_ic": 480000.0
+  },
+  "screened": {
+   "ms_per_ic": 6.074436300012167,
+   "steps_per_ic": 91175.0,
+   "stopped_frac": 0.9275,
+   "labels_agree": 1.0
+  },
+  "p_target_sample": 0.0025,
+  "n_hits": 5,
+  "fractions": {
+   "E0": 0.0,
+   "E1": 0.003,
+   "E2": 0.002,
+   "LC": 0.9925,
+   "HA_a": 0.0005,
+   "HA_b": 0.002
+  },
+  "escape": 0.0,
+  "unknown": 0.0
+ },
+ "coupled_chua_II_eps0.1": {
+  "n": 1000,
+  "threads": 1,
+  "full": {
+   "ms_per_ic": 72.78832690001582,
+   "steps_per_ic": 480000.0
+  },
+  "screened": {
+   "ms_per_ic": 44.75924529999611,
+   "steps_per_ic": 291770.0,
+   "stopped_frac": 0.461,
+   "labels_agree": 1.0
+  },
+  "p_target_sample": 0.0,
+  "n_hits": 0,
+  "fractions": {
+   "E0": 0.0,
+   "E1": 0.0,
+   "E2": 0.0,
+   "E3": 0.0,
+   "E4": 0.0,
+   "E5": 0.0,
+   "E6": 0.0,
+   "E7": 0.0,
+   "E8": 0.0,
+   "HA_aa": 0.0,
+   "HA_ab": 0.0,
+   "HA_ba": 0.0,
+   "HA_bb": 0.0,
+   "LC": 0.985,
+   "P_LC-HA_a": 0.007,
+   "P_HA_a-LC": 0.007,
+   "P_HA_a-E2": 0.0,
+   "P_E1-HA_a": 0.0,
+   "P_E2-HA_b": 0.0
+  },
+  "escape": 0.0,
+  "unknown": 0.001
+ },
+ "se11": {
+  "n": 4000,
+  "threads": 1,
+  "full": {
+   "ms_per_ic": 0.13050882499373984,
+   "steps_per_ic": 2388.1675
+  },
+  "screened": {
+   "ms_per_ic": 0.05617954999615904,
+   "steps_per_ic": 1132.5425,
+   "stopped_frac": 0.0365,
+   "labels_agree": 1.0
+  },
+  "p_target_sample": 0.00875,
+  "n_hits": 35,
+  "fractions": {
+   "E0": 0.0365,
+   "HA": 0.00875
+  },
+  "escape": 0.95475,
+  "unknown": 0.0
+ },
+ "le1": {
+  "n": 4000,
+  "threads": 1,
+  "full": {
+   "ms_per_ic": 0.02104542499728268,
+   "steps_per_ic": 554.80775
+  },
+  "screened": {
+   "ms_per_ic": 0.010783224999613594,
+   "steps_per_ic": 241.68275,
+   "stopped_frac": 0.009,
+   "labels_agree": 1.0
+  },
+  "p_target_sample": 0.0005,
+  "n_hits": 2,
+  "fractions": {
+   "Eset": 0.00925,
+   "HA": 0.0005
+  },
+  "escape": 0.99025,
+  "unknown": 0.0
+ }
+}

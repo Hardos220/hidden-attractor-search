@@ -1,0 +1,1 @@
+{"job": "coupled_chua_II_k2_eps0_c0__uniform__scr", "seed": 0, "found_at": null, "n_eval": 4000, "n_disc": 13, "time_s": 9.066, "steps": 696230000, "t_int": 9.0376, "t_match": 0.0193, "n_stopped": 2939, "screen_off_at": null, "screen_batches": 8, "batches": 8, "commit": "477e14d+dirty"}

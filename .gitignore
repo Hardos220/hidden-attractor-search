@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.log
+.ipynb_checkpoints/
+
+# regenerated Russian-label figures (the article figures are paper/chaos/figures)
+results/figures/*
+!results/figures/.gitkeep
+
+# build products of the manuscript
+paper/chaos/_build/
+paper/chaos/manuscript.tex
+paper/chaos/manuscript.aux
+paper/chaos/manuscript.bbl
+paper/chaos/manuscript.blg
+paper/chaos/manuscript.out
+paper/chaos/manuscriptNotes.bib

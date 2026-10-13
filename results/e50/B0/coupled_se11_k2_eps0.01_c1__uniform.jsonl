@@ -1,0 +1,2 @@
+{"job": "coupled_se11_k2_eps0.01_c1__uniform", "seed": 0, "found_at": null, "n_eval": 2000, "n_disc": 1, "time_s": 0.011, "commit": "71004c3"}
+{"job": "coupled_se11_k2_eps0.01_c1__uniform", "seed": 1, "found_at": 1617, "n_eval": 2000, "n_disc": 1, "time_s": 0.012, "commit": "71004c3"}

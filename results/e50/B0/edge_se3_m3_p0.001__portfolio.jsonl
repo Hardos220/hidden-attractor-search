@@ -1,0 +1,3 @@
+{"job": "edge_se3_m3_p0.001__portfolio", "seed": 0, "found_at": 259, "n_eval": 271, "n_disc": 0, "time_s": 0.011, "commit": "71004c3"}
+{"job": "edge_se3_m3_p0.001__portfolio", "seed": 1, "found_at": 163, "n_eval": 167, "n_disc": 0, "time_s": 0.009, "commit": "71004c3"}
+{"job": "edge_se3_m3_p0.001__portfolio", "seed": 2, "found_at": 360, "n_eval": 384, "n_disc": 0, "time_s": 0.847, "commit": "71004c3"}

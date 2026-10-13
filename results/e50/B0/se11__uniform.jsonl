@@ -1,0 +1,3 @@
+{"job": "se11__uniform", "seed": 0, "found_at": 334, "n_eval": 500, "n_disc": 0, "time_s": 0.02, "commit": "71004c3"}
+{"job": "se11__uniform", "seed": 1, "found_at": 34, "n_eval": 500, "n_disc": 0, "time_s": 0.02, "commit": "71004c3"}
+{"job": "se11__uniform", "seed": 2, "found_at": 420, "n_eval": 500, "n_disc": 0, "time_s": 0.021, "commit": "71004c3"}

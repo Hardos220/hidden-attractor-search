@@ -1,0 +1,32 @@
+%% Manuscript for Chaos: An Interdisciplinary Journal of Nonlinear Science (AIP Publishing), REVTeX 4.2.
+%% Sources: sections/*.tex; figures/*.pdf (paper/chaos/make_figures_en.py); refs.bib (build_chaos.py).
+%% Build: python paper/chaos/build_chaos.py  ->  manuscript.tex (single flattened file) and manuscript.pdf
+\documentclass[aip,cha,reprint,amsmath,amssymb,longbibliography]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{proposition}{Proposition}
+% text the author must supply before submission (printed in red)
+\newcommand{\placeholder}[1]{\textcolor{red}{[#1]}}
+% confidence interval in table cells, set smaller than the estimate
+\newcommand{\ci}[2]{{\scriptsize[#1, #2]}}
+
+\begin{document}
+
+\input{sections/00_front}
+\input{sections/10_intro}
+\input{sections/20_problem}
+\input{sections/30_benchmark}
+\input{sections/40_method}
+\input{sections/50_results}
+\input{sections/70_discussion}
+\input{sections/80_conclusion}
+\input{sections/85_backmatter}
+\input{sections/90_appendix}
+
+\bibliography{refs}
+
+\end{document}

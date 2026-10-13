@@ -1,0 +1,80 @@
+{
+ "lorenz_transient": {
+  "T_max": 100000.0,
+  "n_copies": 8,
+  "t_end": [
+   13000.0,
+   58800.0,
+   3800.0,
+   49300.0,
+   14600.0,
+   70500.0,
+   33100.0,
+   35500.0
+  ],
+  "end_state": [
+   "decay",
+   "other",
+   "decay",
+   "decay",
+   "decay",
+   "decay",
+   "other",
+   "decay"
+  ],
+  "n_alive": 0,
+  "time_s": 1.5
+ },
+ "rabinovich_68": {
+  "T_max": 100000.0,
+  "n_copies": 8,
+  "t_end": [
+   null,
+   null,
+   98900.0,
+   9600.0,
+   null,
+   null,
+   null,
+   null
+  ],
+  "end_state": [
+   "alive",
+   "alive",
+   "other",
+   "other",
+   "alive",
+   "alive",
+   "alive",
+   "alive"
+  ],
+  "n_alive": 6,
+  "time_s": 2.2
+ },
+ "jafari2026_chaos": {
+  "T_max": 100000.0,
+  "n_copies": 8,
+  "t_end": [
+   200.0,
+   200.0,
+   200.0,
+   14600.0,
+   200.0,
+   null,
+   200.0,
+   200.0
+  ],
+  "end_state": [
+   "escape",
+   "escape",
+   "escape",
+   "other",
+   "escape",
+   "alive",
+   "escape",
+   "escape"
+  ],
+  "n_alive": 1,
+  "time_s": 2.4
+ }
+}

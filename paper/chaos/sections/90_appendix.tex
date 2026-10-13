@@ -1,0 +1,293 @@
+\appendix
+
+\section{Equations and parameters of the benchmark systems}\label{app:systems}
+
+\textbf{Chua circuit:}\cite{Leonov2011PLA,GuanXie2025}
+\begin{equation*}
+\begin{split}
+&\dot x=\alpha\bigl(y-x-f(x)\bigr),\quad \dot y=x-y+z,\\
+&\dot z=-(\beta y+\gamma z),\\
+&f(x)=m_1x+\tfrac12(m_0-m_1)\bigl(|x+1|-|x-1|\bigr).
+\end{split}
+\end{equation*}
+The parameters $(\alpha,\beta,\gamma,m_0,m_1)$ are
+\begin{equation*}
+\begin{split}
+&\text{set I: } (8.4562,\ 12.0732,\ 0.0052,\ -0.1768,\ -1.1468),\\
+&\text{set II: } (8.4,\ 12,\ -0.005,\ -1.2,\ -0.05).
+\end{split}
+\end{equation*}
+For set II, the known regimes are the cycle LC passing through $(-7.287,-2.773,36.02)$ and the chaotic attractors passing through $(1.528,0.283,-1.819)$ and $(-1.304,0.029,2.387)$. Two coupled circuits (Sec.~\ref{sec:coupled}): $\dot x_u=\alpha(y_u-x_u-f(x_u))+\epsilon(\bar x-x_u)$, $\bar x=(x_1+x_2)/2$, with the other equations unchanged, in the region $B^2$.
+
+\textbf{Systems without equilibria.} NE4: $\dot x=-0.1y+a$, $\dot y=x+z$, $\dot z=xz-3y$, $a=1$. Wang--Chen \#1:\cite{WangChen2012} $\dot x=y$, $\dot y=z$, $\dot z=-y+3y^2-x^2-xz+a$, $a=-0.05$. Wei:\cite{Wei2011} $\dot x=-y$, $\dot y=cx+z$, $\dot z=ay^2+xz-d$, $(a,c,d)=(2,1,0.35)$. Jafari \textit{et al.} 2026:\cite{Jafari2026NoPP} $\dot x=y$, $\dot y=z$, $\dot z=a_1z+a_2xy+a_3yz+a_4zx+a_5$, $(a_1,a_2,a_4,a_5)=(6,-1,-1,-1)$; a cycle at $a_3=-1$ and chaos at $a_3=-3.548$, with the state $(6.7445,0.4214,-1.7846)$ on the attractor.
+
+\textbf{A single stable equilibrium.} Wang--Chen \#2:\cite{WangChen2012} $\dot x=yz+a$, $\dot y=x^2-y$, $\dot z=1-4x$, $a=0.006$. SE3:\cite{Molaie2013} $\dot x=y$, $\dot y=z$, $\dot z=-3.4x-y-4z+y^2+xy$. SE11:\cite{Molaie2013} $\dot x=y$, $\dot y=-x+yz$, $\dot z=-y-12z+x^2+9xz-1$.
+
+\textbf{A line of equilibria.} LE1:\cite{JafariSprott2013} $\dot x=y$, $\dot y=-x+yz$, $\dot z=-x-axy-bxz$, $(a,b)=(15,1)$; the equilibria $(0,0,z)$ are stable for $z<0$.
+
+\textbf{Rabinovich system:}\cite{Kuznetsov2018Rabinovich} $\dot x=-\sigma(x-y)-ayz$, $\dot y=rx-y-xz$, $\dot z=-bz+xy$, $\sigma=-ar$; $(r,a,b)=(100,-0.009965,0.077454)$ (hidden attractor) and $(6.8,-0.5,0.99)$ (transient set\cite{SprottMunmuangsaen2018Comment}).
+
+\textbf{Negative control.} The Lorenz system $\dot x=a(y-x)$, $\dot y=rx-y-xz$, $\dot z=xy-bz$ at $(a,r,b)=(4,29,2)$.
+
+\textbf{Maps.} Huynh \textit{et al.}:\cite{Huynh2019} $x'=x+y$, $y'=y-a|y|-xy+bx^2-cy^2+d$, $(a,b,c,d)=(0.01,0.1,2,0.1)$. General family of Jiang \textit{et al.}:\cite{Jiang2016Maps} $x'=y$, $y'=a_1x+a_2y+a_3x^2+a_4y^2+a_5xy+a_6$; the cases used and their coefficients $(a_1,\dots,a_6)$ are listed below.
+\begin{itemize}
+\item NF I e: $(1,0,0,-0.3,0.3,2.98)$, box $[-8,8]^2$.
+\item NF I f: $(1,0,0,0.38,-0.38,-1.6)$, box $[-5,5]^2$.
+\item NF I g: $(1,0,0,0.12,-0.12,-3.62)$, box $[-8,8]^2$.
+\item NF I i: $(1,0,0,-0.3,0.3,1.09)$, box $[-5,5]^2$.
+\item SF I a: $(-0.33,0.17,-0.48,0.47,0.01,-0.9)$, box $[-5,5]^2$.
+\item SF I b: $(-0.84,0,0,0.15,-0.15,-5.85)$, box $[-12,12]^2$.
+\item SF I c: $(-0.99,0,0,0.23,-0.23,-4.24)$, box $[-10,10]^2$.
+\item SF I d: $(-1.29,2,-0.35,-0.85,1.2,0.17)$, box $[-5,5]^2$.
+\end{itemize}
+The same family in the form of Ref.~\onlinecite{Ouannas2018}: $x'=y$, $y'=x+a_1x^2+a_2y^2-a_3xy-a_4$, with the parameter sets $(0.2,0.71,0.91,1.14)$, $(0.51,1,1.51,0.74)$, and $(0.6,1,1.6,0.72)$.
+
+\textbf{Four-dimensional systems.} Li and Sprott:\cite{LiSprott2014} $\dot x=y-x$, $\dot y=-xz+u$, $\dot z=xy-a$, $\dot u=-by$ at $(a,b)=(6,0.1)$, $(7,0.1)$, and $(2.6,0.44)$. Jahanshahi \textit{et al.}:\cite{Jahanshahi2019} $\dot x=y$, $\dot y=z$, $\dot z=w$, $\dot w=-aw+bx^2-cy^2+exy+fxz+g$, $(a,b,c,e,f,g)=(1.05,0.7,0.19,1.37,1.79,1.15)$.
+
+\textbf{Synthetic families} D1 and D2: Eqs.~\eqref{eq:d1} and \eqref{eq:d2} with the base SE3, $B=[-10,10]^3\times[-1,1]^m$, $m=1$--11.
+
+The integration parameters and the regions of initial conditions are listed in Table~\ref{tab:integration}. Figure~\ref{fig:levelA} shows the remaining level-A and level-B systems and the four-dimensional system of level C.
+
+\begin{table*}
+\caption{Integration parameters and regions of initial conditions $B$. For flows, the lengths of the transient segment and of the observation window are given in time units, and for maps in iterations; $R_{\rm esc}$ is the escape threshold.}
+\label{tab:integration}
+\begin{ruledtabular}
+\begin{tabular}{lrlrlr}
+System & $n$ & Integration & $T_{\rm tr}/T_{\rm obs}$ & Region $B$ & $R_{\rm esc}$ \\
+\hline
+Chua I & 3 & RK4, $\Delta t=0.0025$ & 1000 / 100 & $[-10,10]^2\times[-15,15]$ & 100 \\
+Chua II & 3 & RK4, $\Delta t=0.0025$ & 1000 / 100 & $[-10,10]^2\times[-15,15]$ & 100 \\
+NE4 & 3 & RK4, $\Delta t=0.001$ & 500 / 500 & $[-40,20]\times[-30,50]\times[-80,220]$ & 2000 \\
+Wang--Chen \#1 & 3 & RK4, $\Delta t=0.01$ & 300 / 100 & $[-10,10]^3$ & 100 \\
+Wei (NE2) & 3 & RK4, $\Delta t=0.01$ & 300 / 100 & $[-10,10]^3$ & 100 \\
+Jafari 2026, $a_3=-1$ & 3 & RK4, $\Delta t=0.01$ & 3000 / 200 & $[-10,10]^3$ & 60 \\
+Jafari 2026, $a_3=-3.548$ & 3 & RK4, $\Delta t=0.005$ & 1000 / 200 & $[-10,10]^3$ & 60 \\
+Wang--Chen \#2 & 3 & RK4, $\Delta t=0.01$ & 300 / 100 & $[-10,10]^3$ & 100 \\
+SE3 & 3 & RK4, $\Delta t=0.01$ & 300 / 100 & $[-10,10]^3$ & 100 \\
+SE11 & 3 & RK4, $\Delta t=0.01$ & 300 / 100 & $[-10,10]^3$ & 100 \\
+LE1 & 3 & RK4, $\Delta t=0.01$ & 300 / 100 & $[-10,10]^3$ & 100 \\
+Rabinovich, $r=100$ & 3 & RK4, $\Delta t=0.002$ & 200 / 100 & $[-60,60]^2\times[-150,150]$ & 1000 \\
+Rabinovich, $r=6.8$ & 3 & RK4, $\Delta t=0.005$ & 300 / 100 & $[-10,10]^2\times[-10,15]$ & 200 \\
+Lorenz $(4,29,2)$ & 3 & RK4, $\Delta t=0.005$ & 300 / 100 & $[-20,20]^2\times[0,50]$ & 500 \\
+Huynh 2019 & 2 & iterations & 20\,000 / 5000 & $[-3,3]^2$ & 100 \\
+Jiang NF I e & 2 & iterations & 20\,000 / 5000 & $[-8,8]^2$ & 1000 \\
+Jiang NF I f & 2 & iterations & 20\,000 / 5000 & $[-5,5]^2$ & 1000 \\
+Jiang NF I g & 2 & iterations & 20\,000 / 5000 & $[-8,8]^2$ & 1000 \\
+Jiang NF I i & 2 & iterations & 20\,000 / 5000 & $[-5,5]^2$ & 1000 \\
+Jiang SF I a & 2 & iterations & 20\,000 / 5000 & $[-5,5]^2$ & 1000 \\
+Jiang SF I b & 2 & iterations & 20\,000 / 5000 & $[-12,12]^2$ & 1000 \\
+Jiang SF I c & 2 & iterations & 20\,000 / 5000 & $[-10,10]^2$ & 1000 \\
+Jiang SF I d & 2 & iterations & 20\,000 / 5000 & $[-5,5]^2$ & 1000 \\
+Jiang (a) & 2 & iterations & 20\,000 / 5000 & $[-2,2]^2$ & 100 \\
+Jiang (b) & 2 & iterations & 20\,000 / 5000 & $[-2,2]^2$ & 100 \\
+Jiang (c) & 2 & iterations & 20\,000 / 5000 & $[-2,2]^2$ & 100 \\
+H\'enon (control) & 2 & iterations & 5000 / 2000 & $[-2,2]^2$ & 50 \\
+Li--Sprott 4D & 4 & RK4, $\Delta t=0.005$ & 500 / 200 & $[-15,15]^4$ & 500 \\
+Li--Sprott 4D, $a=7$ & 4 & RK4, $\Delta t=0.005$ & 500 / 200 & $[-15,15]^4$ & 500 \\
+Li--Sprott 4D, hyperchaos & 4 & RK4, $\Delta t=0.005$ & 500 / 200 & $[-15,15]^4$ & 500 \\
+Jahanshahi 4D & 4 & RK4, $\Delta t=0.005$ & 500 / 200 & $[-10,10]^4$ & 500 \\
+Coupled Chua II, $\epsilon=0.1$ & 6 & RK4, $\Delta t=0.0025$ & 1000 / 100 & $\bigl([-10,10]^2\times[-15,15]\bigr)^2$ & 141 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig30_chua_I_hidden.pdf}
+\caption{Chua circuit, parameter set I. Left: two symmetric hidden chaotic attractors A and B, the stable focus-node F$_0$ (dot), the saddle-foci F$_\pm$ (crosses), and their unstable manifolds. One branch of each manifold escapes to infinity and the other winds onto F$_0$, so the standard procedure does not find attractors A and B. Right: basins in the plane $z(0)=0$. Gray: escape to infinity; orange: F$_0$; blue and green: attractors A and B; dark dots: section of the attractors by the layer $|z|<0.15$.}
+\label{fig:chuaI}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig35_jafari2026.pdf}
+\caption{System of Jafari \textit{et al.}\cite{Jafari2026NoPP} without fixed and perpetual points. Left: stable cycle at $a_3=-1$. Center: fragile chaotic attractor at $a_3=-3.548$. Right: Lyapunov exponent over windows $T=400$ in the narrow chaos window near the boundedness limit; for $a_3\le-3.5494$, trajectories escape to infinity.}
+\label{fig:jafari}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig34_maps_phase_basin.pdf}
+\caption{Two-dimensional maps of level B: phase--basin portraits. The map of Huynh \textit{et al.}\cite{Huynh2019} without fixed points ($p=0.0091$ in $[-3,3]^2$). Cases NF~I~e and NF~I~f of the family of Jiang \textit{et al.}\cite{Jiang2016Maps} without fixed points; in the second case, a chaotic attractor coexists with a period-2 cycle (red dots). Case SF~I~a with a single stable fixed point (circle). Gray: escape; blue: basin of the chaotic attractor; yellow: basin of the cycle; orange: basin of the fixed point; black: the attractor.}
+\label{fig:maps}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig33_li_sprott_4d.pdf}
+\caption{Four-dimensional simplified Lorenz system\cite{LiSprott2014} at $a=6$, $b=0.1$; there are no equilibria. The torus (basin fraction 0.090) and a pair of symmetric strange attractors ($\lambda\approx0.25$; 0.446 and 0.464) in the projections $(x,y)$ and $(u,x)$. Right: basins in the section $y=u=0$ of the box $[-15,15]^4$; the torus occupies the ``background,'' and the strange attractors form spiral tongues. Here the rare target is the torus, not the chaos.}
+\label{fig:levelA}
+\end{figure*}
+
+\section{Verification episodes}\label{app:verification}
+
+The identification protocol of Sec.~\ref{sec:protocol} was refined on three cases that change the conclusions if missed.
+
+\textbf{Numerical ``transient chaos'' in the Chua circuit.} With RK4 at $dt=0.01$, all 256 copies of a state on the hidden chaotic set of Chua~I converge within $t\le2\times10^4$ to a spurious periodic orbit of the same size (median time about 1500; Fig.~\ref{fig:chuasurv}). At $dt=0.0025$, none of 96 copies leaves before $t=10^4$, and DOP853 preserves the chaos up to $t=4000$. At $dt=0.01$, the fractions of the hidden attractors are underestimated almost twofold (Fig.~\ref{fig:chuadt}). For a piecewise-linear system, this is an integrator artifact, the mirror image of the story of the ``hidden Lorenz attractor.''\cite{Munmuangsaen2018,SprottMunmuangsaen2018Comment} The step-convergence check is therefore mandatory.
+
+\textbf{Basin fractions of the Chua circuit.} Two independent implementations, Python (RK4, $dt=0.0025$) and Attractors.jl (Vern9), give identical fractions in the balls $r=3$ and $r=5$ and in Zelinka's box. Neither of them reproduces Table~1 of the review in Ref.~\onlinecite{GuanXie2025} (Fig.~\ref{fig:table1}). For example, in the ball $r=3$, the escape fraction is 0.19 in our computations versus 0.06 in the review, the fraction of F$_0$ is 0.44 versus 0.75, and that of each hidden attractor is 0.18 versus 0.095. The basin structure in the plane $z=0$ nevertheless coincides with the review and with the catalog of Ref.~\onlinecite{Wagemakers2025Zoo} (Fig.~\ref{fig:chuaI}).
+
+\textbf{Intermittency and transient sets.} In NE4, the ``second attractor'' of a preliminary version of the protocol turned out to be intermittency of the single chaotic attractor; this was fixed by the window $T_{\rm obs}=500\gg1/\lambda$. The transient chaos of the Lorenz system $(4,29,2)$ lives about $10^4$ time units: all eight copies decay by $t\le7\times10^4$. A protocol with an observation window shorter than the lifetime would accept this set as an attractor (Fig.~\ref{fig:verif}). The Rabinovich set at $r=6.8$ lives longer than $10^5$ for six of eight copies, which agrees with the estimate $\tau\sim5\times10^7$ of Ref.~\onlinecite{SprottMunmuangsaen2018Comment}; in the benchmark, it is used only as a control.
+
+\textbf{Hiddenness measure.} For SE3 and SE11, $h_\varepsilon=0$ at all three scales (Fig.~\ref{fig:hidden}). For Chua~I, $h_\varepsilon$ grows from 0 at $\varepsilon=10^{-3}L$ through 0.003 ($10^{-2}L$) to 0.19 ($10^{-1}L$). For the Rabinovich system at $r=100$, the values are 0, 0.03, and 0.65: the attractor is hidden only in the strict limit $\varepsilon\to0$, and already at $\varepsilon=10^{-2}L$, trajectories from the neighborhood of an equilibrium enter its basin. The binary definition thus does not distinguish ``deeply'' and ``shallowly'' hidden attractors, whereas $h_\varepsilon$ does.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figures/fig02_chua_survival.pdf}
+\caption{Numerical ``transient chaos'' in Chua~I: the fraction of copies (initial perturbation $10^{-3}$) remaining on the hidden chaotic set. With RK4 at $dt=0.01$, the chaos decays onto a spurious periodic orbit; at $dt=0.0025$, it persists to the end of the window.}
+\label{fig:chuasurv}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figures/fig03_chua_dt_convergence.pdf}
+\caption{Basin fractions of Chua~I versus the RK4 step (ball $r=3$, $2\times10^4$ points, $T_{\rm tr}=1000$). At $dt=0.01$, about 16\% of trajectories land on the spurious orbit (``unmatched''), and the fractions of the hidden attractors are underestimated. For $dt\le0.005$, the fractions stabilize.}
+\label{fig:chuadt}
+\end{figure}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig04_table1_comparison.pdf}
+\caption{Basin fractions of Chua~I under uniform sampling in balls of radius 3 and 5: Table~1 of the review in Ref.~\onlinecite{GuanXie2025} and two independent implementations. Our implementations agree with each other but not with the review.}
+\label{fig:table1}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig41_verification.pdf}
+\caption{Verification of the targets. Left: the largest Lyapunov exponent over consecutive observation windows for all targets of the benchmark; blue: chaotic regimes; orange: regular ones (cycle LC of Chua~II, the Jafari cycle, the Li--Sprott torus). Right: long lifetime check (eight copies with initial perturbation $10^{-3}$). The Lorenz transient chaos decays completely. For the Rabinovich set at $r=6.8$, six of eight copies survive to $10^5$. For the fragile Jafari chaos, six of eight copies escape to infinity already by $t=200$: the basin is thin even near the attractor itself.}
+\label{fig:verif}
+\end{figure*}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figures/fig40_hiddenness.pdf}
+\caption{Hiddenness measure $h_\varepsilon$: the fraction of trajectories from $\varepsilon$-neighborhoods of the equilibria that enter the basin of the attractor; the lower edge of the axis corresponds to zero hits. The SE3 and SE11 lines coincide (zero on all scales). The Lorenz transient set is shown for comparison.}
+\label{fig:hidden}
+\end{figure}
+
+\section{Classical heuristics}\label{app:classic}
+
+The cost of uniform sampling over the benchmark systems is shown in Fig.~\ref{fig:uniform}, and the classical heuristics (Fig.~\ref{fig:classic}) behave in agreement with the review in Ref.~\onlinecite{GuanXie2025}. Perpetual points lead to the target in Wang--Chen \#1, Wei, and Rabinovich. The Chua circuit has none: in the linear zones, the acceleration vanishes only at equilibria. They are also absent in SE3, SE11, and Wang--Chen \#2, while in NE4 and LE1 they exist but do not lead to the target. Sampling on nullclines (coordinate-wise zero-velocity sets\cite{Godara2018CVS}) gives gains in hit frequency from 1.2 (SE11, LE1) to 4.5 (Chua~I). Connecting curves\cite{GuanXie2021CC} gain a factor of 2 in Wang--Chen \#1 and give no hits in SE3 and SE11. Continuation from the describing function finds the target in Chua~I within 10 integrations but applies only to Lur'e-type systems.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figures/fig05_uniform_costs.pdf}
+\caption{Baseline cost of uniform sampling $N^0_{0.9}$ for the targets of levels A--C (logarithmic scale) and the corresponding basin measures $p$.}
+\label{fig:uniform}
+\end{figure}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig07_classic_vs_uniform.pdf}
+\caption{Classical heuristics versus uniform sampling: the number of integrations to detection with probability 0.9 for sampling on nullclines (the best coordinate) and on connecting curves. The right column indicates how many perpetual points (PP) lead to the target.}
+\label{fig:classic}
+\end{figure*}
+
+\section{Ablation, bisection, and robustness}\label{app:ablation}
+
+\textbf{Ablation.} The contributions of the components are shown in Fig.~\ref{fig:ablation}. On Chua~II, the arms add up: the portfolio gives 7.4 times, versus 5.1 for splitting and 3.2 for active learning. On LE1, the boundary arm hurts, and the gain of the portfolio is provided by the splitting arm. Without the uniform share, the portfolio is not faster (Chua~II: 7.0; SE11: 3.1; LE1: 5.1) and loses where there is no signal (Jafari cycle: 0.27 against 0.43). On LE1, the lower interval bound for $G$ without the uniform share is 1.59, whereas for the portfolio with $\varepsilon=0.2$, it is 3.76. Multidimensional ``rarity'' as a reaction coordinate produces heavy tails: the chains get stuck in atypical but nontarget regions, for example, in the basin of an equilibrium inside the D2 ball. Escape time as a coordinate is equivalent to $\xi$ everywhere except Chua~II, where all trajectories are bounded and it gives 1.04 against 5.05.
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig25_ablation.pdf}
+\caption{Ablation: $G_{0.9}$ of the variants of the method relative to uniform sampling ($R=100$; color: $\log_{10}G$; empty cells: the variant was not run). Rows: systems of levels A and B and synthetic families; columns: splitting alone and with a uniform share, active learning with a uniform share, the portfolio without a uniform share, the portfolio, and the portfolio with nullclines.}
+\label{fig:ablation}
+\end{figure*}
+
+\textbf{Bisection toward basin boundaries.} A natural alternative that uses basin boundaries directly is bisection toward them, in the spirit of edge tracking\cite{Skufca2006Edge,Schneider2007Edge} and of the straddle method.\cite{NusseYorke1989} A chain starts from a point with a long transient and the nearest point of another class and halves the segment between them 12 times; new chains start as old ones end. Bisection is a strong baseline on systems with smooth boundaries (Table~\ref{tab:bisection}): it gives 4.2 on SE11 (portfolio: 3.1), 6.0 on LE1 (6.2), 1.3 on Chua~I (1.2), and 3.6 on D1 at $p=10^{-3}$ (1.2). It loses where the signal is graded over many scales: 3.1 on Chua~II (7.4) and 1.6 and 1.3 on D2 at $p=10^{-3}$ and $10^{-4}$ (5.9 and 17). On the problems without a signal, bisection stays near 1 (0.96--1.18), whereas the portfolio pays for its arms (0.42--0.43). On the coupled copies of SE11, it does not scale (Sec.~\ref{sec:coupled}). Bisection as a fourth arm of the portfolio, with fixed or adaptive shares, helps only where bisection alone is strong (D1 at $p=10^{-3}$: 1.7 against 0.86; LE1: 8.6 against 7.2) and takes budget from splitting on the problems with the largest gains (three coupled copies of SE11: 1360 against 1570), so the three-arm portfolio is kept.
+
+\begin{table}
+\caption{Bisection toward basin boundaries ($R=50$) and the portfolio ($R=100$): gains $G_{0.9}$ with 95\% bootstrap intervals. Bold: values whose lower interval bound exceeds 1.}
+\label{tab:bisection}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{lrr}
+Problem & Bisection & Portfolio \\
+\hline
+Chua I & \textbf{1.30} \ci{1.06}{1.95} & 1.24 \ci{0.94}{1.77} \\
+Chua II & \textbf{3.14} \ci{1.69}{5.12} & \textbf{7.36} \ci{6.09}{10.2} \\
+SE11 & 4.17 \ci{0}{4.64} & \textbf{3.10} \ci{2.46}{3.70} \\
+LE1 & \textbf{6.02} \ci{4.47}{9.57} & \textbf{6.24} \ci{3.76}{10.0} \\
+Jafari 2026, cycle & 0.96 \ci{0.53}{1.61} & 0.43 \ci{0.29}{0.78} \\
+Huynh 2019 & 1.05 \ci{0.37}{2.21} & \textbf{1.40} \ci{1.16}{2.54} \\
+Jafari 2026, chaos & 1.18 \ci{0.77}{2.06} & 0.42 \ci{0.29}{0.58} \\
+D2, $p=10^{-3}$ & 1.64 \ci{1.00}{2.52} & \textbf{5.88} \ci{5.02}{8.10} \\
+D2, $p=10^{-4}$ & 1.29 \ci{0}{1.82} & \textbf{17.0} \ci{13.6}{22.2} \\
+D1, $p=10^{-3}$ & \textbf{3.62} \ci{2.84}{4.89} & 1.19 \ci{0.86}{1.58} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\textbf{Robustness.} The hyperparameters of the portfolio were not tuned to the problems: everywhere $\varepsilon=0.2$, $p_0=0.2$, $\sigma_0=0.1$, and $n_0=50$. Each of them was varied separately on three problems with a gain ($R=50$; Table~\ref{tab:robust}). No variant brings the gain below 1: on Chua~II, it lies in the range 5.2--7.5; on D2, 14.7--21.8; and on LE1, 3.1--9.2. A larger initial sample ($n_0=100$) worsens the gain on targets with $p\sim10^{-3}$, where the initial sample is a noticeable part of the cost, and improves it on D2 ($p=10^{-4}$). Scaling both integration windows by 0.5 and 2 on Chua~II, SE11, LE1, and D2 ($p=10^{-4}$) changed the cost of uniform sampling by at most 12\% and left the gains close to the base values: 7.0 and 6.3 on Chua~II (base 7.4), 3.8 and 3.6 on SE11 (3.1), 3.6 and 6.7 on LE1 (6.2), and 18 and 18 on D2 (17).
+
+\begin{table*}
+\caption{Robustness of the portfolio to hyperparameters: $G_{0.9}$ with 95\% bootstrap intervals (variants: $R=50$; base: $R=100$). In each column, one parameter is changed relative to the base set $\varepsilon=0.2$, $p_0=0.2$, $\sigma_0=0.1$, $n_0=50$.}
+\label{tab:robust}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{lrrrrrrr}
+Problem & Base & $\varepsilon=0.1$ & $\varepsilon=0.3$ & $p_0=0.1$ & $p_0=0.3$ & $\sigma_0=0.3$ & $n_0=100$ \\
+\hline
+Chua II & 7.36 \ci{6.09}{10.2} & 6.90 \ci{5.27}{10.4} & 5.70 \ci{4.58}{8.24} & 7.53 \ci{6.31}{11.7} & 6.32 \ci{5.23}{8.87} & 5.23 \ci{4.23}{8.29} & 5.23 \ci{4.27}{7.79} \\
+LE1 & 6.24 \ci{3.76}{10.0} & 6.86 \ci{4.07}{13.3} & 6.48 \ci{3.34}{10.9} & 9.16 \ci{1.96}{14.7} & 6.85 \ci{4.96}{10.8} & 3.15 \ci{2.39}{6.85} & 3.12 \ci{2.11}{5.45} \\
+D2, $n=6$, $p=10^{-4}$ & 17.0 \ci{13.6}{22.2} & 14.7 \ci{10.6}{24.1} & 18.5 \ci{13.2}{24.7} & 21.8 \ci{14.4}{36.2} & 18.8 \ci{13.9}{27.8} & 18.2 \ci{13.7}{26.5} & 20.7 \ci{11.1}{28.2} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\section{Real systems in enlarged regions}\label{app:enlarged}
+
+To test whether the gain grows on real systems as $p$ decreases, we enlarged the region of initial conditions $k$ times about its center, $B_k=kB$ with $k=2$--16, keeping the escape radius at least twice the distance to the farthest corner. If the basin lay inside $B$, its measure in $B_k$ would be $p_0/k^3$. It is not (Table~\ref{tab:enlarged}, Fig.~\ref{fig:enlarged}a): for SE11, $p$ falls from $7.7\times10^{-3}$ only to $2.4\times10^{-4}$ at $k=16$, against $1.9\times10^{-6}$ expected, and the other systems behave similarly. The basins of these hidden attractors extend far beyond $B$, so their rarity is a property of the chosen region rather than of the attractor. Continuation of the hidden attractors in a parameter gives the same conclusion: in Chua~II, the Wang--Chen and Wei systems, the basin fraction stays at $10^{-3}$--$0.7$ up to the crisis at which the attractor disappears, and in LE1 it falls to $2.4\times10^{-4}$ at most. Over the enlarged regions, the gain grows as $p$ decreases on three of the five systems (Fig.~\ref{fig:enlarged}b): on SE11, from 3.1 to 24; on LE1, from 6.2 to 16; and on Chua~I, from 1.2 to 6.3. On Chua~II, it falls from 7.4 to 0.71 at $k=4$, and splitting alone falls to 0.14, because the longest transients belong to trajectories that return slowly from far away rather than to the neighborhood of the target. On the Jafari cycle, where there is no signal, the portfolio stays at 0.24--0.43, within the guarantee.
+
+\begin{table*}
+\caption{Real systems in the enlarged regions $kB$ ($R=50$; $k=1$: $R=100$): basin measure, cost of uniform sampling, and gains $G_{0.9}$ with 95\% bootstrap intervals. $\infty$: fewer than 90\% of the runs found the target. Bold: values whose lower interval bound exceeds 1.}
+\label{tab:enlarged}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{ruledtabular}
+\begin{tabular}{lrrrrr}
+System & $k$ & $p$ & $N^0_{0.9}$ & Splitting & Portfolio \\
+\hline
+SE11 & 1 & $7.7\times10^{-3}$ & 317 & \textbf{2.53} \ci{1.95}{2.86} & \textbf{3.10} \ci{2.46}{3.70} \\
+SE11 & 2 & $2.3\times10^{-3}$ & 811 & \textbf{3.91} \ci{3.03}{4.66} & \textbf{4.93} \ci{3.96}{6.01} \\
+SE11 & 4 & $6.1\times10^{-4}$ & 3858 & \textbf{11.8} \ci{6.38}{19.4} & \textbf{17.5} \ci{8.95}{26.8} \\
+SE11 & 8 & $4.5\times10^{-4}$ & 5191 & \textbf{9.92} \ci{5.54}{14.5} & \textbf{9.19} \ci{5.87}{17.0} \\
+SE11 & 16 & $2.4\times10^{-4}$ & 9351 & \textbf{15.8} \ci{9.96}{21.8} & \textbf{24.2} \ci{13.8}{34.5} \\
+LE1 & 1 & $1.3\times10^{-3}$ & 1617 & \textbf{8.29} \ci{6.35}{12.3} & \textbf{6.24} \ci{3.76}{10.0} \\
+LE1 & 2 & $5.3\times10^{-4}$ & 4540 & \textbf{8.81} \ci{6.08}{17.2} & \textbf{7.51} \ci{2.41}{14.4} \\
+LE1 & 4 & $3.4\times10^{-4}$ & 5911 & \textbf{11.1} \ci{7.35}{23.5} & \textbf{7.19} \ci{2.99}{10.5} \\
+LE1 & 8 & $1.8\times10^{-4}$ & 13\,229 & \textbf{18.3} \ci{12.9}{27.9} & \textbf{15.9} \ci{10.8}{23.0} \\
+Chua I & 1 & $3.3\times10^{-2}$ & 66 & 1.20 \ci{0.92}{1.77} & 1.24 \ci{0.94}{1.77} \\
+Chua I & 2 & $8.3\times10^{-3}$ & 267 & \textbf{2.30} \ci{1.61}{3.23} & \textbf{2.61} \ci{1.87}{3.84} \\
+Chua I & 4 & $1.0\times10^{-3}$ & 2230 & \textbf{6.48} \ci{3.32}{10.7} & \textbf{5.58} \ci{3.80}{9.62} \\
+Chua I & 8 & $1.8\times10^{-4}$ & 11\,169 & \textbf{6.16} \ci{4.16}{12.5} & \textbf{6.30} \ci{4.04}{13.9} \\
+Chua II & 1 & $2.6\times10^{-3}$ & 818 & \textbf{5.05} \ci{4.13}{7.07} & \textbf{7.36} \ci{6.09}{10.2} \\
+Chua II & 2 & $7.7\times10^{-4}$ & 2891 & \textbf{2.61} \ci{1.71}{4.11} & \textbf{3.74} \ci{2.67}{7.55} \\
+Chua II & 4 & $2.1\times10^{-4}$ & 8988 & 0.14 \ci{0.10}{0.25} & 0.71 \ci{0.57}{1.36} \\
+Jafari cycle & 1 & $1.0\times10^{-2}$ & 219 & 0.29 \ci{0.19}{0.53} & 0.43 \ci{0.29}{0.78} \\
+Jafari cycle & 2 & $1.6\times10^{-3}$ & 1245 & 0.22 \ci{0}{0.30} & 0.34 \ci{0}{0.57} \\
+Jafari cycle & 4 & $2.2\times10^{-4}$ & 10\,061 & $\infty$ (88\%) & 0.24 \ci{0}{0.35} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig27_enlarged_regions.pdf}
+\caption{Real systems in enlarged regions $kB$. (a) Basin measure of the hidden target versus $k$; dotted lines: $p_0/k^3$, the measure if the basin lay inside $B$. (b) Gain of the portfolio (solid, with 95\% intervals) and of splitting (dashed) versus the basin measure. Dashed horizontal line: $G=1$; dotted: the guarantee $G=\varepsilon=0.2$.}
+\label{fig:enlarged}
+\end{figure*}
+
+\section{Discretization limit at very small \texorpdfstring{$p$}{p}}\label{app:smallp}
+
+Figure~\ref{fig:smallp} shows the gain on D2 down to $p=10^{-7}$ and the diagnostic variants. Two alternative explanations of the breakdown below $p=10^{-5}$ were ruled out. Lowering the step floor of the splitting chains tenfold, or removing it, leaves every run unchanged: the floor is never reached. A second move that redraws a random subset of coordinates from the uniform distribution, akin to the componentwise Metropolis algorithm of the original subset simulation,\cite{AuBeck2001} helps only partly: at $p=10^{-6}$, splitting then succeeds in 50\% of runs and the portfolio in 72\%, but at $10^{-7}$ there is still no gain. The same move doubles the gain at $p=10^{-4}$ (53 for splitting and 35 for the portfolio); it is a natural extension of the method but is not used elsewhere in this paper. Reducing the integration step restores the order-of-growth gain, as stated in Sec.~\ref{sec:scaling_p}; these gains are counted in integrations, each of which is 4 or 16 times longer, so the gain in computing time is smaller, and the point of the test is the mechanism. Figure~\ref{fig:scaln} shows the dependence on dimension at fixed $p=10^{-4}$.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figures/fig29_d2_small_p.pdf}
+\caption{Family D2 ($n=6$): gain down to $p=10^{-7}$. Filled markers: $G_{0.9}$; open markers: equivalent gain $-\ln(1-f)/(pB)$ from the fraction $f$ of runs that found the target within the budget $B$. Dotted and dashed lines: the diagnostic variants (step floor of the chains lowered tenfold; additional move that redraws a random subset of coordinates). Stars and crosses: splitting and the portfolio with the integration step reduced 4 times ($p=10^{-6}$) and 16 times ($p=10^{-7}$), with $N^0_{0.9}=\ln10/p$.}
+\label{fig:smallp}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figures/fig24_scaling_n.pdf}
+\caption{Detection cost versus the phase-space dimension (family D2, $p=10^{-4}$, $R=100$). Dashed line: $\ln10/p$. At $n=4$, the reaction coordinate is uninformative because of the discretization limit; for $n\ge6$, the portfolio gain is 17--61 times.}
+\label{fig:scaln}
+\end{figure}
+
+\section{Channel diagnostics}\label{app:diagnostics}
+
+The prediction of the cost model was tested on a uniform sample of $2\times10^4$ points per system (Fig.~\ref{fig:signal}). Channel B works when nontarget points with long transients converge spatially to the target. For Chua~II, the median distance $d(q)$ decreases with the upper-set fraction $q$ as $0.43\to0.19\to0.12$; for LE1, as $0.53\to0.22\to0.13$; and for D2, as $0.74\to0.60\to0.53$; the splitting gain here is 5.1--8.3 times. For the Jafari cycle ($0.99\to1.35$) and for D1 ($1.26\to1.38\to1.41$), $d(q)$ grows, and there is no gain. At the same time, in D1, the fraction of the target in the upper sets grows: the regions of long trajectories are scattered, and there is no path to the target through them. The AUC of the $\xi$ scale alone (0.88--0.97 for all systems except the Jafari cycle) does not separate these cases, whereas $d(q)$ does. For the Huynh map, there is a gradient over only one decade ($d$ drops to 0.22 and grows again); at $p\approx0.009$, it barely pays back the initial sample and the levels.
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/fig26_signal_curves.pdf}
+\caption{Diagnostics of channel B from a uniform sample. Left: median distance from nontarget points of the upper set of the coordinate $\xi$ to the target (normalized to the value at $q=1$) versus the fraction $q$. Right: observed splitting gain. A decreasing $d(q)$ (Chua~II, LE1, SE11, D2) comes with a gain, and an increasing one (Jafari cycle, D1) with its absence.}
+\label{fig:signal}
+\end{figure*}

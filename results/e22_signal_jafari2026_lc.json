@@ -1,0 +1,66 @@
+{
+ "system": "jafari2026_lc",
+ "n": 20000,
+ "targets": [
+  "LC"
+ ],
+ "p_target": 0.0108,
+ "target_neighbourhood": {
+  "escape": 0.6138888888888889,
+  "LC": 0.3861111111111111
+ },
+ "thickness": 0.3861111111111111,
+ "label_spatial_correlation": 0.986775,
+ "edge_fraction": 0.04775,
+ "target_share_on_edge": 0.2261780104712042,
+ "edge_enrichment": 20.94240837696335,
+ "level_curve": [
+  {
+   "q": 1.0,
+   "n": 20000,
+   "target_share": 0.0108,
+   "enrichment": 1.0,
+   "median_dist_rel": 1.0
+  },
+  {
+   "q": 0.2,
+   "n": 4000,
+   "target_share": 0.054,
+   "enrichment": 5.0,
+   "median_dist_rel": 0.9891307011024298
+  },
+  {
+   "q": 0.04,
+   "n": 800,
+   "target_share": 0.27,
+   "enrichment": 25.0,
+   "median_dist_rel": 1.35279458209503
+  },
+  {
+   "q": 0.008,
+   "n": 160,
+   "target_share": 1.0,
+   "enrichment": 92.59259259259258,
+   "median_dist_rel": null
+  },
+  {
+   "q": 0.0016,
+   "n": 32,
+   "target_share": 1.0,
+   "enrichment": 92.59259259259258,
+   "median_dist_rel": null
+  }
+ ],
+ "known_edge_fraction": 0.0,
+ "known_edge_near_target_enrichment": null,
+ "proximity_radius": 0.057323101017564985,
+ "auc_single": {
+  "trans": 0.6061445034574756,
+  "t_esc": 0.6061445034574756,
+  "emean": 0.931165706226896,
+  "estd": 0.7679716715951684,
+  "lam": 0.5,
+  "rmax": 0.5
+ },
+ "auc_logistic_all": 0.9418501821449571
+}

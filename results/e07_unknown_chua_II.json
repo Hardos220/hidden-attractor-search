@@ -1,0 +1,105 @@
+{
+ "system": "chua_II",
+ "n": 20000,
+ "n_unknown": 13875,
+ "cases": [
+  {
+   "cluster": 0,
+   "size": 13875,
+   "medoid_ic": [
+    8.601145357404654,
+    -8.503219118822418,
+    -13.480697632333227
+   ],
+   "lam0": -0.0148,
+   "rmax0": 37.817,
+   "mean0": [
+    -0.043,
+    -0.057,
+    -0.098
+   ],
+   "track": [
+    {
+     "w": 0,
+     "lam": -0.0157,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": "new0"
+    },
+    {
+     "w": 1,
+     "lam": -0.017,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": -2
+    },
+    {
+     "w": 2,
+     "lam": -0.0191,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": "new0"
+    },
+    {
+     "w": 3,
+     "lam": -0.0235,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": -2
+    },
+    {
+     "w": 4,
+     "lam": -0.0338,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": "new0"
+    },
+    {
+     "w": 5,
+     "lam": -0.0334,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": -2
+    },
+    {
+     "w": 6,
+     "lam": -0.0225,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": "new0"
+    },
+    {
+     "w": 7,
+     "lam": -0.0174,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": -2
+    },
+    {
+     "w": 8,
+     "lam": -0.014,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": "new0"
+    },
+    {
+     "w": 9,
+     "lam": -0.0116,
+     "esc": false,
+     "fp": false,
+     "rmax": 37.817,
+     "label": -2
+    }
+   ]
+  }
+ ]
+}

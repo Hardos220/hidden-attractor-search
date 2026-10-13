@@ -1,0 +1,940 @@
+{
+ "chua_I": {
+  "targets": [
+   "HA_a",
+   "HA_b"
+  ],
+  "p_uniform": {
+   "HA_a": 0.0168,
+   "HA_b": 0.01848
+  },
+  "PP": {
+   "n_points": 0,
+   "hits": 0,
+   "points": [],
+   "time_s": 0.3
+  },
+  "CVS": {
+   "x0": {
+    "n": 1000,
+    "hits": 159,
+    "p": 0.159,
+    "N_0.9": 14.0
+   },
+   "x1": {
+    "n": 1000,
+    "hits": 84,
+    "p": 0.084,
+    "N_0.9": 27.0
+   },
+   "x2": {
+    "n": 19,
+    "hits": 2,
+    "p": 0.10526315789473684,
+    "N_0.9": 21.0
+   },
+   "time_s": 7.4
+  },
+  "CC": {
+   "n": 150,
+   "hits": 2,
+   "p": 0.013333333333333334,
+   "N_0.9": 172.0,
+   "time_s": 43.0
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": 50,
+     "steps": 45743,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 75167,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 36806,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 81561,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 46525,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 86465,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 101446,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 100,
+     "steps": 122112,
+     "n_attractors": 3,
+     "found": true
+    }
+   ],
+   "grid_n": 120,
+   "median_n_ic": 50.0,
+   "median_steps": 78364.0,
+   "success_rate": 1.0,
+   "time_s": 14.2
+  }
+ },
+ "wangchen1": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": {
+   "HA": 0.10322
+  },
+  "PP": {
+   "n_points": 2,
+   "hits": 1,
+   "points": [
+    [
+     0.0,
+     -0.0442,
+     0.0
+    ],
+    [
+     0.0,
+     0.3775,
+     0.0
+    ]
+   ],
+   "time_s": 0.5
+  },
+  "CVS": {
+   "x0": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x1": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x2": {
+    "n": 1000,
+    "hits": 117,
+    "p": 0.117,
+    "N_0.9": 19.0
+   },
+   "time_s": 7.6
+  },
+  "CC": {
+   "n": 238,
+   "hits": 48,
+   "p": 0.20168067226890757,
+   "N_0.9": 11.0,
+   "time_s": 176.8
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": null,
+     "steps": 90086,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 140561,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": 50,
+     "steps": 40598,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": null,
+     "steps": 143394,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 185692,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 104898,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 101156,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": 50,
+     "steps": 125118,
+     "n_attractors": 1,
+     "found": true
+    }
+   ],
+   "grid_n": 100,
+   "median_n_ic": 50.0,
+   "median_steps": 82858.0,
+   "success_rate": 0.25,
+   "time_s": 4.8
+  }
+ },
+ "wei_ne2": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": {
+   "HA": 0.09556
+  },
+  "PP": {
+   "n_points": 2,
+   "hits": 1,
+   "points": [
+    [
+     0.0,
+     -0.2373,
+     -0.0
+    ],
+    [
+     0.0,
+     0.7373,
+     -0.0
+    ]
+   ],
+   "time_s": 0.2
+  },
+  "CVS": {
+   "x0": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x1": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x2": {
+    "n": 1000,
+    "hits": 131,
+    "p": 0.131,
+    "N_0.9": 17.0
+   },
+   "time_s": 1.8
+  },
+  "CC": {
+   "n": 400,
+   "hits": 41,
+   "p": 0.1025,
+   "N_0.9": 22.0,
+   "time_s": 40.4
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": 50,
+     "steps": 41776,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 34665,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 42056,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": null,
+     "steps": 112301,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": 50,
+     "steps": 64795,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 43671,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 46044,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 41783,
+     "n_attractors": 1,
+     "found": true
+    }
+   ],
+   "grid_n": 100,
+   "median_n_ic": 50.0,
+   "median_steps": 42056.0,
+   "success_rate": 0.875,
+   "time_s": 5.1
+  }
+ },
+ "wangchen2": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": {
+   "HA": 0.66604
+  },
+  "PP": {
+   "n_points": 0,
+   "hits": 0,
+   "points": [],
+   "time_s": 1.2
+  },
+  "CVS": {
+   "x0": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x1": {
+    "n": 1000,
+    "hits": 944,
+    "p": 0.944,
+    "N_0.9": 1.0
+   },
+   "x2": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "time_s": 1.9
+  },
+  "CC": {
+   "n": 400,
+   "hits": 290,
+   "p": 0.725,
+   "N_0.9": 2.0,
+   "time_s": 2.2
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": 50,
+     "steps": 52734,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 25719,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 49175,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 40507,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 46964,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 33775,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 36099,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 34129,
+     "n_attractors": 1,
+     "found": true
+    }
+   ],
+   "grid_n": 100,
+   "median_n_ic": 50.0,
+   "median_steps": 38303.0,
+   "success_rate": 1.0,
+   "time_s": 5.0
+  }
+ },
+ "se3": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": {
+   "HA": 0.15254
+  },
+  "PP": {
+   "n_points": 0,
+   "hits": 0,
+   "points": [],
+   "time_s": 1.5
+  },
+  "CVS": {
+   "x0": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x1": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x2": {
+    "n": 1000,
+    "hits": 193,
+    "p": 0.193,
+    "N_0.9": 11.0
+   },
+   "time_s": 1.7
+  },
+  "CC": {
+   "n": 400,
+   "hits": 0,
+   "p": 0.0,
+   "N_0.9": Infinity,
+   "time_s": 22.4
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": 50,
+     "steps": 108477,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": null,
+     "steps": 427829,
+     "n_attractors": 1,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 472033,
+     "n_attractors": 1,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 317771,
+     "n_attractors": 1,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 154346,
+     "n_attractors": 1,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 189992,
+     "n_attractors": 1,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 149283,
+     "n_attractors": 1,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 350725,
+     "n_attractors": 1,
+     "found": false
+    }
+   ],
+   "grid_n": 100,
+   "median_n_ic": 50.0,
+   "median_steps": 108477.0,
+   "success_rate": 0.125,
+   "time_s": 5.4
+  }
+ },
+ "se11": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": {
+   "HA": 0.0079
+  },
+  "PP": {
+   "n_points": 0,
+   "hits": 0,
+   "points": [],
+   "time_s": 0.6
+  },
+  "CVS": {
+   "x0": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x1": {
+    "n": 1000,
+    "hits": 9,
+    "p": 0.009,
+    "N_0.9": 255.0
+   },
+   "x2": {
+    "n": 1000,
+    "hits": 8,
+    "p": 0.008,
+    "N_0.9": 287.0
+   },
+   "time_s": 1.0
+  },
+  "CC": {
+   "n": 400,
+   "hits": 0,
+   "p": 0.0,
+   "N_0.9": Infinity,
+   "time_s": 2.7
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": null,
+     "steps": 202930,
+     "n_attractors": 1,
+     "found": false
+    },
+    {
+     "n_ic": 50,
+     "steps": 23797,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": null,
+     "steps": 201083,
+     "n_attractors": 1,
+     "found": false
+    },
+    {
+     "n_ic": 50,
+     "steps": 25161,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 28549,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 25408,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 200,
+     "steps": 41365,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": null,
+     "steps": 206667,
+     "n_attractors": 1,
+     "found": false
+    }
+   ],
+   "grid_n": 100,
+   "median_n_ic": 50.0,
+   "median_steps": 25408.0,
+   "success_rate": 0.625,
+   "time_s": 5.5
+  }
+ },
+ "le1": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": {
+   "HA": 0.00156
+  },
+  "PP": {
+   "n_points": 1,
+   "hits": 0,
+   "points": [
+    [
+     -0.4675,
+     0.2185,
+     -2.1391
+    ]
+   ],
+   "time_s": 0.7
+  },
+  "CVS": {
+   "x0": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x1": {
+    "n": 1000,
+    "hits": 2,
+    "p": 0.002,
+    "N_0.9": 1151.0
+   },
+   "x2": {
+    "n": 1000,
+    "hits": 4,
+    "p": 0.004,
+    "N_0.9": 575.0
+   },
+   "time_s": 1.6
+  },
+  "CC": {
+   "n": 400,
+   "hits": 1,
+   "p": 0.0025,
+   "N_0.9": 920.0,
+   "time_s": 10.4
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": null,
+     "steps": 777812,
+     "n_attractors": 8,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 776603,
+     "n_attractors": 7,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 772338,
+     "n_attractors": 6,
+     "found": false
+    },
+    {
+     "n_ic": 50,
+     "steps": 22241,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": null,
+     "steps": 774183,
+     "n_attractors": 7,
+     "found": false
+    },
+    {
+     "n_ic": 350,
+     "steps": 28879,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": null,
+     "steps": 782842,
+     "n_attractors": 7,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 775848,
+     "n_attractors": 6,
+     "found": false
+    }
+   ],
+   "grid_n": 100,
+   "median_n_ic": 200.0,
+   "median_steps": 25560.0,
+   "success_rate": 0.25,
+   "time_s": 8.5
+  }
+ },
+ "rabinovich_100": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": {
+   "HA": 0.76305
+  },
+  "PP": {
+   "n_points": 2,
+   "hits": 2,
+   "points": [
+    [
+     0.2385,
+     -49.1402,
+     -101.4613
+    ],
+    [
+     -0.2385,
+     49.1402,
+     -101.4613
+    ]
+   ],
+   "time_s": 0.3
+  },
+  "CVS": {
+   "x0": {
+    "n": 1000,
+    "hits": 848,
+    "p": 0.848,
+    "N_0.9": 2.0
+   },
+   "x1": {
+    "n": 778,
+    "hits": 542,
+    "p": 0.6966580976863753,
+    "N_0.9": 2.0
+   },
+   "x2": {
+    "n": 412,
+    "hits": 318,
+    "p": 0.7718446601941747,
+    "N_0.9": 2.0
+   },
+   "time_s": 3.0
+  },
+  "CC": {
+   "n": 400,
+   "hits": 287,
+   "p": 0.7175,
+   "N_0.9": 2.0,
+   "time_s": 3.9
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": 50,
+     "steps": 73148,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 84529,
+     "n_attractors": 3,
+     "found": true
+    },
+    {
+     "n_ic": null,
+     "steps": 579065,
+     "n_attractors": 2,
+     "found": false
+    },
+    {
+     "n_ic": 50,
+     "steps": 76494,
+     "n_attractors": 2,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 98785,
+     "n_attractors": 3,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 87428,
+     "n_attractors": 3,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 70833,
+     "n_attractors": 1,
+     "found": true
+    },
+    {
+     "n_ic": 50,
+     "steps": 87046,
+     "n_attractors": 3,
+     "found": true
+    }
+   ],
+   "grid_n": 100,
+   "median_n_ic": 50.0,
+   "median_steps": 84529.0,
+   "success_rate": 0.875,
+   "time_s": 8.1
+  }
+ },
+ "ne4": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": {
+   "HA": 0.32986
+  },
+  "PP": {
+   "n_points": 1,
+   "hits": 0,
+   "points": [
+    [
+     -0.0,
+     0.3226,
+     0.0
+    ]
+   ],
+   "time_s": 0.3
+  },
+  "CVS": {
+   "x0": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x1": {
+    "n": 0,
+    "hits": 0,
+    "p": 0.0,
+    "N_0.9": Infinity
+   },
+   "x2": {
+    "n": 1000,
+    "hits": 303,
+    "p": 0.303,
+    "N_0.9": 7.0
+   },
+   "time_s": 2.8
+  },
+  "CC": {
+   "n": 400,
+   "hits": 31,
+   "p": 0.0775,
+   "N_0.9": 29.0,
+   "time_s": 4.5
+  },
+  "REC": {
+   "runs": [
+    {
+     "n_ic": null,
+     "steps": 513503,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 524162,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 516223,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 515552,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 503732,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 516536,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 523550,
+     "n_attractors": 0,
+     "found": false
+    },
+    {
+     "n_ic": null,
+     "steps": 521892,
+     "n_attractors": 0,
+     "found": false
+    }
+   ],
+   "grid_n": 100,
+   "median_n_ic": null,
+   "median_steps": null,
+   "success_rate": 0.0,
+   "time_s": 5.0
+  }
+ }
+}

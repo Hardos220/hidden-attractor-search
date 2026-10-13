@@ -1,0 +1,3 @@
+{"job": "chua_I_box2__uniform", "seed": 0, "found_at": 91, "n_eval": 500, "n_disc": 0, "time_s": 1.308, "dev": "gpu", "commit": "e3ea305+dirty"}
+{"job": "chua_I_box2__uniform", "seed": 1, "found_at": 225, "n_eval": 500, "n_disc": 0, "time_s": 1.314, "dev": "gpu", "commit": "e3ea305+dirty"}
+{"job": "chua_I_box2__uniform", "seed": 2, "found_at": 44, "n_eval": 500, "n_disc": 0, "time_s": 1.315, "dev": "gpu", "commit": "e3ea305+dirty"}

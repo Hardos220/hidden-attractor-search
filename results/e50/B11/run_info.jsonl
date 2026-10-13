@@ -1,0 +1,1 @@
+{"start": "2026-10-12 15:55:19", "commit": "92d935f", "workers": 10, "threads": 2, "python": "3.14.2", "numpy": "2.4.4", "runs": 800, "numba": "0.67.0"}

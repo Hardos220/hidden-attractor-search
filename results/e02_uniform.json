@@ -1,0 +1,1849 @@
+{
+ "chua_I": {
+  "n_sample": 50000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -15.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   15.0
+  ],
+  "dt": 0.0025,
+  "T_tr": 1000.0,
+  "T_obs": 100.0,
+  "time_s": 6.2,
+  "refs": [
+   {
+    "name": "E1",
+    "kind": "fp",
+    "lam": 0.0,
+    "escape_frac": 0.0,
+    "point": [
+     6.5904,
+     0.0028,
+     -6.5875
+    ],
+    "example": null
+   },
+   {
+    "name": "E2",
+    "kind": "fp",
+    "lam": 0.0,
+    "escape_frac": 0.0,
+    "point": [
+     -6.5904,
+     -0.0028,
+     6.5875
+    ],
+    "example": null
+   },
+   {
+    "name": "F0",
+    "kind": "fp",
+    "lam": -0.0135,
+    "escape_frac": 0.0,
+    "point": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "example": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "HA_a",
+    "kind": "chaotic",
+    "lam": 0.0697,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     1.66659,
+     -1.15833,
+     -4.35644
+    ]
+   },
+   {
+    "name": "HA_b",
+    "kind": "chaotic",
+    "lam": 0.0711,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -1.66659,
+     1.15833,
+     4.35644
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.94162,
+   "unknown": 4e-05,
+   "E1": 0.0,
+   "E2": 0.0,
+   "F0": 0.02306,
+   "HA_a": 0.0168,
+   "HA_b": 0.01848
+  },
+  "hidden": {
+   "HA_a": {
+    "p": 0.0168,
+    "N_0.9": 136.0,
+    "N_0.5": 41.0
+   },
+   "HA_b": {
+    "p": 0.01848,
+    "N_0.9": 124.0,
+    "N_0.5": 38.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 2,
+    "n_refs": 5
+   }
+  ]
+ },
+ "chua_II": {
+  "n_sample": 50000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -15.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   15.0
+  ],
+  "dt": 0.0025,
+  "T_tr": 1000.0,
+  "T_obs": 100.0,
+  "time_s": 184.6,
+  "refs": [
+   {
+    "name": "E0",
+    "kind": "fp",
+    "lam": 0.0,
+    "escape_frac": 0.0,
+    "point": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "example": null
+   },
+   {
+    "name": "E1",
+    "kind": "fp",
+    "lam": 0.0,
+    "escape_frac": 0.0,
+    "point": [
+     1.21,
+     -0.0005,
+     -1.2105
+    ],
+    "example": null
+   },
+   {
+    "name": "E2",
+    "kind": "fp",
+    "lam": 0.0,
+    "escape_frac": 0.0,
+    "point": [
+     -1.21,
+     0.0005,
+     1.2105
+    ],
+    "example": null
+   },
+   {
+    "name": "new0",
+    "kind": "periodic",
+    "lam": -0.0134,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -7.28686,
+     -2.77261,
+     36.02167
+    ]
+   },
+   {
+    "name": "new1",
+    "kind": "chaotic",
+    "lam": 0.1873,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     1.52759,
+     0.28302,
+     -1.81919
+    ]
+   },
+   {
+    "name": "new2",
+    "kind": "chaotic",
+    "lam": 0.1897,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -1.30415,
+     0.02917,
+     2.38749
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.0,
+   "unknown": 0.0,
+   "E0": 0.0,
+   "E1": 0.00222,
+   "E2": 0.00276,
+   "new0": 0.99234,
+   "new1": 0.00142,
+   "new2": 0.00126
+  },
+  "hidden": {
+   "new0": {
+    "p": 0.99234,
+    "N_0.9": 1.0,
+    "N_0.5": 1.0,
+    "discovered": true
+   },
+   "new1": {
+    "p": 0.00142,
+    "N_0.9": 1621.0,
+    "N_0.5": 488.0,
+    "discovered": true
+   },
+   "new2": {
+    "p": 0.00126,
+    "N_0.9": 1827.0,
+    "N_0.5": 550.0,
+    "discovered": true
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 49751,
+    "n_refs": 3
+   },
+   {
+    "round": 1,
+    "unknown": 0,
+    "n_refs": 6
+   }
+  ]
+ },
+ "ne4": {
+  "n_sample": 50000,
+  "box_lo": [
+   -40.0,
+   -30.0,
+   -80.0
+  ],
+  "box_hi": [
+   20.0,
+   50.0,
+   220.0
+  ],
+  "dt": 0.001,
+  "T_tr": 500.0,
+  "T_obs": 500.0,
+  "time_s": 74.5,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0313,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -24.66314,
+     12.45037,
+     -1.64592
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.66756,
+   "unknown": 0.00258,
+   "HA": 0.32986
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.32986,
+    "N_0.9": 6.0,
+    "N_0.5": 2.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 129,
+    "n_refs": 1
+   }
+  ]
+ },
+ "wangchen1": {
+  "n_sample": 50000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.01,
+  "T_tr": 300.0,
+  "T_obs": 100.0,
+  "time_s": 6.5,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.1088,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     3.23087,
+     1.73706,
+     -0.21268
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.89678,
+   "unknown": 0.0,
+   "HA": 0.10322
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.10322,
+    "N_0.9": 22.0,
+    "N_0.5": 7.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 1
+   }
+  ]
+ },
+ "wei_ne2": {
+  "n_sample": 50000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.01,
+  "T_tr": 300.0,
+  "T_obs": 100.0,
+  "time_s": 6.4,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0911,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -2.12015,
+     1.67177,
+     2.36914
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.90434,
+   "unknown": 0.0001,
+   "HA": 0.09556
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.09556,
+    "N_0.9": 23.0,
+    "N_0.5": 7.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 5,
+    "n_refs": 1
+   }
+  ]
+ },
+ "wangchen2": {
+  "n_sample": 50000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.01,
+  "T_tr": 300.0,
+  "T_obs": 100.0,
+  "time_s": 15.0,
+  "refs": [
+   {
+    "name": "FP",
+    "kind": "fp",
+    "lam": -0.0031,
+    "escape_frac": 0.0,
+    "point": [
+     0.25,
+     0.0625,
+     -0.096
+    ],
+    "example": [
+     0.25,
+     0.0625,
+     -0.096
+    ]
+   },
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0693,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -0.35343,
+     0.24664,
+     0.00207
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.3309,
+   "unknown": 0.00226,
+   "FP": 0.0008,
+   "HA": 0.66604
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.66604,
+    "N_0.9": 3.0,
+    "N_0.5": 1.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 113,
+    "n_refs": 2
+   }
+  ]
+ },
+ "se3": {
+  "n_sample": 50000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.01,
+  "T_tr": 300.0,
+  "T_obs": 100.0,
+  "time_s": 9.5,
+  "refs": [
+   {
+    "name": "FP",
+    "kind": "fp",
+    "lam": -0.0185,
+    "escape_frac": 0.0,
+    "point": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "example": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0646,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     5.87758,
+     1.61431,
+     -1.63526
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.7253,
+   "unknown": 8e-05,
+   "FP": 0.12208,
+   "HA": 0.15254
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.15254,
+    "N_0.9": 14.0,
+    "N_0.5": 5.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 4,
+    "n_refs": 2
+   }
+  ]
+ },
+ "se11": {
+  "n_sample": 50000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.01,
+  "T_tr": 300.0,
+  "T_obs": 100.0,
+  "time_s": 6.3,
+  "refs": [
+   {
+    "name": "FP",
+    "kind": "fp",
+    "lam": -0.0418,
+    "escape_frac": 0.0,
+    "point": [
+     0.0,
+     0.0,
+     -0.0833
+    ],
+    "example": [
+     0.0,
+     0.0,
+     -0.08333
+    ]
+   },
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0833,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     0.94171,
+     1.574,
+     -0.39146
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.95284,
+   "unknown": 2e-05,
+   "FP": 0.03924,
+   "HA": 0.0079
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.0079,
+    "N_0.9": 291.0,
+    "N_0.5": 88.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 1,
+    "n_refs": 2
+   }
+  ]
+ },
+ "le1": {
+  "n_sample": 50000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.01,
+  "T_tr": 300.0,
+  "T_obs": 100.0,
+  "time_s": 5.3,
+  "refs": [
+   {
+    "name": "Eset",
+    "kind": "fp",
+    "lam": 0.0,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": null
+   },
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.1023,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -0.51935,
+     0.17942,
+     -1.74927
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.9889,
+   "unknown": 0.00022,
+   "Eset": 0.00932,
+   "HA": 0.00156
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.00156,
+    "N_0.9": 1475.0,
+    "N_0.5": 444.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 11,
+    "n_refs": 2
+   }
+  ]
+ },
+ "rabinovich_100": {
+  "n_sample": 20000,
+  "box_lo": [
+   -60.0,
+   -60.0,
+   -150.0
+  ],
+  "box_hi": [
+   60.0,
+   60.0,
+   150.0
+  ],
+  "dt": 0.002,
+  "T_tr": 200.0,
+  "T_obs": 100.0,
+  "time_s": 32.7,
+  "refs": [
+   {
+    "name": "F0",
+    "kind": "fp",
+    "lam": 9.0004,
+    "escape_frac": 0.0,
+    "point": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "example": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.3649,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -0.61707,
+     5.01517,
+     94.86644
+    ]
+   },
+   {
+    "name": "new0",
+    "kind": "fp",
+    "lam": -0.046,
+    "escape_frac": 0.0,
+    "point": [
+     3.921,
+     1.9654,
+     99.4987
+    ],
+    "example": [
+     3.92102,
+     1.96546,
+     99.4987
+    ]
+   },
+   {
+    "name": "new1",
+    "kind": "fp",
+    "lam": -0.046,
+    "escape_frac": 0.0,
+    "point": [
+     -3.921,
+     -1.9654,
+     99.4987
+    ],
+    "example": [
+     -3.92102,
+     -1.96543,
+     99.49871
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.0,
+   "unknown": 0.0,
+   "F0": 0.0,
+   "HA": 0.76305,
+   "new0": 0.1189,
+   "new1": 0.11805
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.76305,
+    "N_0.9": 2.0,
+    "N_0.5": 1.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 4739,
+    "n_refs": 2
+   },
+   {
+    "round": 1,
+    "unknown": 0,
+    "n_refs": 4
+   }
+  ]
+ },
+ "li_sprott_4d_a6": {
+  "n_sample": 20000,
+  "box_lo": [
+   -15.0,
+   -15.0,
+   -15.0,
+   -15.0
+  ],
+  "box_hi": [
+   15.0,
+   15.0,
+   15.0,
+   15.0
+  ],
+  "dt": 0.005,
+  "T_tr": 500.0,
+  "T_obs": 200.0,
+  "time_s": 13.8,
+  "refs": [
+   {
+    "name": "T",
+    "kind": "periodic",
+    "lam": 0.0064,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -3.33924,
+     -7.48508,
+     0.33009,
+     0.04656
+    ]
+   },
+   {
+    "name": "SA_a",
+    "kind": "chaotic",
+    "lam": 0.2519,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -4.39396,
+     -10.70444,
+     4.31415,
+     -5.28425
+    ]
+   },
+   {
+    "name": "SA_b",
+    "kind": "chaotic",
+    "lam": 0.2575,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     4.39396,
+     10.70444,
+     4.31415,
+     5.28425
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.0,
+   "unknown": 0.00025,
+   "T": 0.08985,
+   "SA_a": 0.44635,
+   "SA_b": 0.46355
+  },
+  "hidden": {
+   "T": {
+    "p": 0.08985,
+    "N_0.9": 25.0,
+    "N_0.5": 8.0
+   },
+   "SA_a": {
+    "p": 0.44635,
+    "N_0.9": 4.0,
+    "N_0.5": 2.0
+   },
+   "SA_b": {
+    "p": 0.46355,
+    "N_0.9": 4.0,
+    "N_0.5": 2.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 5,
+    "n_refs": 3
+   }
+  ]
+ },
+ "jiang_a": {
+  "n_sample": 20000,
+  "box_lo": [
+   -2.0,
+   -2.0
+  ],
+  "box_hi": [
+   2.0,
+   2.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 2.1,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0631,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     0.96952,
+     -0.35997
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.793,
+   "unknown": 0.0,
+   "HA": 0.207
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.207,
+    "N_0.9": 10.0,
+    "N_0.5": 3.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 1
+   }
+  ]
+ },
+ "jiang_b": {
+  "n_sample": 20000,
+  "box_lo": [
+   -2.0,
+   -2.0
+  ],
+  "box_hi": [
+   2.0,
+   2.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 1.7,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0892,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -0.79407,
+     0.55498
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.5392,
+   "unknown": 0.0,
+   "HA": 0.4608
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.4608,
+    "N_0.9": 4.0,
+    "N_0.5": 2.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 1
+   }
+  ]
+ },
+ "jiang_c": {
+  "n_sample": 20000,
+  "box_lo": [
+   -2.0,
+   -2.0
+  ],
+  "box_hi": [
+   2.0,
+   2.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 1.8,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.1018,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -0.32214,
+     0.23915
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.428,
+   "unknown": 0.0,
+   "HA": 0.572
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.572,
+    "N_0.9": 3.0,
+    "N_0.5": 1.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 1
+   }
+  ]
+ },
+ "jafari2026_lc": {
+  "n_sample": 20000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.01,
+  "T_tr": 1000.0,
+  "T_obs": 200.0,
+  "time_s": 5.1,
+  "refs": [
+   {
+    "name": "LC",
+    "kind": "periodic",
+    "lam": 0.0001,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     6.58978,
+     0.07762,
+     -2.943
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.97235,
+   "unknown": 0.0186,
+   "LC": 0.00905
+  },
+  "hidden": {
+   "LC": {
+    "p": 0.00905,
+    "N_0.9": 254.0,
+    "N_0.5": 77.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 372,
+    "n_refs": 1
+   }
+  ]
+ },
+ "huynh2019": {
+  "n_sample": 20000,
+  "box_lo": [
+   -3.0,
+   -3.0
+  ],
+  "box_hi": [
+   3.0,
+   3.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 2.1,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.1146,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     1.50159,
+     0.42617
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.9909,
+   "unknown": 0.0,
+   "HA": 0.0091
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.0091,
+    "N_0.9": 252.0,
+    "N_0.5": 76.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 1
+   }
+  ]
+ },
+ "jafari2026_chaos": {
+  "n_sample": 20000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.005,
+  "T_tr": 1000.0,
+  "T_obs": 200.0,
+  "time_s": 3.2,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0556,
+    "escape_frac": 0.406,
+    "point": null,
+    "example": [
+     6.63916,
+     0.27948,
+     -1.67691
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.9998,
+   "unknown": 0.0,
+   "HA": 0.0002
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.0002,
+    "N_0.9": 11512.0,
+    "N_0.5": 3466.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 1
+   }
+  ]
+ },
+ "jahanshahi2019_4d": {
+  "n_sample": 20000,
+  "box_lo": [
+   -10.0,
+   -10.0,
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0,
+   10.0,
+   10.0
+  ],
+  "dt": 0.005,
+  "T_tr": 500.0,
+  "T_obs": 200.0,
+  "time_s": 10.0,
+  "refs": [
+   {
+    "name": "new0",
+    "kind": "chaotic",
+    "lam": 0.1892,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -3.17442,
+     4.76556,
+     -4.784,
+     -27.60316
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.4858,
+   "unknown": 0.002,
+   "new0": 0.5122
+  },
+  "hidden": {
+   "new0": {
+    "p": 0.5122,
+    "N_0.9": 4.0,
+    "N_0.5": 1.0,
+    "discovered": true
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 10284,
+    "n_refs": 0
+   },
+   {
+    "round": 1,
+    "unknown": 40,
+    "n_refs": 1
+   }
+  ]
+ },
+ "li_sprott_4d_a7": {
+  "n_sample": 20000,
+  "box_lo": [
+   -15.0,
+   -15.0,
+   -15.0,
+   -15.0
+  ],
+  "box_hi": [
+   15.0,
+   15.0,
+   15.0,
+   15.0
+  ],
+  "dt": 0.005,
+  "T_tr": 500.0,
+  "T_obs": 200.0,
+  "time_s": 13.3,
+  "refs": [
+   {
+    "name": "LC",
+    "kind": "periodic",
+    "lam": 0.0035,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     2.98363,
+     -3.19778,
+     3.74898,
+     -0.4491
+    ]
+   },
+   {
+    "name": "SA_a",
+    "kind": "chaotic",
+    "lam": 0.243,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -2.54402,
+     -9.58489,
+     -2.05634,
+     -6.29341
+    ]
+   },
+   {
+    "name": "SA_b",
+    "kind": "chaotic",
+    "lam": 0.231,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     2.54402,
+     9.58489,
+     -2.05634,
+     6.29341
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.0,
+   "unknown": 0.0021,
+   "LC": 0.1304,
+   "SA_a": 0.42675,
+   "SA_b": 0.44075
+  },
+  "hidden": {
+   "LC": {
+    "p": 0.1304,
+    "N_0.9": 17.0,
+    "N_0.5": 5.0
+   },
+   "SA_a": {
+    "p": 0.42675,
+    "N_0.9": 5.0,
+    "N_0.5": 2.0
+   },
+   "SA_b": {
+    "p": 0.44075,
+    "N_0.9": 4.0,
+    "N_0.5": 2.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 42,
+    "n_refs": 3
+   }
+  ]
+ },
+ "li_sprott_4d_hyper": {
+  "n_sample": 20000,
+  "box_lo": [
+   -15.0,
+   -15.0,
+   -15.0,
+   -15.0
+  ],
+  "box_hi": [
+   15.0,
+   15.0,
+   15.0,
+   15.0
+  ],
+  "dt": 0.005,
+  "T_tr": 500.0,
+  "T_obs": 200.0,
+  "time_s": 13.5,
+  "refs": [
+   {
+    "name": "HC",
+    "kind": "chaotic",
+    "lam": 0.063,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     0.4303,
+     2.2171,
+     -0.91802,
+     0.05413
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.0,
+   "unknown": 0.0056,
+   "HC": 0.9944
+  },
+  "hidden": {
+   "HC": {
+    "p": 0.9944,
+    "N_0.9": 1.0,
+    "N_0.5": 1.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 112,
+    "n_refs": 1
+   }
+  ]
+ },
+ "jiang_nfe": {
+  "n_sample": 20000,
+  "box_lo": [
+   -8.0,
+   -8.0
+  ],
+  "box_hi": [
+   8.0,
+   8.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 2.6,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0434,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     3.01588,
+     -2.77805
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.97205,
+   "unknown": 0.0,
+   "HA": 0.02795
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.02795,
+    "N_0.9": 82.0,
+    "N_0.5": 25.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 1
+   }
+  ]
+ },
+ "jiang_nff": {
+  "n_sample": 20000,
+  "box_lo": [
+   -5.0,
+   -5.0
+  ],
+  "box_hi": [
+   5.0,
+   5.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 3.1,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0534,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -2.84609,
+     2.14881
+    ]
+   },
+   {
+    "name": "new0",
+    "kind": "periodic",
+    "lam": -0.0905,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -1.45095,
+     1.45095
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.8809,
+   "unknown": 0.0,
+   "HA": 0.02985,
+   "new0": 0.08925
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.02985,
+    "N_0.9": 76.0,
+    "N_0.5": 23.0
+   },
+   "new0": {
+    "p": 0.08925,
+    "N_0.9": 25.0,
+    "N_0.5": 8.0,
+    "discovered": true
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 1785,
+    "n_refs": 1
+   },
+   {
+    "round": 1,
+    "unknown": 0,
+    "n_refs": 2
+   }
+  ]
+ },
+ "jiang_nfg": {
+  "n_sample": 20000,
+  "box_lo": [
+   -8.0,
+   -8.0
+  ],
+  "box_hi": [
+   8.0,
+   8.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 3.3,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0305,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     1.06552,
+     2.65598
+    ]
+   },
+   {
+    "name": "new0",
+    "kind": "periodic",
+    "lam": -0.0613,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -3.88373,
+     3.88373
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.61735,
+   "unknown": 0.0,
+   "HA": 0.0385,
+   "new0": 0.34415
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.0385,
+    "N_0.9": 59.0,
+    "N_0.5": 18.0
+   },
+   "new0": {
+    "p": 0.34415,
+    "N_0.9": 6.0,
+    "N_0.5": 2.0,
+    "discovered": true
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 6883,
+    "n_refs": 1
+   },
+   {
+    "round": 1,
+    "unknown": 0,
+    "n_refs": 2
+   }
+  ]
+ },
+ "jiang_nfi": {
+  "n_sample": 20000,
+  "box_lo": [
+   -5.0,
+   -5.0
+  ],
+  "box_hi": [
+   5.0,
+   5.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 4.2,
+  "refs": [
+   {
+    "name": "HA",
+    "kind": "periodic",
+    "lam": 0.0152,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     1.25333,
+     0.28762
+    ]
+   },
+   {
+    "name": "new0",
+    "kind": "periodic",
+    "lam": -0.0447,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     1.34784,
+     -1.34784
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.74535,
+   "unknown": 0.0,
+   "HA": 0.03325,
+   "new0": 0.2214
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.03325,
+    "N_0.9": 69.0,
+    "N_0.5": 21.0
+   },
+   "new0": {
+    "p": 0.2214,
+    "N_0.9": 10.0,
+    "N_0.5": 3.0,
+    "discovered": true
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 4428,
+    "n_refs": 1
+   },
+   {
+    "round": 1,
+    "unknown": 0,
+    "n_refs": 2
+   }
+  ]
+ },
+ "jiang_sfa": {
+  "n_sample": 20000,
+  "box_lo": [
+   -5.0,
+   -5.0
+  ],
+  "box_hi": [
+   5.0,
+   5.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 3.8,
+  "refs": [
+   {
+    "name": "FP",
+    "kind": "fp",
+    "lam": -0.0186,
+    "escape_frac": 0.0,
+    "point": [
+     -0.7759,
+     -0.7759
+    ],
+    "example": [
+     -0.77586,
+     -0.77586
+    ]
+   },
+   {
+    "name": "HA",
+    "kind": "periodic",
+    "lam": 0.0106,
+    "escape_frac": 0.031,
+    "point": null,
+    "example": [
+     0.48253,
+     -2.04152
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.7972,
+   "unknown": 0.0,
+   "FP": 0.13785,
+   "HA": 0.06495
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.06495,
+    "N_0.9": 35.0,
+    "N_0.5": 11.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 2
+   }
+  ]
+ },
+ "jiang_sfb": {
+  "n_sample": 20000,
+  "box_lo": [
+   -12.0,
+   -12.0
+  ],
+  "box_hi": [
+   12.0,
+   12.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 4.1,
+  "refs": [
+   {
+    "name": "FP",
+    "kind": "fp",
+    "lam": -0.5066,
+    "escape_frac": 0.0,
+    "point": [
+     -3.1793,
+     -3.1793
+    ],
+    "example": [
+     -3.17935,
+     -3.17935
+    ]
+   },
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.0393,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -7.3817,
+     3.15182
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.54785,
+   "unknown": 0.0,
+   "FP": 0.3866,
+   "HA": 0.06555
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.06555,
+    "N_0.9": 34.0,
+    "N_0.5": 11.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 2
+   }
+  ]
+ },
+ "jiang_sfc": {
+  "n_sample": 20000,
+  "box_lo": [
+   -10.0,
+   -10.0
+  ],
+  "box_hi": [
+   10.0,
+   10.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 4.0,
+  "refs": [
+   {
+    "name": "FP",
+    "kind": "fp",
+    "lam": -0.3466,
+    "escape_frac": 0.0,
+    "point": [
+     -2.1307,
+     -2.1307
+    ],
+    "example": [
+     -2.13065,
+     -2.13065
+    ]
+   },
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.1108,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -4.96913,
+     1.84694
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.6976,
+   "unknown": 0.0,
+   "FP": 0.22335,
+   "HA": 0.07905
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.07905,
+    "N_0.9": 28.0,
+    "N_0.5": 9.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 2
+   }
+  ]
+ },
+ "jiang_sfd": {
+  "n_sample": 20000,
+  "box_lo": [
+   -5.0,
+   -5.0
+  ],
+  "box_hi": [
+   5.0,
+   5.0
+  ],
+  "dt": 1.0,
+  "T_tr": 20000.0,
+  "T_obs": 5000.0,
+  "time_s": 3.7,
+  "refs": [
+   {
+    "name": "FP",
+    "kind": "fp",
+    "lam": -0.0014,
+    "escape_frac": 0.0,
+    "point": [
+     0.5862,
+     0.5862
+    ],
+    "example": [
+     0.58621,
+     0.58621
+    ]
+   },
+   {
+    "name": "HA",
+    "kind": "chaotic",
+    "lam": 0.038,
+    "escape_frac": 0.0,
+    "point": null,
+    "example": [
+     -1.6008,
+     -1.10891
+    ]
+   }
+  ],
+  "fractions": {
+   "escape": 0.88635,
+   "unknown": 0.0,
+   "FP": 0.01335,
+   "HA": 0.1003
+  },
+  "hidden": {
+   "HA": {
+    "p": 0.1003,
+    "N_0.9": 22.0,
+    "N_0.5": 7.0
+   }
+  },
+  "history": [
+   {
+    "round": 0,
+    "unknown": 0,
+    "n_refs": 2
+   }
+  ]
+ }
+}

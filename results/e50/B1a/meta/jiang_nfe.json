@@ -1,0 +1,29 @@
+{
+ "system": "jiang_nfe",
+ "variant": {
+  "system": "jiang_nfe"
+ },
+ "targets": [
+  "HA"
+ ],
+ "refs": [
+  [
+   "HA",
+   "chaotic"
+  ]
+ ],
+ "dim": 2,
+ "system_meta": {},
+ "box_lo": [
+  -8.0,
+  -8.0
+ ],
+ "box_hi": [
+  8.0,
+  8.0
+ ],
+ "esc_r": 1000.0,
+ "n_tr": 20000,
+ "n_obs": 5000,
+ "dt": 1.0
+}

@@ -1,0 +1,2 @@
+{"job": "coupled_chua_II_k2_eps0_c0__uniform__scr", "seed": 1, "found_at": null, "n_eval": 2000, "n_disc": 5, "time_s": 24.48, "steps": 341020000, "t_int": 24.4322, "t_match": 0.0336, "n_stopped": 1486, "screen_off_at": null, "commit": "477e14d+dirty"}
+{"job": "coupled_chua_II_k2_eps0_c0__uniform__scr", "seed": 0, "found_at": null, "n_eval": 2000, "n_disc": 8, "time_s": 25.451, "steps": 355210000, "t_int": 25.4037, "t_match": 0.0334, "n_stopped": 1453, "screen_off_at": null, "commit": "477e14d+dirty"}

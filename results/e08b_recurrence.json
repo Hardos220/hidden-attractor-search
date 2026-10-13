@@ -1,0 +1,570 @@
+{
+ "chua_I": {
+  "targets": [
+   "HA_a",
+   "HA_b"
+  ],
+  "p_uniform": 0.01848,
+  "N_0.9_uniform": 124,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": null,
+    "steps": 396441,
+    "n_attractors": 2,
+    "found": false
+   },
+   {
+    "n_ic": 12,
+    "steps": 12755,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 10,
+    "steps": 9877,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 6,
+    "steps": 9601,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 19,
+    "steps": 12688,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 388111,
+    "n_attractors": 2,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 390734,
+    "n_attractors": 0,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 396774,
+    "n_attractors": 2,
+    "found": false
+   }
+  ],
+  "success_rate": 0.5,
+  "median_n_ic": 11.0,
+  "median_steps": 11282.5,
+  "steps_per_uniform_traj": 440000,
+  "time_s": 12.9
+ },
+ "wangchen1": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": 0.10322,
+  "N_0.9_uniform": 22,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": 1,
+    "steps": 6097,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 35581,
+    "n_attractors": 0,
+    "found": false
+   },
+   {
+    "n_ic": 2,
+    "steps": 6954,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 1,
+    "steps": 4695,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 4,
+    "steps": 3262,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 34484,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 33837,
+    "n_attractors": 0,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 35406,
+    "n_attractors": 1,
+    "found": false
+   }
+  ],
+  "success_rate": 0.5,
+  "median_n_ic": 1.5,
+  "median_steps": 5396.0,
+  "steps_per_uniform_traj": 40000,
+  "time_s": 11.5
+ },
+ "wei_ne2": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": 0.09556,
+  "N_0.9_uniform": 23,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": null,
+    "steps": 41263,
+    "n_attractors": 0,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 43236,
+    "n_attractors": 0,
+    "found": false
+   },
+   {
+    "n_ic": 1,
+    "steps": 5287,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 40745,
+    "n_attractors": 0,
+    "found": false
+   },
+   {
+    "n_ic": 19,
+    "steps": 11588,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 2,
+    "steps": 7044,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 42316,
+    "n_attractors": 0,
+    "found": false
+   },
+   {
+    "n_ic": 1,
+    "steps": 7299,
+    "n_attractors": 1,
+    "found": true
+   }
+  ],
+  "success_rate": 0.5,
+  "median_n_ic": 1.5,
+  "median_steps": 7171.5,
+  "steps_per_uniform_traj": 40000,
+  "time_s": 12.3
+ },
+ "wangchen2": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": 0.66604,
+  "N_0.9_uniform": 3,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": 4,
+    "steps": 7500,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 2,
+    "steps": 5689,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 8,
+    "steps": 7624,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 3,
+    "steps": 6246,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 1,
+    "steps": 4940,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 8,
+    "steps": 6905,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 5,
+    "steps": 6330,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 2,
+    "steps": 6037,
+    "n_attractors": 1,
+    "found": true
+   }
+  ],
+  "success_rate": 1.0,
+  "median_n_ic": 3.5,
+  "median_steps": 6288.0,
+  "steps_per_uniform_traj": 40000,
+  "time_s": 13.5
+ },
+ "se3": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": 0.15254,
+  "N_0.9_uniform": 14,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": null,
+    "steps": 44176,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": 1,
+    "steps": 6688,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 2,
+    "steps": 5070,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 34571,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": 4,
+    "steps": 7261,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 1,
+    "steps": 7520,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 1,
+    "steps": 6786,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 3,
+    "steps": 7892,
+    "n_attractors": 1,
+    "found": true
+   }
+  ],
+  "success_rate": 0.75,
+  "median_n_ic": 1.5,
+  "median_steps": 7023.5,
+  "steps_per_uniform_traj": 40000,
+  "time_s": 13.8
+ },
+ "se11": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": 0.0079,
+  "N_0.9_uniform": 291,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": null,
+    "steps": 144664,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": 87,
+    "steps": 15984,
+    "n_attractors": 2,
+    "found": true
+   },
+   {
+    "n_ic": 10,
+    "steps": 6914,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 144718,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": 17,
+    "steps": 5051,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 149086,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 149024,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 147800,
+    "n_attractors": 1,
+    "found": false
+   }
+  ],
+  "success_rate": 0.375,
+  "median_n_ic": 17.0,
+  "median_steps": 6914.0,
+  "steps_per_uniform_traj": 40000,
+  "time_s": 10.2
+ },
+ "le1": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": 0.00156,
+  "N_0.9_uniform": 1475,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": null,
+    "steps": 565039,
+    "n_attractors": 4,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 555928,
+    "n_attractors": 2,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 556847,
+    "n_attractors": 2,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 558591,
+    "n_attractors": 2,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 557401,
+    "n_attractors": 4,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 557273,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 564301,
+    "n_attractors": 3,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 559997,
+    "n_attractors": 2,
+    "found": false
+   }
+  ],
+  "success_rate": 0.0,
+  "median_n_ic": null,
+  "median_steps": null,
+  "steps_per_uniform_traj": 40000,
+  "time_s": 13.6
+ },
+ "rabinovich_100": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": 0.76305,
+  "N_0.9_uniform": 2,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": 2,
+    "steps": 6349,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 1,
+    "steps": 7117,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 36304,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": 2,
+    "steps": 6709,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 38907,
+    "n_attractors": 1,
+    "found": false
+   },
+   {
+    "n_ic": 1,
+    "steps": 7138,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 1,
+    "steps": 5289,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 1,
+    "steps": 4254,
+    "n_attractors": 1,
+    "found": true
+   }
+  ],
+  "success_rate": 0.75,
+  "median_n_ic": 1.0,
+  "median_steps": 6529.0,
+  "steps_per_uniform_traj": 150000,
+  "time_s": 9.7
+ },
+ "ne4": {
+  "targets": [
+   "HA"
+  ],
+  "p_uniform": 0.07706,
+  "N_0.9_uniform": 29,
+  "grid_n": 40,
+  "runs": [
+   {
+    "n_ic": 196,
+    "steps": 130734,
+    "n_attractors": 4,
+    "found": true
+   },
+   {
+    "n_ic": null,
+    "steps": 232750,
+    "n_attractors": 6,
+    "found": false
+   },
+   {
+    "n_ic": null,
+    "steps": 223375,
+    "n_attractors": 3,
+    "found": false
+   },
+   {
+    "n_ic": 23,
+    "steps": 34215,
+    "n_attractors": 3,
+    "found": true
+   },
+   {
+    "n_ic": 1,
+    "steps": 6856,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 13,
+    "steps": 25482,
+    "n_attractors": 1,
+    "found": true
+   },
+   {
+    "n_ic": 16,
+    "steps": 51277,
+    "n_attractors": 3,
+    "found": true
+   },
+   {
+    "n_ic": 32,
+    "steps": 57989,
+    "n_attractors": 4,
+    "found": true
+   }
+  ],
+  "success_rate": 0.75,
+  "median_n_ic": 19.5,
+  "median_steps": 42746.0,
+  "steps_per_uniform_traj": 1000000,
+  "time_s": 6.0
+ }
+}

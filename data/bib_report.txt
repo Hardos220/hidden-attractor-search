@@ -1,0 +1,7 @@
+OK  Ouannas2018                      sim=1.00 src=crossref        doi=10.3390/e20100720  2018  Entropy
+OK  Huynh2019                        sim=1.00 src=crossref        doi=10.3390/e21030279  2019  Entropy
+OK  Liu2019Entropy                   sim=1.00 src=crossref        doi=10.3390/e21030287  2019  Entropy
+OK  Jahanshahi2019                   sim=1.00 src=crossref        doi=10.3390/e21020156  2019  Entropy
+OK  Volos2019Editorial               sim=1.00 src=crossref        doi=10.3390/e21040370  2019  Entropy
+
+VERIFIED 119/119

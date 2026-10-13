@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code or these data, please cite the article below."
+title: "hidden-attractor-search: searching for hidden attractors as a rare-event problem"
+authors:
+  - family-names: Elisov
+    given-names: Maksim
+    affiliation: "Samara National Research University, Samara, Russia"
+    email: maksimelisov2003@mail.ru
+repository-code: "https://github.com/Hardos220/hidden-attractor-search"
+license: MIT
+date-released: "2026-10-13"
+preferred-citation:
+  type: article
+  title: "Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee"
+  authors:
+    - family-names: Elisov
+      given-names: Maksim
+  journal: "Chaos: An Interdisciplinary Journal of Nonlinear Science"
+  year: 2026
+  notes: "Submitted."
