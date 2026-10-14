@@ -79,6 +79,24 @@ def cmd_reserve(args):
           + (" --sandbox" if args.sandbox else ""))
 
 
+def put_file(bucket, zpath, token, tries=4):
+    """PUT the archive into the deposition bucket. The first PUT right after a new version is opened is often reset
+    by the server (WinError 10053), so retry with a pause."""
+    url = bucket + "/" + urllib.parse.quote(zpath.name) + "?access_token=" + urllib.parse.quote(token)
+    data = zpath.read_bytes()
+    for k in range(tries):
+        req = urllib.request.Request(url, data=data, method="PUT")
+        req.add_header("Content-Type", "application/octet-stream")
+        try:
+            with urllib.request.urlopen(req, timeout=1800) as rr:
+                return json.loads(rr.read().decode())
+        except urllib.error.URLError as e:
+            if k == tries - 1:
+                raise
+            print(f"upload failed ({e.reason}); retry {k + 1}", flush=True)
+            time.sleep(10 * (k + 1))
+
+
 def cmd_upload(args):
     """Replace the files of an unpublished deposition by the given archive (after the DOI was written into it)."""
     base = "https://sandbox.zenodo.org/api" if args.sandbox else "https://zenodo.org/api"
@@ -88,11 +106,7 @@ def cmd_upload(args):
         api(base, token, "DELETE", f"/deposit/depositions/{args.id}/files/{f['id']}")
         print(f"deleted: {f['filename']}")
     zpath = Path(args.zip)
-    url = dep["links"]["bucket"] + "/" + urllib.parse.quote(zpath.name) + "?access_token=" + urllib.parse.quote(token)
-    req = urllib.request.Request(url, data=zpath.read_bytes(), method="PUT")
-    req.add_header("Content-Type", "application/octet-stream")
-    with urllib.request.urlopen(req, timeout=1800) as r:
-        info = json.loads(r.read().decode())
+    info = put_file(dep["links"]["bucket"], zpath, token)
     print(f"uploaded: {info.get('key')} ({info.get('size', 0) / 1e6:.1f} MB)")
 
 
@@ -107,11 +121,8 @@ def cmd_newversion(args):
     for f in dep.get("files", []):
         api(base, token, "DELETE", f"/deposit/depositions/{new_id}/files/{f['id']}")
     zpath = Path(args.zip)
-    url = dep["links"]["bucket"] + "/" + urllib.parse.quote(zpath.name) + "?access_token=" + urllib.parse.quote(token)
-    req = urllib.request.Request(url, data=zpath.read_bytes(), method="PUT")
-    req.add_header("Content-Type", "application/octet-stream")
-    with urllib.request.urlopen(req, timeout=1800) as rr:
-        info = json.loads(rr.read().decode())
+    print(f"new version draft id: {new_id}", flush=True)
+    info = put_file(dep["links"]["bucket"], zpath, token)
     meta = dep["metadata"]
     meta["version"] = args.version
     if args.meta:
