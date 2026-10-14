@@ -372,11 +372,14 @@ def fig_d2_mechanism():
     w = np.linalg.norm(ics[:, 3:], axis=1) / rho
     esc = feats[:, F_ESC] > 0.5
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.0))
-    axes[0].loglog(w[esc] - 1, feats[esc, F_TESC] * s.dt, ",", color=SERIES[0], alpha=0.5)
-    dd = np.logspace(-6, 1.5, 100)
-    axes[0].loglog(dd, np.maximum(np.log(1 / (2 * dd)), 1e-3) / 2.0, color=SERIES[7], lw=1.2, label="ln(1/2Δ) / 2κ")
+    axes[0].loglog(w[esc] - 1, feats[esc, F_TESC] * s.dt, ".", color=MUTED, ms=2.0, alpha=0.5, mew=0, zorder=1,
+                   label="3·10⁴ равномерных начальных условий")
+    # точная зависимость времени ухода от Δ на всём диапазоне (асимптотика ln(1/2Δ)/2κ верна только при Δ ≪ 1)
+    dd = np.logspace(-6, 1.6, 300)
+    axes[0].loglog(dd, np.log((1 + dd) ** 2 / ((1 + dd) ** 2 - 1)) / 2.0, color=INK, lw=1.0, zorder=3,
+                   label="t = ln[(1+Δ)²/((1+Δ)²−1)] / 2κ")
     axes[0].set_xlabel("Δ = |w₀|/ρ − 1"); axes[0].set_ylabel("время ухода")
-    axes[0].set_title("Время ухода расходится у границы бассейна", fontsize=9); axes[0].legend(fontsize=8)
+    axes[0].set_title("Время ухода расходится у границы бассейна", fontsize=9); axes[0].legend(fontsize=8, loc="lower left", markerscale=3)
     s2, refs, tidx, levels, res = _capture_sus(name, budget=6000)
     for k, (rst, lv, X) in enumerate(levels[:12]):
         ww = np.linalg.norm(X[:, 3:], axis=1) / rho

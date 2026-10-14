@@ -15,6 +15,7 @@ to https://sandbox.zenodo.org (separate account and token) for a dry run.
 """
 import argparse
 import json
+import time
 import os
 import sys
 import urllib.error
@@ -113,6 +114,12 @@ def cmd_newversion(args):
         info = json.loads(rr.read().decode())
     meta = dep["metadata"]
     meta["version"] = args.version
+    if args.meta:
+        extra = json.loads(Path(args.meta).read_text(encoding="utf-8"))
+        for key in ("title", "description", "keywords", "creators", "related_identifiers"):
+            if key in extra:
+                meta[key] = extra[key]
+    meta["publication_date"] = time.strftime("%Y-%m-%d")
     meta.pop("doi", None)
     meta.pop("prereserve_doi", None)
     dep = api(base, token, "PUT", f"/deposit/depositions/{new_id}", data={"metadata": meta})
@@ -142,6 +149,7 @@ def main():
     n.add_argument("--id", required=True, help="id of the published record")
     n.add_argument("--zip", required=True)
     n.add_argument("--version", required=True)
+    n.add_argument("--meta", help=".zenodo.json whose title, description, keywords, creators, and related identifiers replace those of the previous version")
     p = sub.add_parser("publish")
     p.add_argument("--id", required=True)
     for s in (r, u, n, p):

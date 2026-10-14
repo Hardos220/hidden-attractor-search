@@ -272,6 +272,7 @@ TR = {
     "начальное условие (": "initial condition (",
     '"время ухода"': '"escape time"',
     "Время ухода расходится у границы бассейна": "Escape time diverges at the basin boundary",
+    "3·10⁴ равномерных начальных условий": "3·10⁴ uniform initial conditions",
     "граница бассейна |w| = ρ": "basin boundary |w| = ρ",
     "номер уровня (с учётом перезапусков)": "level index (including restarts)",
     "|w| / ρ у цепей уровня": "|w|/ρ of the level chains",
@@ -370,10 +371,10 @@ PATCH = [
     # fig24: legend below the axes (inside it covered the uniform and active-learning curves); the theory line thin
     # and grey so that it is not confused with the black dashed uniform-sampling curve (STRATEGY_STYLE)
     ("e26", 'ax.axhline(np.log(10) / 1e-4, color=INK, lw=1, ls="--", label="ln 10 / p")',
-            'ax.axhline(np.log(10) / 1e-4, color=MUTED, lw=0.9, ls="-", label="ln 10 / p (uniform, theory)", zorder=1)'),
+            'ax.axhline(np.log(10) / 1e-4, color=MUTED, lw=0.9, ls="-", label="ln 10 / p (theory)", zorder=1)'),
     ("e26", 'axes[0].set_ylabel("$N_{0.9}$"); axes[0].legend(fontsize=7)',
             'axes[0].set_ylabel("$N_{0.9}$ (integrations)")\n'
-            '    axes[0].legend(fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=2, columnspacing=1.0, handlelength=2.4)'),
+            '    axes[0].legend(fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=2, columnspacing=0.8, handlelength=2.0)'),
     # fig50: headroom for the VPT note and the legend
     ("e35", 'ax.text(v + 0.2, 17, f"VPT = {v:.1f} Lyap. times", fontsize=8, color=INK2)',
             'ax.text(v + 0.2, 24, f"VPT = {v:.1f} Lyap. times", fontsize=8, color=INK2); ax.set_ylim(-19, 30)'),
@@ -516,10 +517,28 @@ def install_hooks():
         setup_en()
     viz.setup = setup
 
+    orig_tl = Figure.tight_layout
+
+    def fit_width(fig, target):
+        """Single-column figures: shrink the canvas until the tight bounding box (legends below the axes included)
+        is not wider than the column, so that LaTeX does not scale the 8 pt labels down."""
+        pad = 2 * float(plt.rcParams["savefig.pad_inches"])
+        for _ in range(8):
+            fig.canvas.draw()
+            w = fig.get_tightbbox(fig.canvas.get_renderer()).width + pad
+            if w <= target + 0.005:
+                break
+            W, H = fig.get_size_inches()
+            fig.set_size_inches(W - (w - target) - 0.01, H)
+            if getattr(fig, "_en_tl", None) is not None:
+                orig_tl(fig, **fig._en_tl)
+
     def save(fig, path_without_ext):
         name = Path(str(path_without_ext)).name
         out = OUTDIRS.get((STATE["current"] or "").split(":")[0], OUT)
         out.mkdir(parents=True, exist_ok=True)
+        if getattr(fig, "_en_w0", 99) <= W1 + 0.1:
+            fit_width(fig, W1)
         fig.savefig(out / f"{name}.pdf")
         fig.savefig(out / f"{name}.png")
         SIZES.append((name, STATE["current"], tuple(round(float(v), 2) for v in fig.get_size_inches())))
@@ -533,18 +552,20 @@ def install_hooks():
         if spec is not None:
             w, h = kw.get("figsize") or plt.rcParams["figure.figsize"]
             kw["figsize"] = spec(w, h) if callable(spec) else spec
-        return orig_figure(*args, **kw)
+        fig = orig_figure(*args, **kw)
+        fig._en_w0 = float(fig.get_size_inches()[0])
+        return fig
     plt.figure = figure
 
     def suptitle(self, t, **kw):
         SUPTITLES.append((STATE["current"], t))
     FigureBase.suptitle = suptitle
 
-    orig_tl = Figure.tight_layout
 
     def tight_layout(self, *, pad=1.08, h_pad=None, w_pad=None, rect=None):
         if rect is not None:
             rect = (rect[0], rect[1], rect[2], 1.0)      # the space was reserved for the dropped suptitle
+        self._en_tl = dict(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
         return orig_tl(self, pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
     Figure.tight_layout = tight_layout
 

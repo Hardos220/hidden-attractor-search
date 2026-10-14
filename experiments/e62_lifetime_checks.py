@@ -440,10 +440,14 @@ def main():
     ap.add_argument("--T-dop", type=float, default=2e4)
     ap.add_argument("--T-b", type=float, default=1e4)
     ap.add_argument("--tag", default="", help="суффикс файлов результата (для проб)")
+    ap.add_argument("--md-only", action="store_true", help="только пересобрать .md из готового .json (без счёта)")
     args = ap.parse_args()
     global OUT
     if args.tag:
         OUT = ROOT / "results" / f"e62_lifetime_checks{args.tag}"
+    if args.md_only:
+        write_md(json.loads(OUT.with_suffix(".json").read_text(encoding="utf-8")))
+        return
     import numba
     th = int(os.environ.get("RMQ_CPU", "4") or 4)
     numba.set_num_threads(max(1, min(th, numba.config.NUMBA_NUM_THREADS)))

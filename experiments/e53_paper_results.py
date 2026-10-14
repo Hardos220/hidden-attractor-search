@@ -49,8 +49,8 @@ T = {
     "en": {"se11": "SE11", "le1": "LE1", "chua_I": "Chua I", "chua_II": "Chua II", "jafari2026_lc": "Jafari cycle",
            "uniform": "uniform sampling", "sus": "splitting", "portfolio": "portfolio", "edge_bisect": "boundary bisection",
            "sus_smin": "splitting, step floor 5×10⁻⁴ or none", "sus_nostall": "splitting, no step floor",
-           "sus_coord": "splitting + coordinate redraws", "portfolio_coord": "portfolio + coordinate redraws",
-           "sus_dt": "splitting, smaller step Δt", "portfolio_dt": "portfolio, smaller step Δt",
+           "sus_coord": "splitting + redraws", "portfolio_coord": "portfolio + redraws",
+           "sus_dt": "splitting, smaller Δt", "portfolio_dt": "portfolio, smaller Δt",
            "portfolio_smin": "portfolio, step floor 5×10⁻⁴",
            "k": "region scale factor k", "p": "target basin measure p", "G": "$G_{0.9}$",
            "k3": "p(k=1) / k³ (basin inside B)", "guar": "guarantee G = θ = 0.2", "even": "G = 1",
@@ -267,6 +267,20 @@ def md(out):
 # ============================================================================ рисунки
 def _wh(lang, w_en, h_en, scale_ru=1.45):
     return (w_en, h_en) if lang == "en" else (w_en * scale_ru, h_en * scale_ru)
+
+
+def _fit_width(fig, target=3.37):
+    """Column figure of the English version: shrink the canvas until the tight bounding box (legend below the axes
+    included) fits the column, so that LaTeX does not scale the 8 pt labels down."""
+    pad = 2 * float(plt.rcParams["savefig.pad_inches"])
+    for _ in range(8):
+        fig.canvas.draw()
+        w = fig.get_tightbbox(fig.canvas.get_renderer()).width + pad
+        if w <= target + 0.005:
+            break
+        W, H = fig.get_size_inches()
+        fig.set_size_inches(W - (w - target) - 0.01, H)
+        fig.tight_layout()
 
 
 def fig27(out, lang):
@@ -496,7 +510,10 @@ def main():
         if lang == "en":
             viz.setup_en()      # Arial, >= 8 pt, Type 42 fonts: the same setup as paper/chaos/make_figures_en.py
         for name, fn in (("fig27_enlarged_regions", fig27), ("fig28_coupled_copies", fig28), ("fig29_d2_small_p", fig29)):
-            save(fn(out, lang), d / name)
+            fig = fn(out, lang)
+            if lang == "en" and fig.get_size_inches()[0] <= 3.5:
+                _fit_width(fig)
+            save(fig, d / name)
             print("рисунок:", lang, name)
 
 
