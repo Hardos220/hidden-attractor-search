@@ -509,6 +509,20 @@ def batches():
         j["warmup"] = 300
     B["B22"] = {"title": "Новый аттрактор как цель: время на одном потоке", "jobs": b22, "threads": 1}
 
+    # B23 (2026-10-14): stagger-and-step (Sweet, Nusse, Yorke 2001) по той же координате, что у расщепления, на задачах
+    # без выигрыша (гарантия худшего случая), на D2 по шкале p (показатель скейлинга), на D1 без сигнала и на трёх
+    # связанных копиях SE11; полный счёт, как в табл. II (Чуа II, SE11, LE1, D2 p = 1e-4 посчитаны e65_stagger, R = 50)
+    b23 = []
+    for f in ("chua_I_R50", "jafari2026_lc_R50", "huynh2019_R50", "jafari2026_chaos", "edge_se3_m3_p0.01", "edge_se3_m3_p0.001",
+              "edge_se3_m3_p1e-05", "emb_se3_m3_p0.001"):
+        m = _old(f)["_meta"]
+        base = f.replace("_R50", "")
+        # D1 has no signal: stagger exhausts its budget in most runs (about 2 min each), R = 20 suffices
+        b23.append(job({"system": base}, "stagger", 20 if base.startswith("emb_") else 50, m["budget"],
+                       targets=m.get("targets"), est_evals=m["budget"] / 4, est_ms=1.0, batch=1))
+    b23.append(job(v3, "stagger", 20, 500_000, targets=["HA"], est_evals=2e4, est_ms=0.3, upper_evals=5e5, batch=1))
+    B["B23"] = {"title": "Stagger-and-step: отказы, скейлинг D2 по p, D1, три связанные копии SE11", "jobs": b23, "threads": 1}
+
     # B15 (2026-10-12): время на всех потоках в одном процессе (как у пользователя на одной машине): две копии Чуа II,
     # замер стоимости перебора и портфель ширины 1, 2, 4; R = 10
     b15 = [job(vc, "uniform", 1, 4000, targets=tc, est_evals=4000, est_ms=3.0, screen="auto", batch=500)]

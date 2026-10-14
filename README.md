@@ -2,11 +2,11 @@
 
 Code, experiments, results, and manuscript sources for the article
 
-> M. Elisov, *Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee*, submitted to *Chaos: An Interdisciplinary Journal of Nonlinear Science* (2026).
+> M. Elisov, *Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee*, manuscript for *Chaos: An Interdisciplinary Journal of Nonlinear Science* (2026).
 
-Archived in Zenodo: [doi:10.5281/zenodo.23348470](https://doi.org/10.5281/zenodo.23348470) (all versions; v1.0.1 is the current one).
+Archived in Zenodo: [doi:10.5281/zenodo.23348470](https://doi.org/10.5281/zenodo.23348470) (all versions; v1.0.2 is the current one).
 
-The search for a hidden attractor with a small basin is treated as the detection of a rare event in the space of initial conditions. The repository contains the benchmark of systems with hidden attractors, the identification and verification protocol, the search strategies (uniform sampling, subset simulation driven by transient duration, active learning of basin boundaries, their portfolio, bisection toward basin boundaries, and Zelinka's differential evolution), every numerical result reported in the article, and the scripts that produce its tables and figures.
+The search for a hidden attractor with a small basin is treated as the detection of a rare event in the space of initial conditions. The repository contains the benchmark of systems with hidden attractors, the identification and verification protocol, the search strategies (uniform sampling, subset simulation driven by transient duration, active learning of basin boundaries, their portfolio, bisection toward basin boundaries, a stagger-and-step chain, and Zelinka's differential evolution), every numerical result reported in the article, and the scripts that produce its tables and figures.
 
 ## Layout
 
@@ -57,23 +57,27 @@ python experiments/e27_stage3_driver.py    # repeats with R = 50 and the Jiang m
 python experiments/e28_robustness_driver.py  # hyperparameters
 python experiments/e22_signal_analysis.py  # channel diagnostics d(q)
 python experiments/e23_edge_check.py       # bisection toward basin boundaries
+python experiments/e65_stagger.py          # stagger-and-step baseline on Chua II, SE11, LE1, D2 (p = 1e-4)
+python experiments/e66_stagger_summary.py  # stagger-and-step against splitting and the portfolio (Table XIII; with batch B23)
 ```
 
 Long batches (enlarged regions, D2 down to p = 1e-7, coupled copies, cost in steps and time, the one-thread timing, the coupling-born attractor):
 
 ```
-python experiments/e50_batch_runner.py list        # batches B0..B22 of experiments/e50_batches.py with time estimates
+python experiments/e50_batch_runner.py list        # batches B0..B23 of experiments/e50_batches.py with time estimates
 RMQ_TASK_ID=local RMQ_CPU=8 python experiments/e50_batch_runner.py run B13
 python experiments/e50_batch_runner.py summarize B13
 ```
 
 The runner was written for a local job queue (`rmq`); the two environment variables above let it run directly with the given number of threads. Uniform sampling of the enlarged-region and coupled-copy batches can be computed on the GPU with `experiments/e51_gpu_uniform.py` (bit-exact with the CPU kernels). Batch outputs are appended to `results/e50/<batch>/<job>.jsonl`, so an interrupted batch resumes.
 
-Coupled Chua circuits and the comparison with Attractors.jl (Sec. V D--E):
+Coupled Chua circuits, the coupling-born attractor, and the comparison with Attractors.jl (Sec. V D--F):
 
 ```
 python experiments/e55_coupled_chua_census.py       # regimes, equilibria, hiddenness of the coupled circuits
 python experiments/e58_coupled_chua_eps_scan.py     # continuation of the coupling-born attractor in eps
+python experiments/e62_lifetime_checks.py           # lifetime of the coupling-born attractor (1e5-1e6, DOP853) and of the Jafari chaos
+python experiments/e63_hiddenness_big.py            # hiddenness with 2e5 starts per radius (upper bounds on h_eps)
 python experiments/e56_chua_param_scan.py; python experiments/e57_param_scan.py   # basin measure toward the crisis
 python experiments/e59_eval_cost.py export          # common initial conditions -> results/e59/ics_*.csv
 julia julia/recurrence_cost.jl                      # Attractors.jl cost per evaluation -> results/e59/cost_julia.json

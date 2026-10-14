@@ -374,8 +374,8 @@ def fig_d2_mechanism():
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.0))
     axes[0].loglog(w[esc] - 1, feats[esc, F_TESC] * s.dt, ",", color=SERIES[0], alpha=0.5)
     dd = np.logspace(-6, 1.5, 100)
-    axes[0].loglog(dd, np.maximum(np.log(1 / (2 * dd)), 1e-3) / 2.0, color=SERIES[7], lw=1.2, label="ln(1/2δ) / 2κ")
-    axes[0].set_xlabel("δ = |w₀|/ρ − 1"); axes[0].set_ylabel("время ухода")
+    axes[0].loglog(dd, np.maximum(np.log(1 / (2 * dd)), 1e-3) / 2.0, color=SERIES[7], lw=1.2, label="ln(1/2Δ) / 2κ")
+    axes[0].set_xlabel("Δ = |w₀|/ρ − 1"); axes[0].set_ylabel("время ухода")
     axes[0].set_title("Время ухода расходится у границы бассейна", fontsize=9); axes[0].legend(fontsize=8)
     s2, refs, tidx, levels, res = _capture_sus(name, budget=6000)
     for k, (rst, lv, X) in enumerate(levels[:12]):

@@ -620,3 +620,70 @@ def _portfolio_fast(problem, max_train=None, **kw):
 
 STRATEGIES["portfolio_fast"] = _portfolio_fast
 STRATEGIES["portfolio_cap"] = lambda pr, **kw: _portfolio_fast(pr, max_train=20000, **kw)
+
+
+# ----------------------------------------------------------------------------
+class StaggerStep(Strategy):
+    """Stagger-and-step (Sweet, Nusse, Yorke, Phys. Rev. Lett. 86, 2261 (2001)) по координате «длительность
+    переходного процесса» (2026-10-13; базовая стратегия для сравнения).
+
+    Одна цепь: хранится точка с наибольшей xi = transient_length (та же координата, что у расщепления, sus.py).
+    Предложение («stagger»): x + delta, где delta = m (hi - lo) v, v — случайное единичное направление, величина шага
+    m = 10^a с показателем a, равномерным на [log10 m_min, log10 m_max] (по умолчанию от 1e-3 до 1 ширины области);
+    точка отражается в область. Оценка предложения — одно интегрирование; оно принимается («step»), если xi строго
+    растёт. После max_reject (30) отказов подряд цепь начинается заново с равномерной точки s.sample_box(1, rng) — тот
+    же генератор и та же выборка, что у остальных стратегий. Каждая оценка — одно интегрирование (пачка из одной точки)."""
+    name = "stagger"
+
+    def __init__(self, problem, batch=1, m_min=1e-3, m_max=1.0, max_reject=30, **kw):
+        super().__init__(problem, batch=1)
+        self.m_min = float(m_min)
+        self.m_max = float(m_max)
+        self.max_reject = int(max_reject)
+        self.x = None
+        self.xi = -np.inf
+        self.n_rej = 0
+        self.pending = None
+        self.n_restarts = 0
+        self.n_accept = 0
+        self.n_eval = 0
+
+    def _xi(self, feats):
+        from .sus import transient_length
+        return transient_length(self.s, feats)
+
+    def propose(self):
+        if self.x is None:
+            self.pending = "init"
+            return self.s.sample_box(1, self.rng)
+        from .sus import reflect
+        a = self.rng.uniform(np.log10(self.m_min), np.log10(self.m_max))
+        v = self.rng.normal(size=self.d)
+        v /= np.linalg.norm(v) + 1e-12
+        y = self.x + (10.0 ** a) * (self.hi - self.lo) * v
+        self.pending = "stagger"
+        return reflect(y, self.lo, self.hi)[None, :]
+
+    def observe(self, ics, feats, finals, labels):
+        self.n_eval += len(ics)
+        xi = float(self._xi(feats)[0])
+        if self.pending == "init":
+            self.x = np.array(ics[0], float)
+            self.xi = xi
+            self.n_rej = 0
+            return
+        if xi > self.xi:
+            self.x = np.array(ics[0], float)
+            self.xi = xi
+            self.n_rej = 0
+            self.n_accept += 1
+        else:
+            self.n_rej += 1
+            if self.n_rej >= self.max_reject:
+                self.x = None
+                self.xi = -np.inf
+                self.n_rej = 0
+                self.n_restarts += 1
+
+
+STRATEGIES["stagger"] = StaggerStep

@@ -9,9 +9,9 @@ authors:
     orcid: "https://orcid.org/0009-0001-3097-2703"
 repository-code: "https://github.com/Hardos220/hidden-attractor-search"
 doi: 10.5281/zenodo.23348470
-version: 1.0.1
+version: 1.0.2
 license: MIT
-date-released: "2026-10-13"
+date-released: "2026-10-14"
 preferred-citation:
   type: article
   title: "Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee"
@@ -20,4 +20,4 @@ preferred-citation:
       given-names: Maksim
   journal: "Chaos: An Interdisciplinary Journal of Nonlinear Science"
   year: 2026
-  notes: "Submitted."
+  notes: "Manuscript."

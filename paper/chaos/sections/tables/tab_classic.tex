@@ -1,0 +1,27 @@
+% Proposed caption (replaces the bar chart fig07_classic_vs_uniform / \ref{fig:classic}):
+% Classical heuristics versus uniform sampling on the level-A targets: the number of integrations to detection with probability 0.9, $N_{0.9}=\lceil\ln0.1/\ln(1-p)\rceil$, where $p$ is the hit frequency of the sampling scheme. Uniform: sampling in $B$ ($p$ from $2\times10^4$ points; the geometric value, which differs slightly from the measured $N^0_{0.9}$ of Table~\ref{tab:gains}). CVS: sampling on the coordinate-wise zero-velocity sets (nullclines) $\dot x_i=0$, up to $10^3$ points on each, best coordinate. CC: sampling on connecting curves, 400 points. ``Not found'': no hit among the sampled points. PP: the number of perpetual points that lead to the target over the number of perpetual points found (``none'': the system has no perpetual points).
+
+\begin{table}
+\caption{Classical heuristics versus uniform sampling on the level-A targets: the number of integrations to detection with probability 0.9, $N_{0.9}=\lceil\ln0.1/\ln(1-p)\rceil$, where $p$ is the hit frequency of the sampling scheme. Uniform: sampling in $B$ ($p$ from $2\times10^4$ points; the geometric value, which differs slightly from the measured $N^0_{0.9}$ of Table~\ref{tab:gains}). CVS: sampling on the coordinate-wise zero-velocity sets (nullclines) $\dot x_i=0$, up to $10^3$ points on each, best coordinate. CC: sampling on connecting curves, 400 points. ``Not found'': no hit among the sampled points. PP: the number of perpetual points that lead to the target over the number of perpetual points found (``none'': the system has no perpetual points).}
+\label{tab:classic}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+Target & Uniform & CVS & CC & PP \\
+ & $N^0_{0.9}$ & $N_{0.9}$ & $N_{0.9}$ & hits/total \\
+\hline
+Rabinovich, $r=100$ & 2 & 2 & 2 & 2/2 \\
+Wang--Chen \#2 & 3 & 1 & 2 & none \\
+NE4 & 6 & 7 & 29 & 0/1 \\
+SE3 & 14 & 11 & not found & none \\
+Wang--Chen \#1 & 22 & 19 & 11 & 1/2 \\
+Wei (NE2) & 23 & 17 & 22 & 1/2 \\
+Chua I, chaos A\footnotemark[1] & 136 & 14 & 172 & none \\
+Chua I, chaos B\footnotemark[1] & 124 & 14 & 172 & none \\
+SE11 & 291 & 255 & not found & none \\
+LE1 & 1475 & 575 & 920 & 0/1 \\
+\end{tabular}
+\end{ruledtabular}
+\footnotetext[1]{The heuristics count hits on either of the two hidden attractors; the uniform cost for either attractor is 65.}
+\end{table}

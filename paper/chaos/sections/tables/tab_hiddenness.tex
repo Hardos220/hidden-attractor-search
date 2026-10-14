@@ -1,0 +1,28 @@
+% Proposed caption (replaces the plot fig40_hiddenness / \ref{fig:hidden}):
+% Hiddenness measure $h_\varepsilon$: the fraction of trajectories started in the $\varepsilon$-neighborhoods of the equilibria (uniformly in the ball of radius $\varepsilon$ about each equilibrium, plus the two points $e\pm\varepsilon u$ along every unstable eigendirection $u$) that enter the basin of the attractor, for $\varepsilon=10^{-3}L$, $10^{-2}L$, and $10^{-1}L$, where $L$ is the half-width of the region $B$; $n$ is the number of starts per radius. An entry 0 means no hit among the $n$ starts (95\% upper bound $3/n$). For Chua~I and Chua~II, the two hidden attractors are listed separately; the values quoted in the text for Chua~I are the sums over A and B. The Lorenz transient set is shown for comparison.
+% Data caveat (results/e11_hiddenness.json): the reference set of this experiment contains one chaotic attractor of Chua II
+% (new1) and the cycle LC (new0); at eps = 1e-1 L, 103 of 1202 starts (8.6%) reach an unmatched regime, presumably the
+% symmetric second chaotic attractor, so h for "chaos, both" would be about 0.18. Wang--Chen #2 at 1e-1 L: 2 unmatched, 1% escape.
+% Hits behind the nonzero entries: Chua I A 3/101, B 1/122 (1e-2 L / 1e-1 L); Chua II LC 484, chaos 115; Rabinovich 39/781;
+% Lorenz 49.
+
+\begin{table}
+\caption{Hiddenness measure $h_\varepsilon$: the fraction of trajectories started in the $\varepsilon$-neighborhoods of the equilibria (uniformly in the ball of radius $\varepsilon$ about each equilibrium, plus the two points $e\pm\varepsilon u$ along every unstable eigendirection $u$) that enter the basin of the attractor, for $\varepsilon=10^{-3}L$, $10^{-2}L$, and $10^{-1}L$, where $L$ is the half-width of the region $B$; $n$ is the number of starts per radius. An entry 0 means no hit among the $n$ starts (95\% upper bound $3/n$). For Chua~I and Chua~II, the two hidden attractors are listed separately; the values quoted in the text for Chua~I are the sums over A and B. The Lorenz transient set is shown for comparison.}
+\label{tab:hidden}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+System, attractor & $n$ & $\varepsilon=10^{-3}L$ & $10^{-2}L$ & $10^{-1}L$ \\
+\hline
+Chua I, A & 1204 & 0 & 0.00249 & 0.0839 \\
+Chua I, B & 1204 & 0 & 0.000831 & 0.101 \\
+Chua II, cycle LC & 1202 & 0 & 0 & 0.403 \\
+Chua II, chaos & 1202 & 0 & 0 & 0.0957 \\
+Wang--Chen \#2 & 400 & 0 & 0 & 0.838 \\
+SE3 & 400 & 0 & 0 & 0 \\
+SE11 & 400 & 0 & 0 & 0 \\
+Rabinovich, $r=100$ & 1202 & 0 & 0.0324 & 0.650 \\
+Lorenz $(4,29,2)$, transient set & 1202 & 0 & 0 & 0.0408 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}

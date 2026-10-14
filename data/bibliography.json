@@ -3175,5 +3175,46 @@
   "source": "arxiv",
   "title_similarity": 1.0,
   "verified": true
+ },
+ {
+  "key": "SweetNusseYorke2001",
+  "group": "E_search",
+  "doi": "10.1103/PhysRevLett.86.2261",
+  "title": "Stagger-and-step method: Detecting and computing chaotic saddles in higher dimensions",
+  "authors": [
+   "SWEET D.",
+   "NUSSE H.E.",
+   "YORKE J.A."
+  ],
+  "venue": "Physical Review Letters",
+  "volume": "86",
+  "issue": "11",
+  "pages": "2261-2264",
+  "year": 2001,
+  "type": "article",
+  "source": "crossref",
+  "verified": true,
+  "title_similarity": 1.0,
+  "citations": 51
+ },
+ {
+  "key": "Murali1991DrivenChua",
+  "group": "B_systems",
+  "doi": "10.1142/s0218127491000300",
+  "title": "Bifurcation and chaos of the sinusoidally-driven Chua's circuit",
+  "authors": [
+   "MURALI K.",
+   "LAKSHMANAN M."
+  ],
+  "venue": "International Journal of Bifurcation and Chaos",
+  "volume": "01",
+  "issue": "02",
+  "pages": "369-384",
+  "year": 1991,
+  "type": "journal-article",
+  "source": "crossref",
+  "verified": true,
+  "title_similarity": 1.0,
+  "citations": 28
  }
 ]

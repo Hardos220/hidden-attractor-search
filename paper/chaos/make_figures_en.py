@@ -2,16 +2,22 @@
 
 The original plotting scripts (experiments/e10, e26, e35, e40) are executed unchanged on disk, with:
   1. Russian display strings replaced by English ones in the source text before execution (TR below);
-  2. figure sizes set for the journal column widths (3.37 in / 6.69 in) and fonts of 7-8.5 pt (FIGSIZE, _fs);
+  2. figure sizes set for the journal column widths (3.37 in / 6.69 in) and fonts of 8-8.5 pt (FIGSIZE, _fs; AIP
+     asks for at least 8 pt at the printed size, MIN_FONT);
   3. layout tweaks for the smaller canvases (PATCH);
   4. suptitles dropped (their content goes to the LaTeX captions; the texts are logged to _build/suptitles.txt);
-  5. output redirected to paper/chaos/figures/, any write into results/ diverted to _build/side/.
+  5. output redirected to paper/chaos/figures/, any write into results/ diverted to _build/side/;
+  6. search strategies encoded by line style and marker as well as colour (STRATEGY_STYLE, applied by a hook on
+     Axes.plot whenever a line is labelled with a strategy name), so that the result figures read in grey scale;
+  7. figures whose English version differs in content (panels merged or dropped, legends outside the data, panel
+     labels (a), (b), ... instead of titles) are redrawn in figures_en.py (OVERRIDE/EXTRA) with the same data.
 Data are the same as in the Russian figures: the scripts read results/*.json|npy|npz and use fixed seeds.
 
     python paper/chaos/make_figures_en.py                 # all figures
     python paper/chaos/make_figures_en.py e40:fig_chua_I  # selected figure functions
     python paper/chaos/make_figures_en.py --esn           # also the ESN figures (e35) -> paper/esn/figures_en
 """
+import functools
 import io
 import re
 import sys
@@ -35,6 +41,10 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.figure import Figure, FigureBase  # noqa: E402
 
 from hsearch import viz  # noqa: E402
+from hsearch.viz import INK, MIN_FONT, MUTED  # noqa: E402
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from figures_en import EXTRA, OVERRIDE  # noqa: E402
 
 W1, W2 = 3.37, 6.69          # AIP single- and double-column widths, inches
 SCRIPTS = {"e10": "e10_figures.py", "e26": "e26_stage2_figures.py", "e35": "e35_esn_figures.py",
@@ -81,7 +91,7 @@ TR = {
     "Скрытые аттракторы эталонного набора (уровень A), проекции на плоскость (x, z)": "Hidden attractors of the benchmark set (level A), projections onto the (x, z) plane",
     # --- e26
     "равномерный перебор": "uniform sampling",
-    "DE Зелинки (оракул размера)": "Zelinka's DE (size oracle)",
+    "DE Зелинки (оракул размера)": "Zelinka's DE (given target size)",
     "AMS (1-е поколение)": "AMS (1st generation)",
     "MAP-Elites (1-е поколение)": "MAP-Elites (1st generation)",
     "расщепление: время ухода": "splitting: escape time",
@@ -115,7 +125,7 @@ TR = {
     '"Хуинь"': '"Huynh"',
     "цикл Jafari": "Jafari cycle",
     "доля q верхнего множества координаты": "upper-set fraction q of the coordinate",
-    "медиана расстояния до цели (отн.)": "median distance to target (rel.)",
+    "медиана расстояния до цели (отн.)": "median distance d(q) (rel.)",
     "Сходятся ли «долгие» переходные процессы к цели?": "Do long transients approach the target?",
     "G_0.9 расщепления": "splitting $G_{0.9}$",
     "Наблюдаемый выигрыш": "Observed gain",
@@ -315,23 +325,26 @@ TGT_EXTRA = {("jiang_nff", "new0"): "cycle", ("jiang_nfg", "new0"): "cycle", ("j
 # 2. Sizes (inches) per figure function; a callable gets the original (w, h).
 FIGSIZE = {
     "e10:fig_chua_basin": (W1, 2.75), "e10:fig_chua_survival": (W1, 2.35), "e10:fig_chua_dt": (W1, 2.6),
+    "e10:fig_chua_transient": (W1, 4.7),
     "e10:fig_table1": (W2, 2.7), "e10:fig_uniform": lambda w, h: (W1, 0.155 * (h - 1.5) / 0.32 + 0.8),
     "e10:fig_synthetic": (W1, 3.0), "e10:fig_classic": lambda w, h: (W2, 0.3 * (h - 2.2) / 0.45 + 1.6),
     "e10:fig_gallery": (W2, 6.3),
-    "e26:fig_pn": (W2, 6.0), "e26:fig_gain_and_table": (W2, 3.1), "e26:fig_scaling_p": (W2, 4.2),
-    "e26:fig_scaling_n": (W1, 2.6), "e26:fig_ablation": (W2, 3.9), "e26:fig_signal": (W2, 2.8),
+    "e26:fig_pn": (W2, 6.0), "e26:fig_gain_and_table": (W2, 3.1), "e26:fig_scaling_p": (W2, 3.5),
+    "e26:fig_scaling_n": (W1, 2.6), "e26:fig_ablation": (W2, 3.9), "e26:fig_signal": (W1, 2.9),
     "e35:fig_reconstruction": (W2, 5.6), "e35:fig_spurious": (W2, 4.5),
     "e35:fig_outcomes": (W2, 3.4), "e35:fig_fixed_points": (W2, 2.9), "e35:fig_survival": (W2, 2.7),
     "e35:fig_hidden": (W2, 3.3), "e35:fig_search": lambda w, h: (W1, 3.5) if w < 6 else (W2, 2.8),
     "e40:fig_chua_I": (W2, 3.3), "e40:fig_chua_II": (W2, 2.9), "e40:fig_gallery": (W2, 7.0),
-    "e40:fig_li_sprott": (W2, 2.6), "e40:fig_maps": (W2, 2.3), "e40:fig_jafari": (W2, 2.4),
-    "e40:fig_lorenz_transient": (W2, 2.9), "e40:fig_d2_mechanism": (W2, 2.7), "e40:fig_sus_chains": (W1, 3.1),
-    "e40:fig_hiddenness": (W1, 3.3), "e40:fig_verification": lambda w, h: (W2, 0.17 * (h - 1.8) / 0.28 + 1.2),
+    "e40:fig_li_sprott": (W2, 2.9), "e40:fig_maps": (W2, 2.5), "e40:fig_jafari": (W1, 2.4),
+    "e40:fig_lorenz_transient": (W2, 2.9), "e40:fig_d2_mechanism": (W2, 2.7), "e40:fig_sus_chains": (W1, 3.3),
+    "e40:fig_hiddenness": (W1, 3.2), "e40:fig_verification": lambda w, h: (W2, 0.17 * (h - 1.8) / 0.28 + 1.2),
 }
 
 # 3. Layout patches for the journal-size canvases: (script, old, new). They apply to the translated source
 #    (English strings, explicit font sizes not yet mapped by _fs); each old string must occur exactly once.
 PATCH = [
+    ("e40", "color=SERIES[0] if k % 2 == 0 else SERIES[6], lw=0.3, alpha=0.85)", "color=SERIES[0], lw=0.3, alpha=0.85)"),
+
     # fig02: the note sat on the decaying curve
     ("e10", 'ax.text(0.02, 0.08, "DOP853, rtol = 10⁻¹¹: chaos', 'ax.text(0.3, 0.2, "DOP853, rtol = 10⁻¹¹:\\nchaos'),
     # fig03: the legend covered the F0 and escape curves
@@ -342,7 +355,7 @@ PATCH = [
             'tg = {"chua_I": "both chaotic", "chua_II": "both chaotic"}.get(name)\n'
             '        ax.set_title(f"{TITLE.get(name, name)}: {tg}" if tg else TITLE.get(name, name), fontsize=9)'),
     ("e26", 'fig.legend(h, l, loc="lower center", ncol=3, fontsize=8, bbox_to_anchor=(0.5, -0.01))',
-            'fig.legend(h, l, loc="center", ncol=1, fontsize=8, bbox_to_anchor=(0.67, 0.165))'),
+            'fig.legend(h, l, loc="center", ncol=1, fontsize=8, bbox_to_anchor=(0.67, 0.165), handlelength=2.8)'),
     ("e26", 'fig.tight_layout(rect=(0, 0.07, 1, 0.97))\n    save(fig, FIG / "fig21_pn_levelAB")',
             'fig.tight_layout()\n    save(fig, FIG / "fig21_pn_levelAB")'),
     # fig22: two-line tick labels instead of overlapping ones
@@ -354,12 +367,13 @@ PATCH = [
             'ax.set_yticks(y); ax.set_yticklabels([r[0] for r in rows], fontsize=7.5)\n    ax.set_xscale("log"); ax.set_xlim(0.6, 3e6); ax.set_xlabel("$N_{0.9}$'),
     ("e10", 'ax.grid(axis="y", visible=False)\n    save(fig, FIG / "fig05_uniform_costs")',
             'ax.grid(axis="y", visible=False)\n    fig.tight_layout()\n    save(fig, FIG / "fig05_uniform_costs")'),
-    # fig23: legends below the panels (inside they covered the curves)
-    ("e26", 'ax.legend(fontsize=6.5, loc="upper left")', 'ax.legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=1)'),
-    # fig26: legend above the curves
-    ("e26", 'axes[0].set_title("Do long transients approach the target?", fontsize=10)\n    axes[0].legend(fontsize=7)',
-            'axes[0].set_title("Do long transients approach the target?", fontsize=10)\n'
-            '    axes[0].set_ylim(0, 2.25)\n    axes[0].legend(fontsize=7, ncol=2, loc="upper center")'),
+    # fig24: legend below the axes (inside it covered the uniform and active-learning curves); the theory line thin
+    # and grey so that it is not confused with the black dashed uniform-sampling curve (STRATEGY_STYLE)
+    ("e26", 'ax.axhline(np.log(10) / 1e-4, color=INK, lw=1, ls="--", label="ln 10 / p")',
+            'ax.axhline(np.log(10) / 1e-4, color=MUTED, lw=0.9, ls="-", label="ln 10 / p (uniform, theory)", zorder=1)'),
+    ("e26", 'axes[0].set_ylabel("$N_{0.9}$"); axes[0].legend(fontsize=7)',
+            'axes[0].set_ylabel("$N_{0.9}$ (integrations)")\n'
+            '    axes[0].legend(fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=2, columnspacing=1.0, handlelength=2.4)'),
     # fig50: headroom for the VPT note and the legend
     ("e35", 'ax.text(v + 0.2, 17, f"VPT = {v:.1f} Lyap. times", fontsize=8, color=INK2)',
             'ax.text(v + 0.2, 24, f"VPT = {v:.1f} Lyap. times", fontsize=8, color=INK2); ax.set_ylim(-19, 30)'),
@@ -395,41 +409,31 @@ PATCH = [
             'fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=2, frameon=False)'),
     ("e35", 'ax2.set_position([pos.x0 + 0.03, pos.y0, pos.width - 0.03, pos.height])',
             'ax2.set_position([pos.x0 + 0.05, pos.y0, pos.width - 0.05, pos.height])'),
-    # fig30: legend below the 3D panel; room for the 3D z label
-    ("e40", 'ax.legend(fontsize=7, loc="upper left")\n    ax.set_title("Chua I: hidden attractors and equilibria", fontsize=10)',
-            'ax.legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.5, 0.0), ncol=2, columnspacing=0.8, handlelength=1.5)\n'
-            '    ax.set_title("Chua I: hidden attractors and equilibria", fontsize=10)'),
-    ("e40", 'fig.tight_layout()\n    save(fig, FIG / "fig30_chua_I_hidden")',
-            'fig.tight_layout()\n    _p = ax2.get_position(); ax2.set_position([_p.x0 + 0.04, _p.y0, _p.width - 0.04, _p.height])\n'
-            '    save(fig, FIG / "fig30_chua_I_hidden")'),
-    # fig31: legend below the 3D panel; more room for the z label of the zoom panel
-    ("e40", 'ax.legend(fontsize=6.5, loc="upper left")',
-            'ax.legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.5, 0.0), ncol=2, columnspacing=0.6, handlelength=1.2)'),
-    ("e40", 'ax2.set_position([pos.x0 + 0.035, pos.y0, pos.width - 0.035, pos.height])',
-            'ax2.set_position([pos.x0 + 0.06, pos.y0, pos.width - 0.06, pos.height])'),
     # fig32: tight_layout does not separate 3D panels; explicit spacing
     ("e40", 'fig.tight_layout()\n    save(fig, FIG / "fig32_gallery_3d")',
             'fig.subplots_adjust(left=0.0, right=0.97, bottom=0.03, top=0.97, wspace=0.12, hspace=0.45)\n'
             '    save(fig, FIG / "fig32_gallery_3d")'),
-    # fig33: one legend below the panels with visible line samples
-    ("e40", 'axes[0].legend(fontsize=7, markerscale=10)',
-            '_lg = fig.legend(*axes[0].get_legend_handles_labels(), loc="lower center", ncol=3, fontsize=7.5, bbox_to_anchor=(0.5, 0.0))\n'
-            '    [_l.set_linewidth(2.0) for _l in _lg.get_lines()]'),
-    ("e40", 'fig.tight_layout()\n    save(fig, FIG / "fig33_li_sprott_4d")',
-            'fig.tight_layout(rect=(0, 0.09, 1, 1))\n    save(fig, FIG / "fig33_li_sprott_4d")'),
-    # fig35: room for the z label of the 3D panel
-    ("e40", 'ax.set_position([pos.x0 + 0.045, pos.y0, pos.width - 0.045, pos.height])',
-            'ax.set_position([pos.x0 + 0.07, pos.y0, pos.width - 0.07, pos.height])'),
-    # fig40: legend below the axes
-    ("e40", 'ax.legend(fontsize=7)\n    save(fig, FIG / "fig40_hiddenness")',
-            'ax.legend(fontsize=7, ncol=2, loc="upper center", bbox_to_anchor=(0.45, -0.2), columnspacing=0.8)\n'
-            '    save(fig, FIG / "fig40_hiddenness")'),
+    # (fig23, fig26, fig30, fig31, fig33, fig34, fig35, fig37, fig38, fig40, fig41 are redrawn in figures_en.py)
 ]
+
+# Search strategies by line style and marker as well as colour (black-and-white legibility of fig21, fig23, fig24).
+# Keys are prefixes of the English legend labels (LABEL of e26); the hook on Axes.plot applies the style to every
+# labelled line whose label starts with a key. The portfolio is drawn beneath the other curves (zorder) so that
+# the thick line does not hide them where they coincide.
+STRATEGY_STYLE = {
+    "uniform sampling": dict(color=INK, linestyle="--", linewidth=1.3, marker="o", zorder=2.6),
+    "Zelinka's DE": dict(linestyle=":", linewidth=1.7, marker="v", zorder=2.5),
+    "splitting: rarity": dict(linestyle=(0, (5, 1.5, 1, 1.5, 1, 1.5)), linewidth=1.4, marker="v", zorder=2.4),
+    "splitting: transient length": dict(linestyle="-.", linewidth=1.5, marker="s", zorder=2.3),
+    "active learning": dict(linestyle="-", linewidth=1.0, marker="^", zorder=2.2),
+    "portfolio (proposed)": dict(linestyle="-", linewidth=2.4, marker="D", zorder=1.5),
+}
+_MARKER_CHARS = set(".,ov^<>12348spP*hH+xXDd|_")
 
 
 def _fs(x):
-    """Explicit font sizes of the originals were set for 10-15 in canvases; at journal width 7-8.5 pt."""
-    return min(max(float(x), 7.0), 8.5)
+    """Explicit font sizes of the originals were set for 10-15 in canvases; at journal width 8-8.5 pt (AIP minimum 8)."""
+    return min(max(float(x), MIN_FONT), 8.5)
 
 
 # ------------------------------------------------------------------------------------------------
@@ -461,19 +465,31 @@ def translate(src, script):
     return src
 
 
-MIN_FONT = 8.0   # AIP figure requirement: minimum label size 8-point type
-
-
 def setup_en():
-    plt.rcParams.update({
-        "font.family": ["Arial", "DejaVu Sans"], "font.size": 8, "axes.titlesize": 8.5, "axes.labelsize": 8,
-        "xtick.labelsize": MIN_FONT, "ytick.labelsize": MIN_FONT, "legend.fontsize": MIN_FONT, "figure.titlesize": 9,
-        "lines.linewidth": 1.5, "lines.markersize": 4, "axes.linewidth": 0.7, "grid.linewidth": 0.5,
-        "xtick.major.width": 0.6, "ytick.major.width": 0.6, "legend.handlelength": 1.6,
-        "mathtext.fontset": "custom", "mathtext.rm": "Arial", "mathtext.it": "Arial:italic",
-        "mathtext.bf": "Arial:bold", "mathtext.fallback": "stixsans",
-        "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 300, "savefig.bbox": "tight", "savefig.pad_inches": 0.02,
-    })
+    """Journal rcParams (Arial, 8 pt minimum, Type 42 fonts); shared with e53/e61 through viz.setup_en."""
+    viz.setup_en()
+
+
+def _restyle(args, kw):
+    """Apply STRATEGY_STYLE to a labelled Axes.plot call: the fmt string is dropped, its marker (if any) replaced by
+    the strategy marker, line style and width set by the table."""
+    label = kw.get("label")
+    if not isinstance(label, str):
+        return args, kw
+    style = next((st for key, st in STRATEGY_STYLE.items() if label.startswith(key)), None)
+    if style is None:
+        return args, kw
+    args = list(args)
+    has_marker = kw.get("marker") not in (None, "", "None")
+    if len(args) == 3 and isinstance(args[2], str):
+        has_marker = has_marker or bool(_MARKER_CHARS & set(args.pop()))
+    for alias in ("ls", "lw", "c", "mec", "mfc"):
+        kw.pop(alias, None)
+    kw.update({k: v for k, v in style.items() if k != "marker"})
+    if has_marker:
+        kw["marker"] = style["marker"]
+        kw.setdefault("markersize", 4.5)
+    return args, kw
 
 
 def install_hooks():
@@ -537,7 +553,7 @@ def install_hooks():
 
     def _floor8(method):
         def wrapped(self, *args, **kw):
-            for key in ("fontsize", "size"):
+            for key in ("fontsize", "size", "labelsize"):
                 v = kw.get(key)
                 if isinstance(v, (int, float)) and v < MIN_FONT:
                     kw[key] = MIN_FONT
@@ -548,6 +564,14 @@ def install_hooks():
                        (FigureBase, ("legend", "text"))):
         for nm in names:
             setattr(cls, nm, _floor8(getattr(cls, nm)))
+
+    # strategy line styles (Axes.step delegates to Axes.plot, so step curves are covered too)
+    orig_plot = Axes.plot
+
+    def plot(self, *args, **kw):
+        args, kw = _restyle(args, kw)
+        return orig_plot(self, *args, **kw)
+    Axes.plot = plot
 
     # nothing is written into results/
     results = (ROOT / "results").resolve()
@@ -576,22 +600,37 @@ def run(script, only):
     src = translate(path.read_text(encoding="utf-8"), script)
     ns = {"__name__": f"en_{script}", "__file__": str(path), "_fs": _fs}
     exec(compile(src, str(path), "exec"), ns)
+
+    def wrap(f, key, name):
+        def wrapped(*a, **k):
+            STATE["current"] = key
+            try:
+                return f(*a, **k)
+            finally:
+                STATE["current"] = None
+        wrapped.__name__ = name
+        return wrapped
+
     for name, f in list(ns.items()):
         if name.startswith("fig_") and callable(f):
             key = f"{script}:{name}"
             if only and key not in only:
                 ns[name] = lambda *a, **k: None
                 continue
-
-            def wrapped(*a, _f=f, _key=key, **k):
-                STATE["current"] = _key
-                try:
-                    return _f(*a, **k)
-                finally:
-                    STATE["current"] = None
-            wrapped.__name__ = name
-            ns[name] = wrapped
+            if key in OVERRIDE:      # English redraw replaces the original (same data, see figures_en.py)
+                f = functools.partial(OVERRIDE[key], ns)
+            ns[name] = wrap(f, key, name)
     ns["main"]()
+    for key, f in EXTRA.items():     # English figures without a Russian original
+        s, name = key.split(":")
+        if s == script and (not only or key in only):
+            try:
+                wrap(functools.partial(f, ns), key, name)()
+                print("ok:", name, flush=True)
+            except Exception as e:  # noqa: BLE001
+                import traceback
+                traceback.print_exc()
+                print("skip:", name, repr(e), flush=True)
 
 
 def main(argv):

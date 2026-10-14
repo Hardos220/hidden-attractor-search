@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "experiments"))
 
 import e26_stage2_figures as e26  # noqa: E402
 from hsearch import viz  # noqa: E402
-from hsearch.viz import INK, INK2, MUTED, SERIES, save  # noqa: E402
+from hsearch.viz import INK, INK2, MUTED, SERIES, panel_label, save  # noqa: E402
 
 import matplotlib.pyplot as plt  # noqa: E402
 
@@ -39,12 +39,12 @@ T = {
            "sus_dt": "расщепление, меньший шаг Δt", "portfolio_dt": "портфель, меньший шаг Δt",
            "portfolio_smin": "портфель, порог шага 5·10⁻⁴",
            "k": "увеличение области k", "p": "доля бассейна цели p", "G": "G₀.₉ = N₀.₉(перебор) / N₀.₉(метод)",
-           "k3": "p₀ / k³ (бассейн внутри B)", "guar": "гарантия ε = 0.2", "even": "G = 1",
-           "t27a": "(a) Доля бассейна в k·B", "t27b": "(b) Выигрыш портфеля (сплошная) и расщепления (пунктир)",
+           "k3": "p(k=1) / k³ (бассейн внутри B)", "guar": "гарантия G = θ = 0.2", "even": "G = 1",
+           "t27a": "Доля бассейна в k·B", "t27b": "Выигрыш портфеля (сплошная) и расщепления (пунктир)",
            "s27": "Реальные системы в увеличенных областях k·B (R = 50; k = 1 — R = 100)",
            "n": "размерность n", "N": "N₀.₉, интегрирований", "coupled": "связь ε = 0.01", "uncoupled": "без связи",
            "theory": "перебор: ln 10 / p", "s28": "k копий SE11: стоимость обнаружения скрытого режима «все копии на HA»",
-           "eqG": "G₀.₉ (p ≤ 10⁻⁶: по доле успехов в бюджете)", "s29": "Семейство D2 (n = 6): выигрыш до p = 10⁻⁷ и диагностика обрыва",
+           "eqG": "G₀.₉ или эквивалентный выигрыш", "s29": "Семейство D2 (n = 6): выигрыш до p = 10⁻⁷ и диагностика обрыва",
            "budget": "в пределах бюджета 2·10⁵"},
     "en": {"se11": "SE11", "le1": "LE1", "chua_I": "Chua I", "chua_II": "Chua II", "jafari2026_lc": "Jafari cycle",
            "uniform": "uniform sampling", "sus": "splitting", "portfolio": "portfolio", "edge_bisect": "boundary bisection",
@@ -52,18 +52,24 @@ T = {
            "sus_coord": "splitting + coordinate redraws", "portfolio_coord": "portfolio + coordinate redraws",
            "sus_dt": "splitting, smaller step Δt", "portfolio_dt": "portfolio, smaller step Δt",
            "portfolio_smin": "portfolio, step floor 5×10⁻⁴",
-           "k": "region scale factor k", "p": "target basin measure p", "G": "G₀.₉ = N₀.₉(uniform) / N₀.₉(method)",
-           "k3": "p₀ / k³ (basin inside B)", "guar": "guarantee ε = 0.2", "even": "G = 1",
-           "t27a": "(a) Basin measure in k·B", "t27b": "(b) Gain of the portfolio (solid) and splitting (dashed)",
+           "k": "region scale factor k", "p": "target basin measure p", "G": "$G_{0.9}$",
+           "k3": "p(k=1) / k³ (basin inside B)", "guar": "guarantee G = θ = 0.2", "even": "G = 1",
+           "t27a": "Basin measure in k·B", "t27b": "Gain of the portfolio (solid) and splitting (dashed)",
            "s27": "Real systems in enlarged regions k·B (R = 50; k = 1: R = 100)",
            "n": "dimension n", "N": "N₀.₉, integrations", "coupled": "coupling ε = 0.01", "uncoupled": "uncoupled",
            "theory": "uniform: ln 10 / p", "s28": "k copies of SE11: cost of detecting the hidden regime “all copies on HA”",
-           "eqG": "G₀.₉ (p ≤ 10⁻⁶: from the success fraction)",
+           "eqG": "$G_{0.9}$ or equivalent gain",
            "s29": "Family D2 (n = 6): gain down to p = 10⁻⁷ and the step floor of splitting", "budget": "within the budget 2×10⁵"},
 }
 COL = {"se11": SERIES[0], "le1": SERIES[1], "chua_I": SERIES[2], "chua_II": SERIES[3], "jafari2026_lc": SERIES[4],
        "uniform": MUTED, "sus": SERIES[1], "portfolio": SERIES[0], "edge_bisect": SERIES[3],
        "sus_smin": SERIES[6], "sus_nostall": SERIES[5], "portfolio_smin": SERIES[7], "sus_coord": SERIES[2], "portfolio_coord": SERIES[5]}
+MK = {"se11": "o", "le1": "s", "chua_I": "^", "chua_II": "D", "jafari2026_lc": "v"}   # маркеры систем (ч/б печать)
+
+
+def _fs(lang, x):
+    """Кегль: в английской версии не меньше 8 pt (требование AIP), в русской — как задано."""
+    return max(x, viz.MIN_FONT) if lang == "en" else x
 
 
 # ============================================================================ данные
@@ -271,15 +277,16 @@ def fig27(out, lang):
         rows = sorted((r for r in out["enlarged"].values() if r["system"] == sname), key=lambda r: r["k"])
         if not rows:
             continue
-        ax.plot([r["k"] for r in rows], [r["p"] for r in rows], "o-", color=COL[sname], label=t[sname], lw=1.5, ms=4)
+        ax.plot([r["k"] for r in rows], [r["p"] for r in rows], "-", marker=MK[sname], color=COL[sname], label=t[sname], lw=1.5, ms=4)
         p0 = rows[0]["p"]
         kk = np.array([1, rows[-1]["k"]])
         ax.plot(kk, p0 / kk ** 3, ":", color=COL[sname], lw=0.9)
     ax.plot([], [], ":", color=INK2, label=t["k3"])
     ax.set_xscale("log", base=2); ax.set_yscale("log")
     ax.set_xticks([1, 2, 4, 8, 16]); ax.set_xticklabels(["1", "2", "4", "8", "16"])
-    ax.set_xlabel(t["k"]); ax.set_ylabel(t["p"]); ax.set_title(t["t27a"], fontsize=9)
-    ax.legend(fontsize=6.5, loc="lower left")
+    ax.set_xlabel(t["k"]); ax.set_ylabel(t["p"])
+    panel_label(ax, "(a)", t["t27a"], fontsize=_fs(lang, 9))
+    ax.legend(fontsize=_fs(lang, 6.5), loc="lower left", handlelength=1.8)
     ax = axes[1]
     for sname in SYS5:
         rows = sorted((r for r in out["enlarged"].values() if r["system"] == sname), key=lambda r: r["k"])
@@ -288,15 +295,17 @@ def fig27(out, lang):
             if not pts:
                 continue
             x, y, lo, hi = map(np.array, zip(*pts))
-            ax.plot(x, y, ls, marker="o" if s == "portfolio" else None, color=COL[sname], lw=1.6 if s == "portfolio" else 1.0, ms=4,
+            ax.plot(x, y, ls, marker=MK[sname] if s == "portfolio" else None, color=COL[sname], lw=1.6 if s == "portfolio" else 1.0, ms=4,
                     label=t[sname] if s == "portfolio" else None)
             if s == "portfolio":
                 ax.fill_between(x, lo, hi, color=COL[sname], alpha=0.12, lw=0)
     ax.axhline(1.0, color=INK, lw=0.9, ls="--"); ax.axhline(0.2, color=MUTED, lw=0.9, ls=":")
-    ax.text(ax.get_xlim()[0] if False else 3e-2, 1.08, t["even"], fontsize=6.5, color=INK2)
-    ax.text(3e-2, 0.215, t["guar"], fontsize=6.5, color=INK2)
+    ax.text(6e-3, 1.08, t["even"], fontsize=_fs(lang, 6.5), color=INK2)
+    ax.text(3e-2, 0.185, t["guar"], fontsize=_fs(lang, 6.5), color=INK2, va="top")   # under the dotted line
     ax.set_xscale("log"); ax.set_yscale("log"); ax.invert_xaxis()
-    ax.set_xlabel(t["p"]); ax.set_ylabel(t["G"]); ax.set_title(t["t27b"], fontsize=9)
+    ax.set_ylim(bottom=0.11)
+    ax.set_xlabel(t["p"]); ax.set_ylabel(t["G"])
+    panel_label(ax, "(b)", t["t27b"], fontsize=_fs(lang, 9))
     if lang == "ru":
         fig.suptitle(t["s27"], fontsize=10.5)
     fig.tight_layout()
@@ -329,7 +338,7 @@ def fig28(out, lang):
     ax.plot([], [], "o", color=INK2, label=t["coupled"]); ax.plot([], [], "s", color=INK2, mfc="none", label=t["uncoupled"])
     ax.set_yscale("log"); ax.set_xticks([3, 6, 9, 12])
     ax.set_xlabel(t["n"]); ax.set_ylabel(t["N"])
-    ax.legend(fontsize=6.3, loc="upper left")
+    ax.legend(fontsize=_fs(lang, 6.3), loc="upper center", bbox_to_anchor=(0.5, -0.28), ncol=2, columnspacing=1.0)
     if lang == "ru":
         ax.set_title(t["s28"], fontsize=9)
     fig.tight_layout()
@@ -337,10 +346,11 @@ def fig28(out, lang):
 
 
 def fig29(out, lang):
+    """Варианты «порог шага» (sus_smin, portfolio_smin) не рисуются: они совпадают с базовыми кривыми."""
     t = T[lang]
     fig, ax = plt.subplots(figsize=_wh(lang, 3.37, 2.8))
     d2 = out["d2_p"]
-    for s in ("sus", "portfolio", "sus_smin", "portfolio_smin", "sus_coord", "portfolio_coord"):
+    for s in ("sus", "portfolio", "sus_coord", "portfolio_coord"):
         pts = []
         for p, r in d2.items():
             if s not in r:
@@ -355,7 +365,7 @@ def fig29(out, lang):
             continue
         pts.sort()
         xs, ys, solid = zip(*pts)
-        ls = "-" if s in ("sus", "portfolio") else (":" if s.endswith("smin") else "--")
+        ls = "-" if s in ("sus", "portfolio") else "--"
         ax.plot(xs, ys, ls, color=COL[s], lw=1.6 if s == "portfolio" else 1.1, label=t[s])
         ax.scatter([a for a, b, c in pts if c], [b for a, b, c in pts if c], color=COL[s], s=14, zorder=3)
         ax.scatter([a for a, b, c in pts if not c], [b for a, b, c in pts if not c], facecolor="none", edgecolor=COL[s], s=18, zorder=3)
@@ -366,11 +376,11 @@ def fig29(out, lang):
             ax.scatter([a for a, _, _ in pts], [b for _, b, _ in pts], marker=mk, s=70, color=COL[s], zorder=4, label=t[s + "_dt"])
             if s == "sus":
                 for a, b, c in pts:
-                    ax.annotate(f"Δt/{1 / c:g}", (a, b), textcoords="offset points", xytext=(6, 2), fontsize=6.5, color=INK2)
+                    ax.annotate(f"Δt/{1 / c:g}", (a, b), textcoords="offset points", xytext=(6, 2), fontsize=_fs(lang, 6.5), color=INK2)
     ax.axhline(1.0, color=INK, lw=0.9, ls="--")
     ax.set_xscale("log"); ax.set_yscale("log"); ax.invert_xaxis()
-    ax.set_xlabel(t["p"]); ax.set_ylabel(t["eqG"], fontsize=7)
-    ax.legend(fontsize=6, loc="upper left")
+    ax.set_xlabel(t["p"]); ax.set_ylabel(t["eqG"], fontsize=_fs(lang, 7))
+    ax.legend(fontsize=_fs(lang, 6), loc="upper center", bbox_to_anchor=(0.5, -0.28), ncol=2, columnspacing=1.0, handlelength=2.2)
     if lang == "ru":
         ax.set_title(t["s29"], fontsize=9)
     fig.tight_layout()
@@ -482,6 +492,9 @@ def main():
     snippets(out)
     FIG_EN.mkdir(parents=True, exist_ok=True)
     for lang, d in (("ru", FIG_RU), ("en", FIG_EN)):
+        viz.setup()
+        if lang == "en":
+            viz.setup_en()      # Arial, >= 8 pt, Type 42 fonts: the same setup as paper/chaos/make_figures_en.py
         for name, fn in (("fig27_enlarged_regions", fig27), ("fig28_coupled_copies", fig28), ("fig29_d2_small_p", fig29)):
             save(fn(out, lang), d / name)
             print("рисунок:", lang, name)

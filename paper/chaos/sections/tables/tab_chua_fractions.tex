@@ -1,0 +1,19 @@
+% Proposed caption (replaces the bar chart fig04_table1_comparison / \ref{fig:table1}):
+% Basin fractions of Chua~I under uniform sampling in balls of radius $r=3$ and $r=5$ about the origin: escape to infinity ($\infty$), the stable equilibrium F$_0$, and the two symmetric hidden attractors A and B. Sources: Table~1 of the review in Ref.~\onlinecite{GuanXie2025} and two independent implementations, Python (RK4, $dt=0.0025$, $10^5$ points per ball) and Attractors.jl (Vern9, $10^4$ points per ball). The two implementations agree with each other but not with the review. In the implementations, A and B are matched by the sign of the mean of $x$ on the attractor; for the review, they are listed in the order of its Table~1. The fraction of unmatched trajectories in the Python run (0.06\%) is omitted.
+
+\begin{table}
+\caption{Basin fractions of Chua~I under uniform sampling in balls of radius $r=3$ and $r=5$ about the origin: escape to infinity ($\infty$), the stable equilibrium F$_0$, and the two symmetric hidden attractors A and B. Sources: Table~1 of the review in Ref.~\onlinecite{GuanXie2025} and two independent implementations, Python (RK4, $dt=0.0025$, $10^5$ points per ball) and Attractors.jl (Vern9, $10^4$ points per ball). The two implementations agree with each other but not with the review. In the implementations, A and B are matched by the sign of the mean of $x$ on the attractor; for the review, they are listed in the order of its Table~1. The fraction of unmatched trajectories in the Python run (0.06\%) is omitted.}
+\label{tab:chuafrac}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{ruledtabular}
+\begin{tabular}{lrrrrrrrr}
+ & \multicolumn{4}{c}{$r=3$} & \multicolumn{4}{c}{$r=5$} \\
+Source & $\infty$ & F$_0$ & A & B & $\infty$ & F$_0$ & A & B \\
+\hline
+Ref.~\onlinecite{GuanXie2025}, Table~1 & 0.06 & 0.75 & 0.09 & 0.10 & 0.23 & 0.50 & 0.14 & 0.13 \\
+Python, RK4 & 0.19 & 0.44 & 0.18 & 0.18 & 0.55 & 0.18 & 0.14 & 0.14 \\
+Attractors.jl & 0.19 & 0.44 & 0.18 & 0.19 & 0.55 & 0.18 & 0.13 & 0.14 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}

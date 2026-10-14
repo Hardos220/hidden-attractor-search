@@ -36,6 +36,31 @@ def setup():
     })
 
 
+MIN_FONT = 8.0   # AIP figure requirement: minimum label size 8-point type at the printed size
+
+
+def setup_en():
+    """Journal style of the English figures (Chaos, AIP) on top of setup(): Arial (DejaVu Sans as fallback),
+    8 pt minimum for ticks and legends, TrueType (Type 42) fonts in the PDF. Shared by make_figures_en.py,
+    e53_paper_results.py and e61_new_attractor_figure.py so that all English figures use one font setup."""
+    plt.rcParams.update({
+        "font.family": ["Arial", "DejaVu Sans"], "font.size": MIN_FONT, "axes.titlesize": 8.5, "axes.labelsize": MIN_FONT,
+        "xtick.labelsize": MIN_FONT, "ytick.labelsize": MIN_FONT, "legend.fontsize": MIN_FONT, "figure.titlesize": 9,
+        "lines.linewidth": 1.5, "lines.markersize": 4, "axes.linewidth": 0.7, "grid.linewidth": 0.5,
+        "xtick.major.width": 0.6, "ytick.major.width": 0.6, "legend.handlelength": 1.6,
+        "mathtext.fontset": "custom", "mathtext.rm": "Arial", "mathtext.it": "Arial:italic",
+        "mathtext.bf": "Arial:bold", "mathtext.fallback": "stixsans",
+        "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 300, "savefig.bbox": "tight", "savefig.pad_inches": 0.02,
+    })
+
+
+def panel_label(ax, lab, title=None, fontsize=9, **kw):
+    """Bold panel label "(a)" in the top-left corner of the axes (a left-aligned title), optionally followed by a
+    short title that carries information not given by the axes (system name, section)."""
+    text = f"$\\bf{{{lab}}}$" + (f" {title}" if title else "")
+    return ax.set_title(text, loc="left", fontsize=fontsize, **kw)
+
+
 def color_for(name, i=0):
     return ROLE.get(name, SERIES[i % len(SERIES)])
 
