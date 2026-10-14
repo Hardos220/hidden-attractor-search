@@ -10,6 +10,8 @@ paper/chaos/arxiv_v1.zip to upload. Differences from the journal build:
   * the AIP preprint credit line ("submitted to Chaos ...") is printed under the title block;
   * the bibliography is shipped as the ready .bbl (arXiv does not run BibTeX) with Unicode dashes
     replaced by TeX ones, and both files are checked to be pure ASCII.
+With --journal the same package is built for the journal submission instead (paper/chaos/journal_source/ and
+paper/chaos/chaos_source.zip): no preprint credit line, and refs.bib is shipped next to the ready .bbl.
 With --test the staged source is compiled with Tectonic (XeTeX engine; arXiv uses pdflatex, the sources are
 plain ASCII and standard packages, so this is a smoke test, not the final word) and the page count is printed.
 """
@@ -39,6 +41,10 @@ def ascii_check(name, text):
 
 
 def main(argv):
+    journal = "--journal" in argv
+    global STAGE, ZIP
+    if journal:
+        STAGE, ZIP = HERE / "journal_source", HERE / "chaos_source.zip"
     tex = (HERE / "manuscript.tex").read_text(encoding="utf-8")
     bbl = (HERE / "manuscript.bbl").read_text(encoding="utf-8")
     if "\\begin{quotation}" not in tex:
@@ -48,10 +54,16 @@ def main(argv):
     if "\\placeholder{" in tex:
         raise SystemExit("manuscript.tex still uses \\placeholder{}: fill the fields first")
     tex = "\\pdfoutput=1\n" + tex
-    tex = tex.replace("\\begin{quotation}", CREDIT + "\\begin{quotation}", 1)
-    bbl = bbl.replace("\u2013", "--").replace("\u2014", "---").replace("\u2019", "'")
+    if not journal:
+        tex = tex.replace("\\begin{quotation}", CREDIT + "\\begin{quotation}", 1)
+    dashes = lambda t: t.replace("\u2013", "--").replace("\u2014", "---").replace("\u2019", "'")
+    bbl = dashes(bbl)
     ascii_check("manuscript.tex", tex)
     ascii_check("manuscript.bbl", bbl)
+    bib = None
+    if journal:
+        bib = dashes((HERE / "refs.bib").read_text(encoding="utf-8"))
+        ascii_check("refs.bib", bib)
 
     figs = sorted(set(re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{(figures/[^}]+)\}", tex)))
     missing = [f for f in figs if not (HERE / f).exists()]
@@ -63,12 +75,16 @@ def main(argv):
     (STAGE / "figures").mkdir(parents=True)
     (STAGE / "manuscript.tex").write_text(tex, encoding="ascii", newline="\n")
     (STAGE / "manuscript.bbl").write_text(bbl, encoding="ascii", newline="\n")
+    if bib is not None:
+        (STAGE / "refs.bib").write_text(bib, encoding="ascii", newline="\n")
     for f in figs:
         shutil.copy2(HERE / f, STAGE / f)
 
     with zipfile.ZipFile(ZIP, "w", zipfile.ZIP_DEFLATED) as z:
         z.write(STAGE / "manuscript.tex", "manuscript.tex")
         z.write(STAGE / "manuscript.bbl", "manuscript.bbl")
+        if bib is not None:
+            z.write(STAGE / "refs.bib", "refs.bib")
         for f in figs:
             z.write(STAGE / f, f)
     print(f"staged {len(figs)} figures; {ZIP.name}: {ZIP.stat().st_size / 1e6:.1f} MB")
