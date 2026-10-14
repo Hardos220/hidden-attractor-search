@@ -139,6 +139,9 @@ def entry(key, r):
     elif r.get("type") == "proceedings-article":
         kind = "inproceedings"
         f["booktitle"] = tex(venue)
+    elif r.get("type") in ("dataset", "software"):    # code and data archive, e.g. Zenodo: repository as howpublished
+        kind = "misc"
+        f["howpublished"] = tex(venue)
     elif venue and not venue.lower().startswith("arxiv"):
         kind = "article"
         if venue not in JOURNAL_ABBR:

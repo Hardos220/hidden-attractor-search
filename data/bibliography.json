@@ -3216,5 +3216,20 @@
   "verified": true,
   "title_similarity": 1.0,
   "citations": 28
+ },
+ {
+  "key": "Elisov2026Code",
+  "group": "Z_data",
+  "doi": "10.5281/zenodo.23348470",
+  "title": "hidden-attractor-search: code, experiments, and results for “Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee”",
+  "authors": [
+   "Elisov M."
+  ],
+  "year": 2026,
+  "venue": "Zenodo",
+  "type": "dataset",
+  "source": "datacite",
+  "verified": true,
+  "title_similarity": 1.0
  }
 ]
