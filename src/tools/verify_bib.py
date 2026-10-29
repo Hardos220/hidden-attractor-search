@@ -23,6 +23,7 @@ OUT = ROOT / "data" / "bibliography.json"
 REP = ROOT / "data" / "bib_report.txt"
 
 UA = "hidden-attractor-search/0.1 (academic bibliography verification script)"
+NO_S2_ENRICH = "--no-s2-enrich" in sys.argv     # skip the Semantic Scholar abstract/citation lookup (rate limits)
 S2 = "https://api.semanticscholar.org/graph/v1/paper/"
 S2_FIELDS = "title,authors,year,venue,journal,externalIds,citationCount,abstract"
 
@@ -108,6 +109,54 @@ def s2_norm(p):
     }
 
 
+def arxiv_api(arxiv_id):
+    """Metadata from the arXiv API (Atom): title, authors, year, journal reference, DOI if the authors gave one."""
+    import xml.etree.ElementTree as ET
+    url = "http://export.arxiv.org/api/query?id_list=" + urllib.parse.quote(arxiv_id)
+    for attempt in range(4):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=40) as r:
+                root = ET.fromstring(r.read())
+            break
+        except Exception:
+            time.sleep(3 * (attempt + 1))
+    else:
+        return None
+    ns = {"a": "http://www.w3.org/2005/Atom", "x": "http://arxiv.org/schemas/atom"}
+    e = root.find("a:entry", ns)
+    if e is None or e.find("a:title", ns) is None:
+        return None
+    title = " ".join((e.find("a:title", ns).text or "").split())
+    authors = []
+    for a in e.findall("a:author", ns):
+        name = (a.find("a:name", ns).text or "").split()
+        if name:
+            authors.append(name[-1] + " " + "".join(x[0] + "." for x in name[:-1]))
+    pub = (e.find("a:published", ns).text or "")[:4]
+    jref = e.find("x:journal_ref", ns)
+    doi = e.find("x:doi", ns)
+    time.sleep(3.1)                         # arXiv asks for one request per 3 seconds
+    return {
+        "title": title,
+        "authors": authors,
+        "year": int(pub) if pub.isdigit() else None,
+        "venue": " ".join(jref.text.split()) if jref is not None and jref.text else "arXiv",
+        "doi": doi.text.strip() if doi is not None and doi.text else None,
+        "arxiv": arxiv_id,
+        "source": "arxiv",
+    }
+
+
+def crossref_search(title):
+    d = get_json("https://api.crossref.org/works?rows=3&query.bibliographic=" + urllib.parse.quote(title))
+    items = ((d or {}).get("message") or {}).get("items") or []
+    if not items:
+        return None
+    best = max(items, key=lambda m: sim((m.get("title") or [""])[0], title))
+    return crossref(best["DOI"]) if best.get("DOI") else None
+
+
 def s2_by_id(ident):
     return s2_norm(get_json(S2 + ident + "?fields=" + S2_FIELDS))
 
@@ -122,7 +171,8 @@ def s2_search(title):
 
 
 def main():
-    src = Path(sys.argv[1]) if len(sys.argv) > 1 else SRC
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    src = Path(args[0]) if args else SRC
     cands = json.loads(src.read_text(encoding="utf-8-sig"))
     # режим слияния: уже проверенные записи из OUT сохраняются, новые добавляются/заменяются по key
     prev = []
@@ -136,6 +186,19 @@ def main():
         found = None
         if c.get("doi"):
             found = crossref(c["doi"])
+        if (not found or sim(found["title"], c["title"]) < 0.6) and c.get("arxiv"):
+            f2 = arxiv_api(c["arxiv"])
+            if f2 and sim(f2["title"], c["title"]) >= sim((found or {}).get("title"), c["title"]):
+                found = f2
+                if f2.get("doi"):
+                    f3 = crossref(f2["doi"])
+                    if f3 and sim(f3["title"], c["title"]) >= 0.75:
+                        f3["arxiv"] = c["arxiv"]
+                        found = f3
+        if (not found or sim(found["title"], c["title"]) < 0.6) and not c.get("doi") and not c.get("arxiv"):
+            f2 = crossref_search(c["title"])
+            if f2 and sim(f2["title"], c["title"]) >= sim((found or {}).get("title"), c["title"]):
+                found = f2
         if (not found or sim(found["title"], c["title"]) < 0.6) and c.get("arxiv"):
             f2 = s2_by_id("arXiv:" + c["arxiv"])
             if f2 and sim(f2["title"], c["title"]) >= sim((found or {}).get("title"), c["title"]):
@@ -162,7 +225,7 @@ def main():
             rec["verified"] = False
             rec["title_similarity"] = 0.0
         # S2 abstract/citations for DOI-found records too (cheap enrichment)
-        if rec["verified"] and found.get("source") == "crossref":
+        if rec["verified"] and found.get("source") == "crossref" and not NO_S2_ENRICH:
             ident = "DOI:" + rec["doi"]
             extra = s2_by_id(ident)
             if extra:

@@ -687,3 +687,76 @@ class StaggerStep(Strategy):
 
 
 STRATEGIES["stagger"] = StaggerStep
+
+
+# ----------------------------------------------------------------------------
+class StaggerMulti(Strategy):
+    """m независимых цепей stagger-and-step (рукав портфеля, 2026-10-29): за пачку — по одной точке от каждой цепи.
+    Рукав автономен (выбор точек зависит только от его собственных оценок), поэтому к нему применимо утверждение 1
+    статьи: портфель с этим рукавом стоит не больше (N(рукав) + c) / omega."""
+    name = "stagger_multi"
+
+    def __init__(self, problem, m=10, **kw):
+        super().__init__(problem, batch=int(m))
+        self.chains = [StaggerStep(problem, **kw) for _ in range(int(m))]
+
+    def propose(self):
+        return np.vstack([c.propose() for c in self.chains])
+
+    def observe(self, ics, feats, finals, labels):
+        for j, c in enumerate(self.chains[: len(ics)]):
+            c.observe(ics[j:j + 1], feats[j:j + 1], finals[j:j + 1], labels[j:j + 1])
+
+
+class PortfolioSAS(Portfolio):
+    """Портфель с рукавом stagger-and-step (StaggerMulti из sas_m цепей) в дополнение к расщеплению и рукаву границ
+    (use_sus=False — вместо расщепления). Равномерная доля eps считается от всех рукавов, как в Portfolio."""
+    name = "portfolio_sas"
+
+    def __init__(self, problem, sas_m=10, **kw):
+        super().__init__(problem, **kw)
+        self.sas = StaggerMulti(problem, m=sas_m)
+        self.arms.append(self.sas)
+
+    def propose(self):
+        if self.phase == "init":
+            return super().propose()
+        parts, owners = [], []
+        if self.sus is not None:
+            p = self.sus.propose()
+            parts.append(p); owners += ["sus"] * len(p)
+        ab_active = self.ab is not None and (self.sus is None or len(self.ab.classes) >= 2)
+        if ab_active:
+            p = self.ab.propose(self.batch)
+            parts.append(p); owners += ["ab"] * len(p)
+        p = self.sas.propose()
+        parts.append(p); owners += ["sas"] * len(p)
+        n_arm = sum(len(p) for p in parts)
+        n_u = int(np.ceil(self.eps / max(1e-9, 1 - self.eps) * n_arm))
+        if n_u:
+            parts.append(self.s.sample_box(n_u, self.rng)); owners += ["u"] * n_u
+        X = np.vstack(parts)
+        self._owners = np.array(owners)
+        self._perm = self.rng.permutation(len(X))
+        return X[self._perm]
+
+    def observe(self, ics, feats, finals, labels):
+        if self.phase == "init":
+            super().observe(ics, feats, finals, labels)
+            return
+        n = len(ics)
+        orig = self._perm[:n]
+        order = np.argsort(orig)
+        own = self._owners[orig[order]]
+        complete = n == len(self._perm)
+        super().observe(ics, feats, finals, labels)
+        if complete:
+            m = own == "sas"
+            if m.any():
+                o = order[m]
+                self.sas.observe(ics[o], feats[o], finals[o], labels[o])
+
+
+STRATEGIES["portfolio_sas"] = lambda pr, **kw: PortfolioSAS(pr, sus_kw={"score": "trans"}, **kw)
+STRATEGIES["portfolio_sas_nosus"] = lambda pr, **kw: PortfolioSAS(pr, use_sus=False, **kw)
+STRATEGIES["stagger_multi"] = lambda pr, **kw: StaggerMulti(pr, m=10)

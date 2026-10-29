@@ -1,5 +1,10 @@
-"""Сборка аннотированной библиографии docs/01_bibliografiya.md
-из data/bibliography.json (проверенные метаданные) и data/bib_annotations.json.
+"""Сборка библиотеки литературы проекта docs/01_bibliografiya.md
+из data/bibliography.json (проверенные метаданные) и data/bib_annotations.json (заметки).
+
+Как пополнять библиотеку: новые работы записать кандидатами в data/bib_candidates_<дата>.json (key, group, doi или
+arxiv, title), проверить `python src/tools/verify_bib.py data/bib_candidates_<дата>.json` (режим слияния), добавить
+заметки (note, use, read, pdf, found, при необходимости group) в data/bib_annotations.json и пересобрать этот файл:
+`python src/tools/build_bib_md.py`.
 """
 import html
 import json
@@ -85,15 +90,20 @@ def main():
     groups = ann.pop("_groups")
     titles = input_titles()
     lines = []
-    lines.append("# Аннотированная библиография (этап 0)\n")
+    lines.append("# Библиотека литературы проекта\n")
     nver = sum(1 for r in bib.values() if r.get("verified"))
     lines.append(f"Всего записей: {len(bib)}, из них проверено по DOI/arXiv/названию: {nver}. "
                  "Источник метаданных указан в квадратных скобках (crossref или semanticscholar). "
                  "Записи, помеченные «не проверено», в статью не попадают до ручной проверки.\n")
     lines.append("Ядро библиографии (★) — источники, на которые опирается постановка задачи и введение статьи; "
                  "остальные — вспомогательные.\n")
+    lines.append("У каждой записи: *Содержание* — о чём работа; *Использование* — чем она полезна нам; *Прочитано* — "
+                 "целиком, ключевые разделы или только аннотация; *PDF* — полный текст в literature/ (папка не в git); "
+                 "*Найдено* — когда и в связи с чем. Как пополнять библиотеку, написано в src/tools/build_bib_md.py.\n")
+    read_name = {"full": "целиком", "partial": "ключевые разделы", "abstract": "только аннотация",
+                 "none": "не читалась, известна по ссылкам"}
     for g, gname in groups.items():
-        recs = [(k, bib[k]) for k in ann if k in bib and bib[k].get("group") == g]
+        recs = [(k, bib[k]) for k in ann if k in bib and (ann[k].get("group") or bib[k].get("group")) == g]
         recs.sort(key=lambda kr: (not ann[kr[0]].get("core", False), kr[1].get("year") or 0, kr[0]))
         if not recs:
             continue
@@ -106,7 +116,17 @@ def main():
             lines.append(f"- {star}**{k}**. {fmt_cite(r, titles)} {ver}{cites}")
             lines.append(f"  - *Содержание:* {a['note']}")
             lines.append(f"  - *Использование в работе:* {a['use']}")
-    missing = [k for k in bib if k not in ann]
+            extra = []
+            if a.get("read"):
+                extra.append(f"*Прочитано:* {read_name.get(a['read'], a['read'])}")
+            if a.get("pdf"):
+                extra.append(f"*PDF:* {a['pdf']}")
+            if a.get("found"):
+                extra.append(f"*Найдено:* {a['found']}")
+            if extra:
+                lines.append("  - " + "; ".join(extra))
+    shown = {k for k in ann if k in bib and (ann[k].get("group") or bib[k].get("group")) in groups}
+    missing = [k for k in bib if k not in shown]
     if missing:
         lines.append("\n## Записи без аннотации\n")
         for k in missing:

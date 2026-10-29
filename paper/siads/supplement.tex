@@ -1,0 +1,33 @@
+% SIADS supplementary materials (SIAM siamart251216). Build: python paper/siads/build.py
+\RequirePackage{iftex}
+\ifXeTeX\expandafter\def\csname ver@breakurl.sty\endcsname{2013/04/10 v1.40}\fi
+\documentclass[review,supplement,hidelinks,onefignum,onetabnum,nohypdvips]{siamart251216}
+
+\input{shared}
+
+\ifpdf
+\hypersetup{
+  pdftitle={Supplementary Materials: Finding rare hidden attractors},
+  pdfauthor={M. Elisov}
+}
+\fi
+
+\externaldocument[][nocite]{main}
+
+\begin{document}
+
+\maketitle
+
+\input{sm/sm1_systems}
+\input{sm/sm2_verification}
+\input{sm/sm3_classic}
+\input{sm/sm4_ablation}
+\input{sm/sm5_enlarged}
+\input{sm/sm6_smallp}
+\input{sm/sm7_diagnostics}
+\input{sm/sm8_implementation}
+
+\bibliographystyle{siamplain}
+\bibliography{refs}
+
+\end{document}

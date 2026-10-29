@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or these data, please cite the article below."
-title: "hidden-attractor-search: searching for hidden attractors as a rare-event problem"
+title: "hidden-attractor-search: finding rare hidden attractors as rare-event detection"
 authors:
   - family-names: Elisov
     given-names: Maksim
@@ -9,15 +9,15 @@ authors:
     orcid: "https://orcid.org/0009-0001-3097-2703"
 repository-code: "https://github.com/Hardos220/hidden-attractor-search"
 doi: 10.5281/zenodo.23348470
-version: 1.0.4
+version: 1.1.0
 license: MIT
-date-released: "2026-10-14"
+date-released: "2026-10-30"
 preferred-citation:
   type: article
-  title: "Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee"
+  title: "Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee"
   authors:
     - family-names: Elisov
       given-names: Maksim
-  journal: "Chaos: An Interdisciplinary Journal of Nonlinear Science"
+  journal: "SIAM Journal on Applied Dynamical Systems"
   year: 2026
   notes: "Manuscript."

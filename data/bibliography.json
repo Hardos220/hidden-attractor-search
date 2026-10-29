@@ -3231,5 +3231,25 @@
   "source": "datacite",
   "verified": true,
   "title_similarity": 1.0
+ },
+ {
+  "key": "WolpertMacready1997",
+  "group": "E_search",
+  "doi": "10.1109/4235.585893",
+  "title": "No free lunch theorems for optimization",
+  "title_input": "No free lunch theorems for optimization",
+  "authors": [
+   "Wolpert D.",
+   "Macready W."
+  ],
+  "year": 1997,
+  "venue": "IEEE Transactions on Evolutionary Computation",
+  "volume": "1",
+  "issue": "1",
+  "pages": "67-82",
+  "type": "journal-article",
+  "source": "crossref",
+  "title_similarity": 1.0,
+  "verified": true
  }
 ]

@@ -15,3 +15,13 @@ paper/chaos/manuscript.bbl
 paper/chaos/manuscript.blg
 paper/chaos/manuscript.out
 paper/chaos/manuscriptNotes.bib
+paper/siads/_build/
+paper/siads/*.aux
+paper/siads/*.bbl
+paper/siads/*.blg
+paper/siads/*.out
+paper/siads/*.thm
+paper/siads/figures/*.png
+# the SIAM class is distributed only with the whole SIAM macro package (see README)
+paper/siads/siamart*.cls
+paper/siads/siamplain.bst
