@@ -12,7 +12,8 @@ k = 2..4 and the cost exponent along p = p1^k, and draws the figure of the artic
     python experiments/e68_product_theory.py
     python experiments/e68_product_theory.py --figure    # only the figure, from results/e68_product_theory.json
 
-Writes results/e68_product_theory.{json,md} and paper/siads/figures/fig_product_gain.{pdf,png}.
+Writes results/e68_product_theory.{json,md} and paper/siads/figures/fig_product_gain.{pdf,png}
+(with --figure --cnsns: the CNSNS version in paper/cnsns/figures).
 """
 import json
 import math
@@ -118,9 +119,12 @@ def main():
     figure(out)
 
 
-def figure(out):
+def figure(out, cnsns=False):
     """Figure of the article at the SIAM column size (included at 0.62 of the text width, 3.18 in): white
-    background, framed legend in the empty upper left, so that the legend markers are not read as data."""
+    background, framed legend in the empty upper left, so that the legend markers are not read as data.
+
+    cnsns=True: the CNSNS version (paper/cnsns/figures, column 0.62 of 5.40 in): the axis ends at 1e6, just
+    above the bound at k = 4, the legend sits at the bottom of the empty lower right, the grid beneath the data."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -130,7 +134,7 @@ def figure(out):
     plt.rcParams.update({"figure.facecolor": "white", "axes.facecolor": "white", "savefig.facecolor": "white"})
     rows = out["rows"]
     q, p1 = out["q"], out["p1"]
-    width = 3.18
+    width = 0.62 * 390 / 72.27 if cnsns else 3.18
     fig, ax = plt.subplots(figsize=(width, 2.6))
     kk = np.linspace(1, 4, 50)
     ax.semilogy(kk, out["bound_const"] * q ** (-kk), color="0.2", ls="-", lw=1.2,
@@ -150,14 +154,15 @@ def figure(out):
             de = {0.01: -0.04, 0.0: 0.04}.get(r["eps"], 0.0) if r["k"] == 3 else 0.0   # coupled and uncoupled k = 3 side by side
             ax.errorbar(r["k"] + dx + de, g, yerr=err, fmt=mk, color=col, mfc=col if filled else "white", ms=4, capsize=2,
                         lw=0.9, label=lab if r["k"] == 1 else None)
+    ax.set_axisbelow(cnsns)
     ax.axhline(1, color="0.6", lw=0.8, ls=":")
     ax.set_xticks([1, 2, 3, 4])
     ax.set_xlim(0.75, 4.25)
-    ax.set_ylim(0.6, 3e7)
+    ax.set_ylim(0.6, 1.5e6 if cnsns else 3e7)
     ax.set_xlabel("number of coupled copies $k$ (dimension $3k$)")
     ax.set_ylabel(r"gain $G_{0.9}$")
-    ax.legend(loc="upper left", frameon=True, framealpha=1.0, edgecolor="#d0d0d0", fancybox=False,
-              borderaxespad=0.4, labelspacing=0.3, handlelength=1.8)
+    ax.legend(loc="lower right" if cnsns else "upper left", frameon=True, framealpha=1.0, edgecolor="#d0d0d0", fancybox=False,
+              borderaxespad=0.15 if cnsns else 0.4, labelspacing=0.3, handlelength=1.8)
     fig.tight_layout()
     pad = 2 * float(plt.rcParams["savefig.pad_inches"])
     for _ in range(6):                   # the tight bounding box must fit the column, so that LaTeX does not scale
@@ -167,7 +172,7 @@ def figure(out):
             break
         fig.set_size_inches(fig.get_size_inches()[0] - (w - width), fig.get_size_inches()[1])
         fig.tight_layout()
-    d = ROOT / "paper" / "siads" / "figures"
+    d = ROOT / "paper" / ("cnsns" if cnsns else "siads") / "figures"
     d.mkdir(parents=True, exist_ok=True)
     fig.savefig(d / "fig_product_gain.pdf")
     fig.savefig(d / "fig_product_gain.png")
@@ -175,6 +180,6 @@ def figure(out):
 
 if __name__ == "__main__":
     if "--figure" in sys.argv:           # redraw from the saved results only
-        figure(json.loads((RES / "e68_product_theory.json").read_text(encoding="utf-8")))
+        figure(json.loads((RES / "e68_product_theory.json").read_text(encoding="utf-8")), cnsns="--cnsns" in sys.argv)
     else:
         main()

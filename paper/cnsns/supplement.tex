@@ -1,0 +1,46 @@
+% CNSNS supplementary material (Elsevier elsarticle). Build: python paper1_method/cnsns/build.py
+\documentclass[preprint,12pt]{elsarticle}
+
+\input{shared}
+
+\hypersetup{pdftitle={Supplementary material: \papertitle}, pdfauthor={M. Elisov}}
+
+% Sections, figures, tables and equations of the supplement are numbered SM1, SM2, ...
+\renewcommand{\thesection}{SM\arabic{section}}
+\renewcommand{\thefigure}{SM\arabic{figure}}
+\renewcommand{\thetable}{SM\arabic{table}}
+\renewcommand{\theequation}{SM\arabic{equation}}
+
+\externaldocument[][nocite]{main}
+
+\journal{Commun. Nonlinear Sci. Numer. Simul.}
+
+\begin{document}
+
+\begin{frontmatter}
+\title{Supplementary material for ``\papertitle''}
+\author{Maksim Elisov}
+\ead{maksimelisov2003@gmail.com}
+\affiliation{organization={Samara National Research University},
+  addressline={Moskovskoye Shosse 34},
+  city={Samara},
+  postcode={443086},
+  country={Russia}}
+\begin{abstract}
+Equations and parameters of the benchmark systems (SM1), verification episodes and hiddenness (SM2), classical heuristics (SM3), ablations, robustness and baselines (SM4), enlarged regions (SM5), the discretization limit and the dimension (SM6), channel diagnostics (SM7), and implementation details (SM8). Section, figure, table and equation numbers without the prefix SM refer to the main text.
+\end{abstract}
+\end{frontmatter}
+
+\input{sm/sm1_systems}
+\input{sm/sm2_verification}
+\input{sm/sm3_classic}
+\input{sm/sm4_ablation}
+\input{sm/sm5_enlarged}
+\input{sm/sm6_smallp}
+\input{sm/sm7_diagnostics}
+\input{sm/sm8_implementation}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{refs}
+
+\end{document}

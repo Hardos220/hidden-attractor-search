@@ -2,9 +2,9 @@
 
 Code, experiments, results, and manuscript sources for the article
 
-> M. Elisov, *Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee*, manuscript for *SIAM Journal on Applied Dynamical Systems* (2026).
+> M. Elisov, *Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee*, manuscript (2026).
 
-Archived in Zenodo: [doi:10.5281/zenodo.23348470](https://doi.org/10.5281/zenodo.23348470) (all versions; v1.1.0 is the current one). Versions 1.0.x accompany an earlier version of the manuscript, *Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee* (`paper/chaos/`).
+Archived in Zenodo: [doi:10.5281/zenodo.23348470](https://doi.org/10.5281/zenodo.23348470) (all versions; v1.2.0 is the current one). Version 1.1.0 accompanies the same manuscript in the SIAM `siamart` class (`paper/siads/`); versions 1.0.x accompany an earlier version of the manuscript, *Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee* (`paper/chaos/`).
 
 The search for a hidden attractor with a small basin is treated as the detection of a rare event in the space of initial conditions. The article proves an information bound (no algorithm can guarantee a gain over uniform sampling larger than about 2.6/μ(Q), where Q is the set around the target on which the observations are constant), shows that for k uncoupled units ideal multilevel splitting along the escape time attains this bound up to a constant, and proposes a portfolio of search strategies with a worst-case guarantee. The repository contains the benchmark of systems with hidden attractors, the identification and verification protocol, the search strategies (uniform sampling, subset simulation driven by transient duration, active learning of basin boundaries, their portfolio, a portfolio arm of stagger-and-step chains, bisection toward basin boundaries, a stagger-and-step chain, and Zelinka's differential evolution), every numerical result reported in the article, and the scripts that produce its tables and figures.
 
@@ -18,7 +18,8 @@ The search for a hidden attractor with a small basin is treated as the detection
 | `results/` | JSON outputs of every experiment; `e50/<batch>/<job>.jsonl` holds one line per search run of the long batches; `e53_snippets/` holds table rows of the earlier manuscript; `e59/` holds the comparison with Attractors.jl. |
 | `julia/` | `recurrence_cost.jl`: cost per evaluation of `AttractorsViaRecurrences` (Attractors.jl 2.0) on the same initial conditions as the Python code; `chua_attractors.jl`: independent check of the Chua basin fractions; `setup.jl`: packages. |
 | `data/` | `bibliography.json`: the verified bibliographic records (DOI or arXiv id, title similarity) of the references. |
-| `paper/siads/` | The manuscript (SIAM `siamart` class): `main.tex` + `sections/*.tex`, the supplementary materials `supplement.tex` + `sm/*.tex`, the shared preamble `shared.tex`, `refs.bib`, the figures (`figures/`), `build.py` (compiles both documents and checks for undefined references and overfull lines), `make_figures_siads.py` with `figures_siads.py` (all figures at the SIAM text width), and the compiled `main.pdf` and `supplement.pdf`. |
+| `paper/cnsns/` | The manuscript (Elsevier `elsarticle` class): `main.tex` + `sections/*.tex`, the supplementary materials `supplement.tex` + `sm/*.tex`, the shared preamble `shared.tex`, `refs.bib`, the figures (`figures/`), `build.py` (compiles both documents and checks for undefined references and overfull lines), `make_figures_cnsns.py` (all figures at the `elsarticle` text width), and the compiled `main.pdf` and `supplement.pdf`. |
+| `paper/siads/` | The same manuscript in the SIAM `siamart` class (version 1.1.0): `main.tex` + `sections/*.tex`, the supplementary materials `supplement.tex` + `sm/*.tex`, the shared preamble `shared.tex`, `refs.bib`, the figures (`figures/`), `build.py` (compiles both documents and checks for undefined references and overfull lines), `make_figures_siads.py` with `figures_siads.py` (all figures at the SIAM text width), and the compiled `main.pdf` and `supplement.pdf`. |
 | `paper/chaos/` | The earlier version of the manuscript (REVTeX 4.2): sources, figures, `build_chaos.py`, `make_figures_en.py` (its figure machinery is reused by `paper/siads/make_figures_siads.py`), and the compiled `manuscript.pdf`. |
 
 ## Setup
@@ -31,7 +32,7 @@ Python 3.11 or later; the article's results were produced with Python 3.14, nump
 
 ## Reproducing the results
 
-All runs use fixed seeds. Results that the article reports are already in `results/`; every script skips what is already computed where that applies. Section numbers below refer to `paper/siads/main.pdf`; SM*n* are sections of `paper/siads/supplement.pdf`.
+All runs use fixed seeds. Results that the article reports are already in `results/`; every script skips what is already computed where that applies. Section numbers below refer to `paper/cnsns/main.pdf`; SM*n* are sections of `paper/cnsns/supplement.pdf` (the numbering of `paper/siads/` is the same).
 
 Benchmark and protocol (section 5, SM1–SM3):
 
@@ -46,6 +47,7 @@ python experiments/e09_synthetic_check.py  # basin measure of the synthetic fami
 python experiments/e11_hiddenness.py       # hiddenness measure h_eps
 python experiments/e12_jafari2026_scan.py  # the chaotic window of the Jafari 2026 system
 python experiments/e13_verify_targets.py   # lifetime, dt/2, Lyapunov sign; e13b: long lifetimes; e13c: Jafari fragility
+python experiments/e69_le1_line.py         # LE1: starts near the line of equilibria x = y = 0 (SM2)
 ```
 
 Search benchmark on levels A–D (sections 6.3–6.5, SM4, SM6, SM7):
@@ -63,7 +65,7 @@ python experiments/e66_stagger_summary.py  # stagger-and-step against splitting 
 python experiments/e67_portfolio_sas.py    # stagger-and-step chains as a portfolio arm, Corollary 3.2 (Table 5; 12 problems, R = 50)
 ```
 
-Product targets (Proposition 4.2, Table 2, Figure 2): `python experiments/e68_product_theory.py` computes the nonescaping fraction q of SE11, the gain of ideal splitting and the information bound for k copies, and the base of the measured geometric growth from the batch outputs of `results/e50/B8`; `--figure` redraws Figure 2 only.
+Product targets (Proposition 4.2, Table 2, Figure 2): `python experiments/e68_product_theory.py` computes the nonescaping fraction q of SE11, the gain of ideal splitting and the information bound for k copies, and the base of the measured geometric growth from the batch outputs of `results/e50/B8`; `--figure` redraws Figure 2 only (`--figure --cnsns`: the version of `paper/cnsns`).
 
 Long batches (coupled copies, enlarged regions, D2 down to p = 1e-7, cost in steps and time, the one-thread timing, the coupling-born attractor):
 
@@ -90,6 +92,16 @@ python experiments/e59_cost_table.py; python experiments/e59_paper_table.py
 ```
 
 ## Building the manuscript
+
+```
+python paper/cnsns/make_figures_cnsns.py   # all figures of paper/cnsns at the elsarticle text width (8-pt labels)
+python paper/cnsns/make_figures_cnsns.py e40:fig_d2_mechanism e68   # selected figure functions only
+python paper/cnsns/build.py                # supplement -> main -> supplement -> main (cross-references via xr-hyper)
+```
+
+`make_figures_cnsns.py` reuses the machinery of `paper/siads/make_figures_siads.py` (below) at the `elsarticle` text width, draws the grid beneath the data, and redraws the uniform sample of Figure 1(a), the panels of Figure 4 (two columns), Figure 2 (by `experiments/e68_product_theory.py --figure --cnsns`), and the panel layout of the coexisting Chua II attractors in the supplement. The `elsarticle` class is part of TeX Live and MiKTeX (CTAN).
+
+The SIADS version (`paper/siads/`):
 
 ```
 python paper/siads/make_figures_siads.py   # all figures of paper/siads at the SIAM text width (8-pt labels)

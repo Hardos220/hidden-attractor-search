@@ -616,8 +616,16 @@ def install_hooks():
     np.save = np_save
 
 
+def script_path(fname):
+    """Plotting scripts live in experiments/."""
+    for d in (ROOT / "experiments",):
+        if (d / fname).exists():
+            return d / fname
+    return ROOT / "experiments" / fname
+
+
 def run(script, only):
-    path = ROOT / "experiments" / SCRIPTS[script]
+    path = script_path(SCRIPTS[script])
     src = translate(path.read_text(encoding="utf-8"), script)
     ns = {"__name__": f"en_{script}", "__file__": str(path), "_fs": _fs}
     exec(compile(src, str(path), "exec"), ns)
@@ -657,7 +665,7 @@ def run(script, only):
 def main(argv):
     if argv == ["--check"]:
         for script, fname in SCRIPTS.items():
-            translate((ROOT / "experiments" / fname).read_text(encoding="utf-8"), script)
+            translate(script_path(fname).read_text(encoding="utf-8"), script)
         print("translation complete")
         return
     esn = "--esn" in argv

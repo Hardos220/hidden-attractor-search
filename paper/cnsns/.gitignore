@@ -1,0 +1,8 @@
+*.aux
+*.bbl
+*.blg
+*.out
+*.thm
+*.log
+_build/
+figures/*.png

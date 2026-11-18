@@ -159,7 +159,7 @@ def cached(fn, kind):
 
 def run(script, only):
     """make_figures_en.run with the cache of the trajectory batches and basin maps."""
-    path = ROOT / "experiments" / mfe.SCRIPTS[script]
+    path = mfe.script_path(mfe.SCRIPTS[script])
     src = mfe.translate(path.read_text(encoding="utf-8"), script)
     ns = {"__name__": f"siads_{script}", "__file__": str(path), "_fs": mfe._fs}
     exec(compile(src, str(path), "exec"), ns)

@@ -1,0 +1,61 @@
+\section{Search for a hidden attractor as rare-event detection}\label{sec:problem}
+
+\subsection{Hidden attractors}\label{sec:hidden}
+
+Consider an autonomous system in $\mathbb{R}^n$, a flow $\dot x=F(x)$ or a map $x_{k+1}=F(x_k)$ with a smooth or piecewise-smooth right-hand side. Let $A$ be an attractor, $W(A)$ its basin, and $\mathcal{E}$ the set of equilibria (fixed points). The attractor $A$ is \emph{self-excited} if there is $e\in\mathcal{E}$ such that $W(A)\cap U_\varepsilon(e)\neq\varnothing$ for every $\varepsilon>0$; otherwise, $A$ is \emph{hidden}~\cite{LeonovKuznetsov2013}. In systems without equilibria and in systems with a single stable equilibrium, all nontrivial attractors are hidden; a hidden attractor that coexists with self-excited ones has an ``island'' basin that the unstable manifolds of the equilibria do not reach. A continuous characteristic complements the binary definition. Let $\nu_\varepsilon$ be the uniform distribution on the union of the $\varepsilon$-neighborhoods of the equilibria (in an extended version, also on $\varepsilon$-tubes around their unstable manifolds). The \emph{hiddenness measure}
+\begin{equation}
+h_\varepsilon(A)=\Pr_{x\sim\nu_\varepsilon}\bigl[x\in W(A)\bigr]
+\label{eq:heps}
+\end{equation}
+vanishes for all small $\varepsilon$ if $A$ is hidden and $\mathcal E$ is finite, and $\varepsilon\mapsto h_\varepsilon$ shows the depth of hiddenness. A measured $h_\varepsilon=0$ is a necessary condition for hiddenness that bounds the measure of $W(A)\cap U_\varepsilon(\mathcal E)$ by the sampling resolution.
+
+\subsection{Cost of a search}\label{sec:rare}
+
+Let $B\subset\mathbb{R}^n$ be a compact region of initial conditions with normalized Lebesgue measure $\mu$, $\mu(B)=1$, and let the target attractor $A^*$ have a basin $W^*$ of measure $p=\mu(W^*\cap B)\ll1$. The unit of cost is one \emph{evaluation}: one integration of standard length $T=T_{\rm tr}+T_{\rm obs}$ (a transient segment and an observation window), or one orbit of a map. An algorithm $\mathcal{A}$ chooses initial points $x_1,x_2,\dots\in B$ adaptively, each depending on the results of the previous evaluations, and $\tau=\min\{k: x_k\in W^*\}$ is the index of the first hit. Its quality is described by the detection probability and by the cost at confidence level $1-\delta$:
+\begin{equation}
+P_{\mathcal A}(N)=\Pr[\tau\le N],\qquad N_{1-\delta}(\mathcal A)=\min\{N: P_{\mathcal A}(N)\ge 1-\delta\},
+\label{eq:pn}
+\end{equation}
+where the probability is taken over the internal randomness of the algorithm; throughout, $\delta=0.1$. The reference is independent uniform sampling,
+\begin{equation}
+P_0(N)=1-(1-p)^N,\qquad N^0_{1-\delta}=\left\lceil\frac{\ln\delta}{\ln(1-p)}\right\rceil\approx\frac{\ln(1/\delta)}{p},\qquad N^0_{0.9}\approx\frac{2.3}{p}.
+\label{eq:uniform}
+\end{equation}
+The gain $G_{1-\delta}(\mathcal A)=N^0_{1-\delta}/N_{1-\delta}(\mathcal A)$ is equivalent to an effective basin measure $pG$. On families with a controlled basin measure, we measure the scaling exponent $s$ in $N_{0.9}\propto p^{-s}$; for uniform sampling, $s=1$. A method has an \emph{order-of-growth gain} if $s<1$ and a \emph{constant-factor gain} if $s\approx1$ but $G>1$. A hit counts only if the candidate passes the verification protocol of \cref{sec:protocol}.
+
+\subsection{Information bound}\label{sec:infobound}
+
+An algorithm learns about the unknown basin only through what it observes for the points it evaluates. For a point $x$, it observes $o(x)=(\mathbb 1[x\in W^*],\varphi(x))$, where $\varphi(x)$ is all other information produced by the evaluation: the label of a known regime reached by the trajectory, its escape step, transient statistics, and so on. The following theorem limits what any algorithm can guarantee from given information.
+
+\begin{theorem}[information bound]\label{thm:info}
+Let $Q\subseteq B$ be measurable with $\mu(Q)=q\ge p$, let $m=\lfloor q/p\rfloor$, and let $W_1,\dots,W_m\subset Q$ be disjoint measurable sets with $\mu(W_i)=p$. Fix a map $\varphi_0$ on $B$ and consider the search problems $\mathcal P_1,\dots,\mathcal P_m$ in which the target basin is $W_i$ and the observation is $o_i(x)=(\mathbb 1[x\in W_i],\varphi_i(x))$ with $\varphi_i=\varphi_0$ on $B\setminus W_i$. Then every algorithm $\mathcal A$, adaptive and possibly randomized, satisfies
+\begin{equation}
+\frac1m\sum_{i=1}^m\Pr\nolimits_i[\tau\le N]\le\frac Nm\qquad\text{for all } N,
+\label{eq:infobound}
+\end{equation}
+so $\max_i N_{1-\delta}(\mathcal A;\mathcal P_i)\ge(1-\delta)m$. Consequently, there is an $i$ with
+\begin{equation}
+G_{1-\delta}(\mathcal A;\mathcal P_i)\le\frac{N^0_{1-\delta}}{(1-\delta)m}\approx\frac{\ln(1/\delta)}{(1-\delta)\,q},
+\label{eq:gainbound}
+\end{equation}
+which is $2.56/q$ for $\delta=0.1$.
+\end{theorem}
+
+\begin{proof}
+Consider the problem $\mathcal P_0$ without a target, in which every point $x$ yields the observation $o_0(x)=(0,\varphi_0(x))$. Let $X_1(\omega),X_2(\omega),\dots$ be the points that $\mathcal A$ evaluates on $\mathcal P_0$ with internal randomness $\omega$. On $\mathcal P_i$, with the same $\omega$, the observations coincide with those on $\mathcal P_0$ at every point outside $W_i$, so both runs evaluate the same points up to and including the first point in $W_i$, and $\tau_i(\omega)=\min\{k: X_k(\omega)\in W_i\}$. The sets $W_i$ are disjoint, so each $X_k$ lies in at most one of them, and $\sum_i\mathbb 1[\tau_i(\omega)\le N]\le N$ for every $\omega$; taking the expectation over $\omega$ gives \eqref{eq:infobound}. If $N_{1-\delta}(\mathcal A;\mathcal P_i)\le N$ for all $i$, the left-hand side of \eqref{eq:infobound} is at least $1-\delta$; hence $N\ge(1-\delta)m$. Uniform sampling has the same cost $N^0_{1-\delta}$ on every $\mathcal P_i$, and $m\ge q/p-1$ gives \eqref{eq:gainbound}.
+\end{proof}
+
+The theorem concerns information, not a particular algorithm. If the observation $\varphi$ of a given problem is constant on a set $Q\supseteq W^*$, then moving the target within $Q$, with $\varphi_0$ equal to $\varphi$ outside $Q$ and to its constant value on $Q$, produces problems $\mathcal P_i$ that satisfy the assumptions, and one of them can be taken to be the given problem. On a fixed system, a method may be fortunate, but no method can guarantee more than \eqref{eq:gainbound} unless it uses information that distinguishes the points of $Q$. The argument is in the spirit of the no-free-lunch theorems for optimization~\cite{WolpertMacready1997}, which average over all objective functions, but it is local and quantitative: the value of adaptivity is set by the measure of the set on which the observations are constant. Up to the factor $\ln(1/\delta)/(1-\delta)$, the bound is attained: by uniform sampling when $Q=B$, and by ideal splitting for product targets of many units (\cref{prop:product}). Two cases matter below.
+
+\begin{corollary}[value of adaptivity and of escape times]\label{cor:channels}
+\textup{(a)} If an algorithm observes only the target indicator, then $Q=B$, and no such algorithm can guarantee a gain over uniform sampling larger than $\ln(1/\delta)/(1-\delta)\approx2.56$: adaptivity alone is worth at most this factor.
+\textup{(b)} Suppose that an algorithm observes, besides the target indicator, only the escape step of each trajectory, and let $Q_\infty\supseteq W^*$ be the set of initial conditions whose trajectories do not escape. The escape step is constant on $Q_\infty$, so no such algorithm can guarantee a gain larger than about $2.56/\mu(Q_\infty)$.
+\end{corollary}
+
+For the escaping systems of the benchmark, $\mu(Q_\infty)$ follows from the uniform census: it is $0.047$ for SE11, $0.011$ for LE1, and $0.058$ for Chua~I, so escape times alone are worth at most factors of about 54, 230, and 44. For systems with bounded trajectories, $Q_\infty=B$, and escape times add nothing to the factor 2.56 of adaptivity alone; the gains we report for such systems (\cref{sec:coupled,sec:rare_ab}) come from information that varies inside $Q_\infty$. Any gain beyond the bound requires information that varies inside $Q$. We distinguish three channels of such information that cost one integration per point (information about the vector field that needs no integration, such as harmonic balance or Lyapunov functions, is outside this setting).
+\begin{itemize}
+\item \textbf{Channel A: basin geometry.} The labels of known regimes are spatially correlated, and points sampled near the boundaries of known basins are enriched in the target if the target basin adjoins these boundaries.
+\item \textbf{Channel B: transients.} Trajectories that converge to known attractors or escape carry information about proximity to unseen invariant sets: the escape time, delays near saddles, and the mismatch between the early segment of a trajectory and its asymptotic regime. Near a basin boundary, a trajectory follows the stable manifold of the invariant set on the boundary (the edge state~\cite{Skufca2006Edge,Schneider2007Edge,Vollmer2009Edge}) for a long time, and its transient lengthens; straddle methods~\cite{NusseYorke1989} and the stagger-and-step method for chaotic saddles~\cite{SweetNusseYorke2001} exploit exactly this effect.
+\item \textbf{Channel C: prior sets.} Classical heuristics (nullclines, perpetual points, connecting curves) define distributions of starting points that may be enriched in the target.
+\end{itemize}
+\Cref{thm:info} applies to every channel: whatever information is used, the gain it can guarantee is limited by the measure of the set around the target on which that information is constant. The method of \cref{sec:method} uses all three channels, and \cref{sec:theory} shows when channel B attains the bound.

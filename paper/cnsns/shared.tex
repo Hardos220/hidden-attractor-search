@@ -1,0 +1,47 @@
+% Shared by main.tex and supplement.tex (Elsevier elsarticle, CNSNS).
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{lineno}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xr-hyper}
+\usepackage[capitalise,nameinlink]{cleveref}
+\usepackage{iftex}
+\ifXeTeX
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+\else
+  \ifpdf\DeclareGraphicsExtensions{.pdf,.png,.jpg}\fi
+\fi
+\graphicspath{{figures/}}
+
+% Theorem-like environments share one counter per section, as in the SIADS version.
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{section}{Section}{Sections}
+\Crefname{section}{Section}{Sections}
+
+% Serial comma in cleveref lists.
+\newcommand{\creflastconjunction}{, and~}
+
+% 95% interval after a value, in tables.
+\newcommand{\ci}[2]{{\scriptsize[#1, #2]}}
+
+\newcommand{\papertitle}{Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{equation}{Eq.}{Eqs.}
