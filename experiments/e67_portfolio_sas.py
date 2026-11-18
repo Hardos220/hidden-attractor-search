@@ -8,7 +8,7 @@ Problems and budgets are those of the article (e20 runs, n_init = 50, batch = 20
 Each (problem, strategy) pair is run by e20_search_benchmark.py in its own process with its own tag, so the outputs
 results/e20_search_<problem>_<tag>.json never collide; NUMBA_NUM_THREADS = 1 per process.
 
-    rmq submit --cpu 6 --ram 4 --time 4h --name e67-psas -- python experiments/e67_portfolio_sas.py --workers 6
+    python experiments/e67_portfolio_sas.py --workers 6
     python experiments/e67_portfolio_sas.py --report-only
 
 Writes results/e67_portfolio_sas.{json,md}: N_0.9 with 95% bootstrap intervals, G = N0 / N_0.9 against the fixed

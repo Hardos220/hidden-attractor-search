@@ -9,7 +9,7 @@ escape (|x| > 100), on the hidden attractor (within 0.05 of a reference sample o
 The reference sample is computed here from the known point of the basin (0, 0.5, 0.5) of the registry
 (src/hsearch/systems/flows3d.py): transient 500 time units, then 2e4 points every 0.05 time units.
 
-    rmq run --cpu 1 --ram 2 --time 15m -- python experiments/e69_le1_line.py
+    python experiments/e69_le1_line.py
 writes results/e69_le1_line.json
 """
 import json

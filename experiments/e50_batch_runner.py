@@ -1,8 +1,7 @@
-"""Запуск батчей e50 (план Р1–Р6) для длительных расчётов на этом ПК — только через очередь rmq.
+"""Запуск батчей e50 (план Р1–Р6) для длительных расчётов через очередь задач rmq (менеджер ресурсов).
 
-На ПК работает менеджер ресурсов rmq (C:/Cursor/resources_manager, правила в ~/.claude/CLAUDE.md и `rmq guide`):
-тяжёлые расчёты ставятся в его очередь, а не запускаются напрямую. Поэтому команда run без rmq отказывается
-считать; ставить батчи надо командой submit, которая вызывает `rmq submit` с заявкой --cpu/--ram/--time.
+Команда run считает внутри задачи очереди (переменные RMQ_TASK_ID и RMQ_CPU; без очереди их задают вручную, см.
+README); команда submit ставит батчи в очередь командой `rmq submit` с заявкой --cpu/--ram/--time.
 
     python experiments/e50_batch_runner.py list                    # батчи, оценка часов
     python experiments/e50_batch_runner.py submit B0 --dry-run     # какая команда rmq будет поставлена
@@ -12,8 +11,7 @@
     python experiments/e50_batch_runner.py summarize B1a           # сводки по уже посчитанному
     (run <батчи> вызывает сама задача rmq; вручную — только с --dry-run)
 
-Заявка по умолчанию --cpu 20: по руководству rmq при свободном ПК заявляют все потоки, а процессор не
-захватывается, а делится между агентами. Поэтому батчи ставятся одной задачей (--chain): отдельные задачи с
+Заявка по умолчанию --cpu 20 (все потоки машины). Батчи ставятся одной задачей (--chain): отдельные задачи с
 такой заявкой шли бы одновременно, делили бы те же потоки и выходили бы за заявленное время.
 
 Устройство:
@@ -587,7 +585,7 @@ def cmd_run(B, names, args):
     under_rmq = bool(os.environ.get("RMQ_TASK_ID"))
     cpu = int(os.environ.get("RMQ_CPU", "0") or 0) if under_rmq else (args.cpu or 0)
     if not under_rmq and not args.dry_run:
-        raise SystemExit("тяжёлые расчёты на этом ПК идут только через очередь rmq: "
+        raise SystemExit("команда run выполняется внутри задачи очереди (или задайте RMQ_TASK_ID и RMQ_CPU): "
                          "python experiments/e50_batch_runner.py submit " + " ".join(names))
     plan_rows = []
     for bid in bids:
@@ -625,9 +623,9 @@ def cmd_run(B, names, args):
         raise SystemExit(f"батчи с ошибками: {', '.join(failed)} (см. их run.log)")
 
 
-RMQ = r"C:\Cursor\resources_manager\bin\rmq.cmd"
-CPU_DEFAULT = 20          # руководство rmq: ПК простаивает, задача хорошо параллелится — заявлять все потоки
-# пилот B0 через rmq (задача №1, 2026-10-10): 2 процесса × 2 потока — пик ОЗУ 815 МБ, т. е. ≈ 0.33 ГБ на процесс
+RMQ = os.environ.get("RMQ", "rmq")
+CPU_DEFAULT = 20          # все потоки машины: задача хорошо параллелится
+# пилот B0: 2 процесса × 2 потока — пик ОЗУ 815 МБ, т. е. ≈ 0.33 ГБ на процесс
 # и ≈ 0.15 ГБ у главного; у длинных батчей рукав границ и бисекция хранят до ~10⁶ точек — +0.15 ГБ на процесс
 RAM_PER_WORKER_GB = {2: 0.35, 4: 0.5}
 RAM_PARENT_GB = 0.15
@@ -681,7 +679,7 @@ def cmd_submit(B, names, args):
     for g in groups:
         bids = [r[0] for r in g]
         ram = math.ceil(max(r[4] for r in g) * 10) / 10
-        t_req = _fmt_time(sum(r[5] for r in g) * 1.3)                  # +30 % запаса по руководству rmq
+        t_req = _fmt_time(sum(r[5] for r in g) * 1.3)                  # +30 % запаса
         name = f"e50-{bids[0]}" if len(bids) == 1 else f"e50-{bids[0]}..{bids[-1]}"
         cmd = [RMQ, "submit", "--cpu", str(cpu), "--ram", f"{ram:g}", "--time", t_req,
                "--preempt", "requeue", "--name", name, "--cwd", str(ROOT), "--",
@@ -703,7 +701,7 @@ def cmd_submit(B, names, args):
         if r.stderr.strip():
             print("   rmq: " + r.stderr.strip())
         tid = r.stdout.strip().splitlines()[-1].strip()
-        print(f"   задача {tid}: http://127.0.0.1:8777/#task={tid}")
+        print(f"   задача {tid}")
         for bid in bids:
             with open(batch_dir(bid, out_root) / "rmq_tasks.jsonl", "a", encoding="utf-8") as fh:
                 fh.write(json.dumps({"task": tid, "time": time.strftime("%Y-%m-%d %H:%M:%S"), "chain": bids,

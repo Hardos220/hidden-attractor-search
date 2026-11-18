@@ -15,8 +15,8 @@
      неустойчивые направления), попавших в бассейн каждого режима.
 Ядра не перекомпилируются (eps — последний параметр системы).
 
-    rmq submit --cpu 8 --ram 3 --time 3h -- python experiments/e58_coupled_chua_eps_scan.py 0.1 0.0 0.005 10000 _down
-    rmq submit --cpu 8 --ram 3 --time 3h -- python experiments/e58_coupled_chua_eps_scan.py 0.1 0.6 0.01 10000 _up
+    python experiments/e58_coupled_chua_eps_scan.py 0.1 0.0 0.005 10000 _down
+    python experiments/e58_coupled_chua_eps_scan.py 0.1 0.6 0.01 10000 _up
 пишет results/e58_eps_scan<суффикс>.json
 """
 import copy

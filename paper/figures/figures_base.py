@@ -1,9 +1,9 @@
-"""SIADS-only redraws used by make_figures_siads.py (same data as the Chaos figures, SIAM page sizes).
+"""Redraws used by make_figures_base.py (same data as the plotting scripts, journal page sizes).
 
-OVERRIDE replaces figure functions of the executed plotting scripts, as OVERRIDE of paper/chaos/figures_en.py does;
+OVERRIDE replaces figure functions of the executed plotting scripts, as OVERRIDE of paper/figures/figures_en.py does;
 each function receives the namespace of the script. The functions below OVERRIDE draw the figures of the separate
 scripts e53, e54 and e61 from their saved results (results/e53_tables.json, results/e54_cost_final.json,
-results/e58_eps_scan_*.json) without running those scripts, which also write the Russian and Chaos versions.
+results/e58_eps_scan_*.json) without running those scripts, which also write the Russian versions.
 """
 import json
 from pathlib import Path
@@ -34,7 +34,7 @@ PATCH = [
 
 # ============================================================================================ e26
 def fig_scaling_p(ns):
-    """fig23: as figures_en.fig_scaling_p on the SIAM page: short names in the exponent lines, legend in two
+    """fig23: as figures_en.fig_scaling_p on the base page: short names in the exponent lines, legend in two
     columns below the panels."""
     LABEL, COLOR, q09, slope_ci, _sweep = ns["LABEL"], ns["COLOR"], ns["q09"], ns["slope_ci"], ns["_sweep"]
     from matplotlib.transforms import offset_copy
@@ -111,7 +111,7 @@ def fig_signal(ns):
 
 # ============================================================================================ e40
 def fig_maps(ns):
-    """fig34: as in figures_en.fig_maps on the narrower SIAM page: one row of four maps with short panel titles
+    """fig34: as in figures_en.fig_maps on the narrower base page: one row of four maps with short panel titles
     (the cases are named in the caption), legend below in two rows."""
     attractor, draw_basin, basin_grid = ns["attractor"], ns["draw_basin"], ns["basin_grid"]
     from e20_search_benchmark import build_problem
@@ -152,7 +152,7 @@ def fig_maps(ns):
 
 
 def _style3d(ax, n=3, labelpad=-5):
-    """3D axes on the narrow SIAM panels: three ticks per axis, labels close to the axes."""
+    """3D axes on the narrow base panels: three ticks per axis, labels close to the axes."""
     from matplotlib.ticker import MaxNLocator
     for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
         axis.set_major_locator(MaxNLocator(n))
@@ -165,7 +165,7 @@ def _style3d(ax, n=3, labelpad=-5):
 
 
 def fig_chua_I(ns):
-    """fig30: as figures_en.fig_chua_I with an explicit layout for the SIAM width: a larger 3D panel, legends below
+    """fig30: as figures_en.fig_chua_I with an explicit layout for the base width: a larger 3D panel, legends below
     the panels in two columns with short entries."""
     systems, attractor, draw_basin, RES = ns["systems"], ns["attractor"], ns["draw_basin"], ns["RES"]
     s = systems.get("chua_I")
@@ -216,7 +216,7 @@ def fig_chua_I(ns):
 
 
 def fig_chua_II(ns):
-    """fig31: as figures_en.fig_chua_II with an explicit layout for the SIAM width (two 3D panels, the basin map,
+    """fig31: as figures_en.fig_chua_II with an explicit layout for the base width (two 3D panels, the basin map,
     legends in two columns below them)."""
     systems, attractor, draw_basin = ns["systems"], ns["attractor"], ns["draw_basin"]
     s = systems.get("chua_II")
@@ -273,7 +273,7 @@ GALLERY_TITLES = {"chua_I": "Chua I", "chua_II": "Chua II", "ne4": "NE4", "wangc
 
 
 def fig_gallery(ns):
-    """fig32: the gallery of e40 on the SIAM page: system names as titles (the equilibria are described in the
+    """fig32: the gallery of e40 on the base page: system names as titles (the equilibria are described in the
     caption), three ticks per axis, explicit spacing."""
     systems, attractor = ns["systems"], ns["attractor"]
     fig = plt.figure()
@@ -367,7 +367,7 @@ def fig_cost_gains(width, save):
 
 
 def fig_new_attractor(width, save):
-    """fig31_new_attractor (e61, English) at the SIAM text width: shorter legend entries under the panels."""
+    """fig31_new_attractor (e61, English) at the base text width: shorter legend entries under the panels."""
     import numba
     import e50_batch_runner as runner
     numba.set_num_threads(2)
@@ -422,7 +422,7 @@ def fig_new_attractor(width, save):
 
 
 def fig_enlarged_and_smallp(w2, w1, save):
-    """fig27_enlarged_regions and fig29_d2_small_p (e53, English) from results/e53_tables.json at SIAM sizes."""
+    """fig27_enlarged_regions and fig29_d2_small_p (e53, English) from results/e53_tables.json at the base sizes."""
     import e53_paper_results as e53
     out = json.loads((RES / "e53_tables.json").read_text(encoding="utf-8"))
     sizes = {(6.69, 2.7): (w2, 3.0), (3.37, 2.8): (w1, 2.85)}

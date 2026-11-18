@@ -6,7 +6,7 @@
 рекуррентный метод Attractors.jl — julia/recurrence_cost.jl на тех же точках.
 
     python experiments/e59_eval_cost.py export      # results/e59/ics_<задача>.csv — общие начальные условия
-    rmq run --cpu 1 --ram 2 --time 30m -- python experiments/e59_eval_cost.py cost   # стоимости на одном потоке
+    python experiments/e59_eval_cost.py cost   # стоимости на одном потоке
 """
 import json
 import os

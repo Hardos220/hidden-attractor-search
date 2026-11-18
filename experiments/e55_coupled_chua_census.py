@@ -16,7 +16,7 @@
    направлений), попавших в бассейн каждого режима, eps_h = 1e-3, 1e-2, 1e-1 L. Скрытый режим: ноль при
    eps_h = 1e-3 и 1e-2 L.
 
-Только через rmq:  rmq submit --cpu 16 --ram 4 --time 40m -- python experiments/e55_coupled_chua_census.py 0.01 0.05
+python experiments/e55_coupled_chua_census.py 0.01 0.05
 """
 import json
 import sys

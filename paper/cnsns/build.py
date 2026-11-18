@@ -4,7 +4,7 @@
     python paper/cnsns/build.py --main     # main only (uses the existing supplement.aux)
 
 Outputs paper/cnsns/main.pdf and paper/cnsns/supplement.pdf and prints the undefined references, citations and
-overfull boxes found in the logs. TECTONIC may point to the executable (default C:/Cursor/tools/tectonic/tectonic.exe).
+overfull boxes found in the logs. TECTONIC may point to the executable (default: tectonic on the PATH).
 """
 import os
 import re
@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-TECTONIC = os.environ.get("TECTONIC", "C:/Cursor/tools/tectonic/tectonic.exe")
+TECTONIC = os.environ.get("TECTONIC", "tectonic")
 
 
 def run(name):

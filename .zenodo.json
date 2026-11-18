@@ -1,7 +1,7 @@
 {
   "title": "hidden-attractor-search: code, experiments, and results for \"Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee\"",
   "upload_type": "software",
-  "description": "Code, numerical experiments, results, and manuscript sources for the article \"Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee\" (manuscript, 2026). The repository contains the benchmark of systems with hidden attractors, the identification and verification protocol, the search strategies (uniform sampling, subset simulation driven by transient duration, active learning of basin boundaries, their portfolio, a portfolio arm of stagger-and-step chains, bisection toward basin boundaries, a stagger-and-step chain, and differential evolution), the computation of the information bound and of ideal splitting for product targets, every numerical result reported in the article in JSON form, the comparison with Attractors.jl, and the scripts that produce the tables and figures. Version 1.2.0 adds the manuscript in the Elsevier elsarticle class with its supplementary materials and figure scripts, and the check of starts near the line of equilibria of LE1 (e69); version 1.1.0 accompanies the same manuscript in the SIAM siamart class; versions 1.0.x accompany the earlier manuscript \"Searching for hidden attractors as a rare-event problem: An adaptive strategy portfolio with a worst-case guarantee\".",
+  "description": "Code, numerical experiments, results, and manuscript sources for the article \"Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee\" (manuscript, 2026). The repository contains the benchmark of systems with hidden attractors, the identification and verification protocol, the search strategies (uniform sampling, subset simulation driven by transient duration, active learning of basin boundaries, their portfolio, a portfolio arm of stagger-and-step chains, bisection toward basin boundaries, a stagger-and-step chain, and differential evolution), the computation of the information bound and of ideal splitting for product targets, every numerical result reported in the article in JSON form, the comparison with Attractors.jl, and the scripts that produce the tables and figures of the manuscript.",
   "creators": [
     {
       "name": "Elisov, Maksim",
@@ -31,5 +31,5 @@
       "scheme": "url"
     }
   ],
-  "version": "1.2.0"
+  "version": "1.2.1"
 }

@@ -239,7 +239,7 @@ def cmd_check(args):
 
 def cmd_run(args):
     if not os.environ.get("RMQ_TASK_ID") and not args.dry_run:
-        raise SystemExit("видеокарта на этом ПК — только через очередь rmq: python experiments/e51_gpu_uniform.py submit run")
+        raise SystemExit("расчёт на видеокарте выполняется внутри задачи очереди: python experiments/e51_gpu_uniform.py submit run")
     commit = runner.git_commit()
     jobs = gpu_jobs(args.batches or GPU_BATCHES)
     merge_ok = CHECK_OK.exists()
@@ -309,7 +309,7 @@ def cmd_submit(args):
         print(r.stdout, r.stderr)
         raise SystemExit(f"rmq submit вернул {r.returncode}")
     tid = r.stdout.strip().splitlines()[-1].strip()
-    print(f"задача {tid}: http://127.0.0.1:8777/#task={tid}")
+    print(f"задача {tid}")
     STAGE.mkdir(parents=True, exist_ok=True)
     with open(STAGE / "rmq_tasks.jsonl", "a", encoding="utf-8") as fh:
         fh.write(json.dumps({"task": tid, "time": time.strftime("%Y-%m-%d %H:%M:%S"), "cmd": cmd}, ensure_ascii=False) + "\n")
@@ -326,11 +326,11 @@ def main():
     args = ap.parse_args()
     if args.command == "check":
         if not os.environ.get("RMQ_TASK_ID"):
-            raise SystemExit("проверка использует видеокарту — только через rmq: python experiments/e51_gpu_uniform.py submit check")
+            raise SystemExit("проверка использует видеокарту — запуск внутри задачи очереди: python experiments/e51_gpu_uniform.py submit check")
         cmd_check(args)
     elif args.command in ("run", "auto"):
         if args.command == "auto" and not os.environ.get("RMQ_TASK_ID"):
-            raise SystemExit("видеокарта на этом ПК — только через rmq: python experiments/e51_gpu_uniform.py submit auto")
+            raise SystemExit("расчёт на видеокарте — только внутри задачи очереди: python experiments/e51_gpu_uniform.py submit auto")
         try:
             cmd_auto(args) if args.command == "auto" else cmd_run(args)
         except runner.StopRequested:

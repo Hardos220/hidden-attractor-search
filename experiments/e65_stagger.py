@@ -5,7 +5,7 @@ D2 p = 1e-4 60000) с меткой _stagger (results/e20_search_<система>
 затем считает N_0.9 с бутстрап-интервалом и выигрыш G относительно перебора статьи (N0_0.9 = 818, 1617, 317, 17416;
 интервал G — из интервала N_0.9 при фиксированном N0). Пишет results/e65_stagger.md и .json.
 
-    rmq submit --cpu 1 --ram 2 --time 3h --name e65-stagger -- python experiments/e65_stagger.py
+    python experiments/e65_stagger.py
     python experiments/e65_stagger.py --report-only
 """
 import argparse

@@ -12,7 +12,7 @@ k = 2..4 and the cost exponent along p = p1^k, and draws the figure of the artic
     python experiments/e68_product_theory.py
     python experiments/e68_product_theory.py --figure    # only the figure, from results/e68_product_theory.json
 
-Writes results/e68_product_theory.{json,md} and paper/siads/figures/fig_product_gain.{pdf,png}
+Writes results/e68_product_theory.{json,md} and paper/figures/figures/fig_product_gain.{pdf,png}
 (with --figure --cnsns: the CNSNS version in paper/cnsns/figures).
 """
 import json
@@ -120,7 +120,7 @@ def main():
 
 
 def figure(out, cnsns=False):
-    """Figure of the article at the SIAM column size (included at 0.62 of the text width, 3.18 in): white
+    """Figure of the article at the column size (included at 0.62 of the text width, 3.18 in): white
     background, framed legend in the empty upper left, so that the legend markers are not read as data.
 
     cnsns=True: the CNSNS version (paper/cnsns/figures, column 0.62 of 5.40 in): the axis ends at 1e6, just
@@ -172,7 +172,7 @@ def figure(out, cnsns=False):
             break
         fig.set_size_inches(fig.get_size_inches()[0] - (w - width), fig.get_size_inches()[1])
         fig.tight_layout()
-    d = ROOT / "paper" / ("cnsns" if cnsns else "siads") / "figures"
+    d = (ROOT / "paper" / "cnsns" / "figures") if cnsns else (ROOT / "paper" / "figures" / "figures")
     d.mkdir(parents=True, exist_ok=True)
     fig.savefig(d / "fig_product_gain.pdf")
     fig.savefig(d / "fig_product_gain.png")

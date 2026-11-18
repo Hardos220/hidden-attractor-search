@@ -1,4 +1,4 @@
-"""English-only redraws of article figures (Chaos submission); used by make_figures_en.py.
+"""English-only redraws of article figures; used by make_figures_en.py.
 
 The Russian figure scripts (experiments/e10, e26, e40) stay unchanged. Where the English figure differs in content
 from the Russian one (panels dropped or merged, legends moved outside the data, panel labels instead of titles,

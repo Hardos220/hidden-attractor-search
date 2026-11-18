@@ -1,14 +1,14 @@
-"""CNSNS versions of all figures -> paper/cnsns/figures/*.pdf|png.
+"""Figures of the manuscript -> paper/cnsns/figures/*.pdf|png.
 
-The machinery of paper/siads/make_figures_siads.py is reused at the elsarticle text width (390 pt = 5.40 in;
-column figures 0.62 of it), with the grid beneath the data on every figure (axes.axisbelow). Changes against SIADS:
+The machinery of paper/figures/make_figures_base.py is used at the elsarticle text width (390 pt = 5.40 in;
+column figures 0.62 of it), with the grid beneath the data on every figure (axes.axisbelow), and these redraws:
   fig37_d2_mechanism  -- (a) Delta from 1e-3 (no points below), larger orange points above a lighter law line;
-  fig21_pn_levelAB    -- two columns and four rows instead of three columns, the legend in the eighth slot;
+  fig21_pn_levelAB    -- two columns and four rows, the legend in the eighth slot;
   fig_product_gain    -- drawn by experiments/e68_product_theory.py --figure --cnsns (axis to 1e6, legend lower right).
-Large trajectory batches and basin maps come from the cache of paper/siads/_build/cache; the smaller ones are
-integrated again, so run the whole set through the queue:
+Large trajectory batches and basin maps are cached in paper/figures/_build/cache; the first run integrates them
+(about ten minutes on 8 threads):
 
-    rmq run --cpu 8 --ram 4 --time 30m -- python paper/cnsns/make_figures_cnsns.py
+    python paper/cnsns/make_figures_cnsns.py
     python paper/cnsns/make_figures_cnsns.py e40:fig_d2_mechanism e26:fig_pn e68   # selected figures
 """
 import importlib.util
@@ -18,14 +18,14 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
-_spec = importlib.util.spec_from_file_location("make_figures_siads",
-                                               ROOT / "paper" / "siads" / "make_figures_siads.py")
+_spec = importlib.util.spec_from_file_location("make_figures_base",
+                                               ROOT / "paper" / "figures" / "make_figures_base.py")
 msf = importlib.util.module_from_spec(_spec)
-sys.modules["make_figures_siads"] = msf
+sys.modules["make_figures_base"] = msf
 _spec.loader.exec_module(msf)
 
 import matplotlib.pyplot as plt  # noqa: E402
-import figures_siads  # noqa: E402
+import figures_base  # noqa: E402
 
 mfe = msf.mfe
 W2 = 390 / 72.27                  # \textwidth of elsarticle preprint 12pt, inches
@@ -33,7 +33,7 @@ W1 = 0.62 * W2
 msf.W1, msf.W2 = W1, W2
 mfe.W1, mfe.W2 = W1, W2
 msf.OUT = mfe.OUT = HERE / "figures"
-for _k, _v in list(mfe.FIGSIZE.items()):       # canvases of the SIADS widths -> elsarticle widths, heights kept
+for _k, _v in list(mfe.FIGSIZE.items()):       # canvases of the base widths -> elsarticle widths, heights kept
     if isinstance(_v, tuple):
         mfe.FIGSIZE[_k] = ({5.125: W2, 3.18: W1}.get(_v[0], _v[0]), _v[1])
 mfe.FIGSIZE["e40:fig_d2_mechanism"] = (W2, 2.45)
@@ -58,7 +58,7 @@ def _post_d2_mechanism(fig):
     ax.legend(h, ["uniform initial conditions", "exact law"], loc="lower left", markerscale=1.5)
 
 
-figures_siads.POST["fig37_d2_mechanism"] = _post_d2_mechanism
+figures_base.POST["fig37_d2_mechanism"] = _post_d2_mechanism
 
 
 def _post_chua_II(fig):
@@ -72,7 +72,7 @@ def _post_chua_II(fig):
     fig.legends[1].set_bbox_to_anchor((0.82, 0.0), transform=fig.transFigure)
 
 
-figures_siads.POST["fig31_chua_II_coexisting"] = _post_chua_II
+figures_base.POST["fig31_chua_II_coexisting"] = _post_chua_II
 
 
 def fig_pn(ns):

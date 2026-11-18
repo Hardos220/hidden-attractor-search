@@ -12,7 +12,7 @@
     (0.005) до T = 1e4 окнами T_obs = 200: время ухода каждой копии (по шагу ухода), кривая выживания, распределение
     конечновременных показателей Ляпунова по окнам; 8 копий DOP853 до 1e4 с событием ухода |x| > R_esc.
 
-    rmq submit --cpu 4 --ram 2 --time 1h --name e62 -- python experiments/e62_lifetime_checks.py
+    python experiments/e62_lifetime_checks.py
 пишет results/e62_lifetime_checks.json, results/e62_lifetime_checks.md, results/e62_lifetime_checks.npz
 """
 import argparse

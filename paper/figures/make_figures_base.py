@@ -1,17 +1,15 @@
-"""SIAM (SIADS) versions of the article figures -> paper/siads/figures/*.pdf|png.
+"""Figures at journal page sizes -> paper/figures/figures/*.pdf|png (paper/cnsns/make_figures_cnsns.py sets the
+elsarticle widths and writes to paper/cnsns/figures).
 
-Reuses paper/chaos/make_figures_en.py (English strings, layout patches, strategy line styles, Arial with an 8 pt
-minimum, Type 42 fonts) on the SIAM page: wide figures are drawn on a canvas of the text width W2 = 5.125 in and are
-included with width=\\textwidth, column figures on W1 = 3.18 in and are included with width=0.62\\textwidth, so that
-the labels print at 8 pt. The background is white. figures_siads.py holds the SIADS-only redraws, including the
+Reuses paper/figures/make_figures_en.py (English strings, layout patches, strategy line styles, Arial with an 8 pt
+minimum, Type 42 fonts): wide figures are drawn on a canvas of the text width W2 and are included with
+width=\\textwidth, column figures on W1 = 0.62 W2 and are included with width=0.62\\textwidth, so that the labels
+print at 8 pt. The background is white. figures_base.py holds the redraws, including the
 figures of the separate scripts e53 (fig27, fig29), e54 (fig30_cost_gains) and e61 (fig31_new_attractor), which are
 drawn from their saved results. fig_product_gain is drawn by experiments/e68_product_theory.py --figure.
 
-Basin maps and large trajectory batches are cached in paper/siads/_build/cache, so only the first run integrates
-(about ten minutes on 8 threads; run it through the queue):
-
-    rmq run --cpu 8 --ram 4 --time 30m -- python paper/siads/make_figures_siads.py
-    python paper/siads/make_figures_siads.py e40:fig_maps e54     # selected figures (keys below)
+Basin maps and large trajectory batches are cached in paper/figures/_build/cache, so only the first run integrates
+(about ten minutes on 8 threads). The figures are drawn by paper/cnsns/make_figures_cnsns.py (keys below).
 
 Keys: e10:fig_chua_transient; e26:fig_pn, fig_scaling_p, fig_scaling_n, fig_ablation, fig_signal; e40:fig_chua_I,
 fig_chua_II, fig_gallery, fig_li_sprott, fig_maps, fig_jafari, fig_d2_mechanism, fig_sus_chains, fig_verification;
@@ -26,10 +24,10 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
-_spec = importlib.util.spec_from_file_location("make_figures_en", ROOT / "paper" / "chaos" / "make_figures_en.py")
+_spec = importlib.util.spec_from_file_location("make_figures_en", ROOT / "paper" / "figures" / "make_figures_en.py")
 mfe = importlib.util.module_from_spec(_spec)
 sys.modules["make_figures_en"] = mfe
-_spec.loader.exec_module(mfe)            # also puts src/, experiments/ and paper/chaos/ on sys.path
+_spec.loader.exec_module(mfe)            # also puts src/, experiments/ and paper/figures/ on sys.path
 sys.path.insert(0, str(HERE))
 
 import numpy as np  # noqa: E402
@@ -37,9 +35,9 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.axes import Axes  # noqa: E402
 
 from hsearch import viz  # noqa: E402
-import figures_siads  # noqa: E402
+import figures_base  # noqa: E402
 
-W1, W2 = 3.18, 5.125          # 0.62\textwidth and \textwidth of siamart, inches
+W1, W2 = 3.18, 5.125          # 0.62\textwidth and \textwidth, inches (make_figures_cnsns.py sets its own)
 OUT = HERE / "figures"
 BUILD = HERE / "_build"
 CACHE = BUILD / "cache"
@@ -55,8 +53,8 @@ mfe.FIGSIZE = {
     "e40:fig_d2_mechanism": (W2, 2.35), "e40:fig_sus_chains": (W1, 3.65),
     "e40:fig_verification": lambda w, h: (W2, 0.17 * (h - 1.8) / 0.28 + 1.25),
 }
-mfe.OVERRIDE.update(figures_siads.OVERRIDE)
-mfe.PATCH = mfe.PATCH + figures_siads.PATCH
+mfe.OVERRIDE.update(figures_base.OVERRIDE)
+mfe.PATCH = mfe.PATCH + figures_base.PATCH
 WANTED = {"e10": ["fig_chua_transient"],
           "e26": ["fig_pn", "fig_scaling_p", "fig_scaling_n", "fig_ablation", "fig_signal"],
           "e40": ["fig_chua_I", "fig_chua_II", "fig_gallery", "fig_li_sprott", "fig_maps", "fig_jafari",
@@ -66,7 +64,7 @@ SIZES = []
 
 
 def white_setup_en():
-    """setup_en of the Chaos figures with a white background (SIAM print look)."""
+    """setup_en with a white background."""
     _setup_en()
     plt.rcParams.update({"figure.facecolor": "white", "axes.facecolor": "white", "savefig.facecolor": "white"})
 
@@ -112,7 +110,7 @@ def fit_width(fig, target):
 
 def save(fig, path_without_ext):
     name = Path(str(path_without_ext)).name
-    post = figures_siads.POST.get(name)
+    post = figures_base.POST.get(name)
     if post is not None:
         post(fig)
     w0 = getattr(fig, "_en_w0", float(fig.get_size_inches()[0]))
@@ -161,7 +159,7 @@ def run(script, only):
     """make_figures_en.run with the cache of the trajectory batches and basin maps."""
     path = mfe.script_path(mfe.SCRIPTS[script])
     src = mfe.translate(path.read_text(encoding="utf-8"), script)
-    ns = {"__name__": f"siads_{script}", "__file__": str(path), "_fs": mfe._fs}
+    ns = {"__name__": f"base_{script}", "__file__": str(path), "_fs": mfe._fs}
     exec(compile(src, str(path), "exec"), ns)
     for nm in ("run_batch", "basin_grid"):
         if nm in ns:
@@ -199,11 +197,11 @@ def separate(key):
     try:
         viz.setup()                      # hooked: setup + white setup_en
         if key == "e53":
-            figures_siads.fig_enlarged_and_smallp(W2, W1, save)
+            figures_base.fig_enlarged_and_smallp(W2, W1, save)
         elif key == "e54":
-            figures_siads.fig_cost_gains(W1, save)
+            figures_base.fig_cost_gains(W1, save)
         elif key == "e61":
-            figures_siads.fig_new_attractor(W2, save)
+            figures_base.fig_new_attractor(W2, save)
         elif key == "e68":
             subprocess.run([sys.executable, str(ROOT / "experiments" / "e68_product_theory.py"), "--figure"], check=True)
     finally:

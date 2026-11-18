@@ -9,9 +9,9 @@ authors:
     orcid: "https://orcid.org/0009-0001-3097-2703"
 repository-code: "https://github.com/Hardos220/hidden-attractor-search"
 doi: 10.5281/zenodo.23348470
-version: 1.2.0
+version: 1.2.1
 license: MIT
-date-released: "2026-11-18"
+date-released: "2026-11-19"
 preferred-citation:
   type: article
   title: "Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee"

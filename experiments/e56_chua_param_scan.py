@@ -7,7 +7,7 @@
 LC, HA_a, HA_b) калибруются заново, и доля бассейна цели p = доля HA_a + HA_b оценивается равномерной выборкой с
 двухэтапной оценкой. Ядра интегратора не перекомпилируются: параметры передаются им аргументом.
 
-    rmq submit --cpu 16 --ram 3 --time 40m -- python experiments/e56_chua_param_scan.py alpha 8.4 9.4 0.05
+    python experiments/e56_chua_param_scan.py alpha 8.4 9.4 0.05
 пишет results/e56_chua_scan_<параметр>.json
 """
 import copy

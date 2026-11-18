@@ -36,11 +36,11 @@ def setup():
     })
 
 
-MIN_FONT = 8.0   # AIP figure requirement: minimum label size 8-point type at the printed size
+MIN_FONT = 8.0   # minimum label size: 8-point type at the printed size
 
 
 def setup_en():
-    """Journal style of the English figures (Chaos, AIP) on top of setup(): Arial (DejaVu Sans as fallback),
+    """Journal style of the English figures on top of setup(): Arial (DejaVu Sans as fallback),
     8 pt minimum for ticks and legends, TrueType (Type 42) fonts in the PDF. Shared by make_figures_en.py,
     e53_paper_results.py and e61_new_attractor_figure.py so that all English figures use one font setup."""
     plt.rcParams.update({

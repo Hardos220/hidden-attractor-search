@@ -12,7 +12,7 @@
 прерванная задача rmq (--preempt requeue, файл RMQ_STOP_FILE) продолжается с того же места. Точки порции порождаются
 генератором с seed, зависящим от (система, радиус, равновесие, номер порции), и при повторе совпадают.
 
-    rmq submit --cpu 4 --ram 4 --time 2h --preempt requeue --name e63 -- python experiments/e63_hiddenness_big.py
+    python experiments/e63_hiddenness_big.py
     python experiments/e63_hiddenness_big.py --n 100000 --systems coupled,chua_II,se11   (n — стартов на радиус)
 пишет results/e63_hiddenness_big.json и results/e63_hiddenness_big.md
 """

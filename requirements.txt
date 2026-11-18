@@ -6,5 +6,3 @@ matplotlib>=3.8
 scikit-learn>=1.4
 # optional: uniform sampling on the GPU (src/hsearch/gpu.py, experiments/e51_gpu_uniform.py); CUDA build of CuPy
 # cupy-cuda12x>=13
-# optional: page and font checks of the compiled manuscript in paper/chaos/build_chaos.py
-# PyMuPDF>=1.24

@@ -1,21 +1,20 @@
-"""English, journal-size versions of the article figures (Chaos submission) -> paper/chaos/figures/*.pdf|png
+"""English, journal-size versions of the article figures -> paper/figures/figures/*.pdf|png
 
-The original plotting scripts (experiments/e10, e26, e35, e40) are executed unchanged on disk, with:
+The original plotting scripts (experiments/e10, e26, e40) are executed unchanged on disk, with:
   1. Russian display strings replaced by English ones in the source text before execution (TR below);
-  2. figure sizes set for the journal column widths (3.37 in / 6.69 in) and fonts of 8-8.5 pt (FIGSIZE, _fs; AIP
-     asks for at least 8 pt at the printed size, MIN_FONT);
+  2. figure sizes set for the journal column widths (3.37 in / 6.69 in) and fonts of 8-8.5 pt (FIGSIZE, _fs; at
+     least 8 pt at the printed size, MIN_FONT);
   3. layout tweaks for the smaller canvases (PATCH);
   4. suptitles dropped (their content goes to the LaTeX captions; the texts are logged to _build/suptitles.txt);
-  5. output redirected to paper/chaos/figures/, any write into results/ diverted to _build/side/;
+  5. output redirected to paper/figures/figures/, any write into results/ diverted to _build/side/;
   6. search strategies encoded by line style and marker as well as colour (STRATEGY_STYLE, applied by a hook on
      Axes.plot whenever a line is labelled with a strategy name), so that the result figures read in grey scale;
   7. figures whose English version differs in content (panels merged or dropped, legends outside the data, panel
      labels (a), (b), ... instead of titles) are redrawn in figures_en.py (OVERRIDE/EXTRA) with the same data.
 Data are the same as in the Russian figures: the scripts read results/*.json|npy|npz and use fixed seeds.
 
-    python paper/chaos/make_figures_en.py                 # all figures
-    python paper/chaos/make_figures_en.py e40:fig_chua_I  # selected figure functions
-    python paper/chaos/make_figures_en.py --esn           # also the ESN figures (e35) -> paper/esn/figures_en
+    python paper/figures/make_figures_en.py                 # all figures
+    python paper/figures/make_figures_en.py e40:fig_chua_I  # selected figure functions
 """
 import functools
 import io
@@ -46,10 +45,10 @@ from hsearch.viz import INK, MIN_FONT, MUTED  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from figures_en import EXTRA, OVERRIDE  # noqa: E402
 
-W1, W2 = 3.37, 6.69          # AIP single- and double-column widths, inches
+W1, W2 = 3.37, 6.69          # single- and double-column widths, inches
 SCRIPTS = {"e10": "e10_figures.py", "e26": "e26_stage2_figures.py", "e35": "e35_esn_figures.py",
            "e40": "e40_attractor_figures.py"}
-# the echo-state-network figures (e35) belong to the separate ESN paper: paper/esn/figures_en, run with --esn
+# e35 (echo state networks) is not part of this article and is not included; it would run only with --esn
 OUTDIRS = {"e35": ROOT / "paper" / "esn" / "figures_en"}
 OPTIONAL = {"e35"}
 
@@ -433,7 +432,7 @@ _MARKER_CHARS = set(".,ov^<>12348spP*hH+xXDd|_")
 
 
 def _fs(x):
-    """Explicit font sizes of the originals were set for 10-15 in canvases; at journal width 8-8.5 pt (AIP minimum 8)."""
+    """Explicit font sizes of the originals were set for 10-15 in canvases; at journal width 8-8.5 pt (minimum 8)."""
     return min(max(float(x), MIN_FONT), 8.5)
 
 
@@ -569,7 +568,7 @@ def install_hooks():
         return orig_tl(self, pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
     Figure.tight_layout = tight_layout
 
-    # AIP: minimum label size 8 pt. Explicit smaller font sizes in the scripts and patches are raised to 8.
+    # Minimum label size 8 pt. Explicit smaller font sizes in the scripts and patches are raised to 8.
     from matplotlib.axes import Axes
 
     def _floor8(method):
