@@ -2,7 +2,7 @@
 
     python experiments/e53_paper_results.py            # таблицы results/e53_tables.{json,md} и рисунки ru + en
 
-Рисунки (ru — results/figures, en — paper/figures/figures/):
+Рисунки (ru — results/figures, en — results/figures_en/):
   fig27_enlarged_regions — доля бассейна в k·B и выигрыш на реальных системах (Р1);
   fig28_coupled_copies   — стоимость обнаружения на k копиях SE11 против размерности (Р4);
   fig29_d2_small_p       — выигрыш на D2 до p = 1e-7 и диагностика предела разрешения расщепления (Р3).
@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 
 RES = ROOT / "results"
 FIG_RU = RES / "figures"
-FIG_EN = ROOT / "paper" / "figures" / "figures"
+FIG_EN = ROOT / "results" / "figures_en"
 N_BOOT = 2000
 SYS5 = ["se11", "le1", "chua_I", "chua_II", "jafari2026_lc"]
 KS = {"se11": [1, 2, 4, 8, 16], "le1": [1, 2, 4, 8], "chua_I": [1, 2, 4, 8], "chua_II": [1, 2, 4], "jafari2026_lc": [1, 2, 4]}
@@ -508,7 +508,7 @@ def main():
     for lang, d in (("ru", FIG_RU), ("en", FIG_EN)):
         viz.setup()
         if lang == "en":
-            viz.setup_en()      # Arial, >= 8 pt, Type 42 fonts: the same setup as paper/figures/make_figures_en.py
+            viz.setup_en()      # Arial, >= 8 pt, Type 42 fonts: the journal setup of the English figures
         for name, fn in (("fig27_enlarged_regions", fig27), ("fig28_coupled_copies", fig28), ("fig29_d2_small_p", fig29)):
             fig = fn(out, lang)
             if lang == "en" and fig.get_size_inches()[0] <= 3.5:

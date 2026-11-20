@@ -7,15 +7,6 @@ __pycache__/
 results/figures/*
 !results/figures/.gitkeep
 
-# figure machinery: cache of trajectory batches and basin maps, standalone outputs
-paper/figures/_build/
-paper/figures/figures/
-
-# build products of the manuscript
-paper/cnsns/*.aux
-paper/cnsns/*.bbl
-paper/cnsns/*.blg
-paper/cnsns/*.out
-paper/cnsns/*.thm
-paper/cnsns/_build/
-paper/cnsns/figures/*.png
+# English versions of the figures written by the experiment scripts
+results/figures_en/*
+!results/figures_en/.gitkeep

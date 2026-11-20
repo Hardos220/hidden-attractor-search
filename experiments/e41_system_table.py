@@ -1,5 +1,5 @@
 ﻿"""Таблица параметров интегрирования эталонных систем для приложения статьи (из реестра систем).
-Выход: paper/src/86_systems_table.html
+Выход: results/86_systems_table.html
 """
 import sys
 from pathlib import Path
@@ -57,7 +57,7 @@ def main():
             "<thead><tr><th>Система</th><th class=\"num\">\\(n\\)</th><th>интегрирование</th>"
             "<th class=\"num\">\\(T_{tr}/T_{obs}\\)</th><th>область \\(B\\)</th><th class=\"num\">\\(R_{esc}\\)</th></tr></thead>\n<tbody>\n"
             + "\n".join(rows) + "\n</tbody>\n</table>\n")
-    out = ROOT / "paper" / "src" / "86_systems_table.html"
+    out = ROOT / "results" / "86_systems_table.html"
     out.write_text(html, encoding="utf-8")
     print("ok:", out, len(rows), "строк")
 

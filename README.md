@@ -1,10 +1,10 @@
 # hidden-attractor-search
 
-Code, experiments, results, and manuscript sources for the article
+Code, experiments, and results for the article
 
 > M. Elisov, *Finding rare hidden attractors: Information bounds and an adaptive search portfolio with a worst-case guarantee*, manuscript (2026).
 
-Archived in Zenodo: [doi:10.5281/zenodo.23348470](https://doi.org/10.5281/zenodo.23348470) (v1.2.1 is the current version).
+Archived in Zenodo: [doi:10.5281/zenodo.23348470](https://doi.org/10.5281/zenodo.23348470) (v1.3.0 is the current version).
 
 The search for a hidden attractor with a small basin is treated as the detection of a rare event in the space of initial conditions. The article proves an information bound (no algorithm can guarantee a gain over uniform sampling larger than about 2.6/μ(Q), where Q is the set around the target on which the observations are constant), shows that for k uncoupled units ideal multilevel splitting along the escape time attains this bound up to a constant, and proposes a portfolio of search strategies with a worst-case guarantee. The repository contains the benchmark of systems with hidden attractors, the identification and verification protocol, the search strategies (uniform sampling, subset simulation driven by transient duration, active learning of basin boundaries, their portfolio, a portfolio arm of stagger-and-step chains, bisection toward basin boundaries, a stagger-and-step chain, and Zelinka's differential evolution), every numerical result reported in the article, and the scripts that produce its tables and figures.
 
@@ -16,8 +16,6 @@ The search for a hidden attractor with a small basin is treated as the detection
 | `experiments/` | Numbered scripts; each writes to `results/`. The map to the article is below. |
 | `results/` | JSON outputs of every experiment; `e50/<batch>/<job>.jsonl` holds one line per search run of the long batches; `e53_snippets/` holds table rows (LaTeX and HTML) written by the experiment scripts; `e59/` holds the comparison with Attractors.jl. |
 | `julia/` | `recurrence_cost.jl`: cost per evaluation of `AttractorsViaRecurrences` (Attractors.jl 2.0) on the same initial conditions as the Python code; `chua_attractors.jl`: independent check of the Chua basin fractions; `setup.jl`: packages. |
-| `paper/cnsns/` | The manuscript (Elsevier `elsarticle` class): `main.tex` + `sections/*.tex`, the supplementary materials `supplement.tex` + `sm/*.tex`, the shared preamble `shared.tex`, `refs.bib`, the figures (`figures/`), `build.py` (compiles both documents and checks for undefined references and overfull lines), `make_figures_cnsns.py` (all figures at the `elsarticle` text width), and the compiled `main.pdf` and `supplement.pdf`. |
-| `paper/figures/` | Figure machinery used by `paper/cnsns/make_figures_cnsns.py`: `make_figures_en.py` runs the plotting scripts of `experiments/` (e10, e26, e40) with English labels at journal sizes, `figures_en.py` redraws the figures whose English version differs in content, `make_figures_base.py` and `figures_base.py` set the page widths and draw the figures of the separate scripts e53, e54, e61 from their saved results. |
 
 ## Setup
 
@@ -29,7 +27,7 @@ Python 3.11 or later; the article's results were produced with Python 3.14, nump
 
 ## Reproducing the results
 
-All runs use fixed seeds. Results that the article reports are already in `results/`; every script skips what is already computed where that applies. Section numbers below refer to `paper/cnsns/main.pdf`; SM*n* are sections of `paper/cnsns/supplement.pdf`.
+All runs use fixed seeds. Results that the article reports are already in `results/`; every script skips what is already computed where that applies. Section numbers below refer to the article; SM*n* are sections of its supplementary material.
 
 Benchmark and protocol (section 5, SM1–SM3):
 
@@ -62,7 +60,7 @@ python experiments/e66_stagger_summary.py  # stagger-and-step against splitting 
 python experiments/e67_portfolio_sas.py    # stagger-and-step chains as a portfolio arm, Corollary 3.2 (Table 5; 12 problems, R = 50)
 ```
 
-Product targets (Proposition 4.2, Table 2, Figure 2): `python experiments/e68_product_theory.py` computes the nonescaping fraction q of SE11, the gain of ideal splitting and the information bound for k copies, and the base of the measured geometric growth from the batch outputs of `results/e50/B8`; `--figure --cnsns` redraws Figure 2 only, at the size of `paper/cnsns`.
+Product targets (Proposition 4.2, Table 2, Figure 2): `python experiments/e68_product_theory.py` computes the nonescaping fraction q of SE11, the gain of ideal splitting and the information bound for k copies, and the base of the measured geometric growth from the batch outputs of `results/e50/B8`; `--figure` redraws Figure 2 only (`--figure --article`: at the article's text width), into `results/figures_en/`.
 
 Long batches (coupled copies, enlarged regions, D2 down to p = 1e-7, cost in steps and time, the one-thread timing, the coupling-born attractor):
 
@@ -88,17 +86,9 @@ python experiments/e59_eval_cost.py cost            # Python cost per evaluation
 python experiments/e59_cost_table.py; python experiments/e59_paper_table.py
 ```
 
-## Building the manuscript
+## Table rows and English figures
 
-```
-python paper/cnsns/make_figures_cnsns.py   # all figures of paper/cnsns at the elsarticle text width (8-pt labels)
-python paper/cnsns/make_figures_cnsns.py e40:fig_d2_mechanism e68   # selected figure functions only
-python paper/cnsns/build.py                # supplement -> main -> supplement -> main (cross-references via xr-hyper)
-```
-
-`make_figures_cnsns.py` uses the machinery of `paper/figures/` at the `elsarticle` text width, draws the grid beneath the data, and redraws the uniform sample of Figure 1(a), the panels of Figure 4 (two columns), Figure 2 (by `experiments/e68_product_theory.py --figure --cnsns`), and the panel layout of the coexisting Chua II attractors in the supplement. The first run integrates the trajectory batches and basin maps of the attractor figures (about ten minutes on 8 threads) and caches them in `paper/figures/_build/cache`. `build.py` compiles with Tectonic (the `TECTONIC` environment variable may give its path); the sources also compile with pdflatex and BibTeX in the same order. The `elsarticle` class is part of TeX Live and MiKTeX (CTAN).
-
-Table rows and the figures of the separate scripts:
+The scripts below write table rows to `results/e53_snippets/` and English versions of their figures to `results/figures_en/`:
 
 ```
 python experiments/e53_paper_results.py   # enlarged regions and small p: table rows and figures

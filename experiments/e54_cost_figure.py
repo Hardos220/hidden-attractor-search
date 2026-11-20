@@ -11,7 +11,7 @@ ln 10 / p с p = 0.0027^k), а его шаги и время — N0 × изме�
 батча. Интервалы 95 % — бутстрап по запускам портфеля (2000 перевыборок; для измеренного N0 — и по запускам перебора).
 
     python experiments/e54_cost_figure.py
-пишет results/figures/fig30_cost_gains.{png,pdf} (RU), paper/figures/figures/fig30_cost_gains.{png,pdf} (EN),
+пишет results/figures/fig30_cost_gains.{png,pdf} (RU), results/figures_en/fig30_cost_gains.{png,pdf} (EN),
 results/e53_snippets/tab_cost.{tex,html}, results/e54_cost_final.json и results/e54_cost_final.md (старые и новые значения).
 """
 import json
@@ -336,7 +336,7 @@ def main():
               f"G_T={r['G_T']:.3g} [{r['G_T_ci'][0]:.3g}, {r['G_T_ci'][1]:.3g}]")
     tables(sel)
     changes_md(sel, old)
-    for lang, d in (("ru", ROOT / "results" / "figures"), ("en", ROOT / "paper" / "figures" / "figures")):
+    for lang, d in (("ru", ROOT / "results" / "figures"), ("en", ROOT / "results" / "figures_en")):
         save(figure(sel, lang), d / "fig30_cost_gains")
 
 

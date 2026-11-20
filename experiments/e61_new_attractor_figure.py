@@ -3,7 +3,7 @@
 (a) цепь 1 в проекции (x, z) и цикл LC отдельной цепи; (b) цепь 2 и скрытые аттракторы HA_a, HA_b отдельной цепи;
 (c) старший показатель Ляпунова режима в зависимости от силы связи (скан e58: рождение при eps ≈ 0.045, слияние с
 синхронным циклом при eps ≈ 0.5). Пишет results/figures/fig31_new_attractor.{png,pdf} (RU) и
-paper/figures/figures/fig31_new_attractor.{png,pdf} (EN).
+results/figures_en/fig31_new_attractor.{png,pdf} (EN).
 
     python experiments/e61_new_attractor_figure.py
 """
@@ -47,8 +47,8 @@ def main():
     for q in sorted(scan, key=lambda q: q["eps"]):
         if q["eps"] not in seen:
             seen.add(q["eps"]); pts.append(q)
-    for lang, out in (("en", ROOT / "paper" / "figures" / "figures"), ("ru", ROOT / "results" / "figures")):
-        # English version: the journal font setup of paper/figures/make_figures_en.py (Arial, >= 8 pt, Type 42)
+    for lang, out in (("en", ROOT / "results" / "figures_en"), ("ru", ROOT / "results" / "figures")):
+        # English version: the journal font setup (Arial, >= 8 pt, Type 42)
         setup()
         if lang == "en":
             setup_en()
